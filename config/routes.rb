@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'pages/index'
+
   get 'tickets/edit'
 
   get 'tickets/new'
