@@ -1,8 +1,11 @@
 class TicketPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.where("author_id = ? or assignee_id = ?", user.id, user.id) if user.cs_rep?
-      scope.all if user.manager?
+      if user.cs_rep?
+        scope.where("author_id = ? or assignee_id = ?", user.id, user.id)
+      else
+        scope.all
+      end
     end
   end
 

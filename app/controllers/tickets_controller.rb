@@ -17,7 +17,7 @@ class TicketsController < ApplicationController
   # GET /tickets/new
   def new
     @ticket = Ticket.new
-    @ticket.user = current_user
+    @ticket.author = current_user
     @ticket.status = 'new'
     authorize @ticket
   end
