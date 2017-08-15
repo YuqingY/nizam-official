@@ -5,5 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "Making 2 users manager and cs rep"
 User.create(email: 'manager@nizam.com', password:"12345678", position:'manager', name:'manager')
 User.create(email: 'csrep@nizam.com', password:"12345678", position:'csrep', name:'cs rep')
+puts "Finished creating users"
