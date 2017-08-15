@@ -1,3 +1,67 @@
 // Place all the styles related to the Tickets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.content {
+  // background: #565656;
+  margin: 0 auto;
+  margin-right: 0;
+  display: flex;
+  flex-direction: column;
+  text-align:center;
+  padding: 0 30px;
+}
+.tabbar {
+  font-family: AndaleMono;
+  font-size: 20px;
+  color: #FFFFFF;
+  padding: 30px;
+  text-align: left;
+  min-height: 100vh;
+  padding-right: 0;
+}
+
+.tabbar hr {
+  border: 1px solid rgba(151,151,151,0.26);
+}
+
+.tickets {
+  background-color: #FFFFFF;
+  height:100vh;
+  padding-left: 0;
+}
+
+.table thead tr th {
+  margin: 0 5px;
+}
+
+.green-btn {
+  /* Rectangle: */
+  background: #A4CD3B;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.27);
+  border-radius: 3px;
+  /* Start New Call: */
+  font-family: Baghdad;
+  font-size: 20px;
+  color: #FFFFFF;
+  letter-spacing: -0.57px;
+  margin-right: 20px;
+  padding: 5px 20px 0px 20px;
+  width:200px;
+  margin: 20px auto;
+}
+
+.green-btn a {
+  color: #FFFFFF;
+}
+
+.green-btn:hover a {
+  font-style: none;
+  color: #ddefaa;
+  text-decoration: none;
+}
+
+.form {
+  width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
