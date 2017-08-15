@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170815040655) do
+ActiveRecord::Schema.define(version: 20170815064600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,17 +25,17 @@ ActiveRecord::Schema.define(version: 20170815040655) do
 
   create_table "tickets", force: :cascade do |t|
     t.string "imei"
-    t.bigint "user_id"
+    t.bigint "author_id"
     t.string "category"
     t.string "department"
-    t.bigint "assigner"
-    t.bigint "assignee"
+    t.bigint "assigner_id"
+    t.bigint "assignee_id"
     t.string "status"
     t.string "next_step"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_tickets_on_user_id"
+    t.index ["author_id"], name: "index_tickets_on_author_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -58,5 +58,5 @@ ActiveRecord::Schema.define(version: 20170815040655) do
   end
 
   add_foreign_key "calls", "tickets"
-  add_foreign_key "tickets", "users"
+  add_foreign_key "tickets", "users", column: "author_id"
 end

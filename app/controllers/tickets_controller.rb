@@ -3,7 +3,7 @@ class TicketsController < ApplicationController
 
   def index
     if user_signed_in?
-       @tickets = Ticket.all
+       @tickets = policy_scope(Ticket)
     else
       redirect_to new_user_session_path
     end
@@ -19,6 +19,7 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new
     @ticket.user = current_user
     @ticket.status = 'new'
+    authorize @ticket
   end
 
   # GET /tickets/1/edit
@@ -31,11 +32,12 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new(ticket_params)
     @ticket.user = current_user
     @ticket.status = 'new'
+    authorize @ticket
     if @ticket.save
-        redirect_to @ticket, notice: 'Ticket was successfully created.'
-      else
-        render :new
-      end
+      redirect_to @ticket, notice: 'Ticket was successfully created.'
+    else
+      render :new
+    end
   end
 
   # PATCH/PUT /tickets/1
@@ -60,6 +62,7 @@ class TicketsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_ticket
       @ticket = Ticket.find(params[:id])
+      authorize @ticket
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
