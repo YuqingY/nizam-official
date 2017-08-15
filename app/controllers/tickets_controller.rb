@@ -49,7 +49,6 @@ class TicketsController < ApplicationController
         render :edit
       end
     end
-  end
 
   # DELETE /tickets/1
   # DELETE /tickets/1.json
