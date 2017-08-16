@@ -25,10 +25,20 @@
              </thead>
 
              <tbody>
-
-               <%= render @tickets %>
-
-
+             <% @tickets.each do |ticket| %>
+               <tr>
+                  <td><%= ticket.customer_id %></td>
+                  <td><%= ticket.author.name %></td>
+                  <td><%= ticket.category %></td>
+                  <td><%= ticket.department %></td>
+                  <td><%= ticket.status %></td>
+                  <td><%= ticket.next_step %></td>
+                  <td><%= link_to 'Show', ticket %></td>
+                  <td>
+                    <%= link_to 'Edit', edit_ticket_path(ticket) %>
+                  </td>
+                </tr>
+              <% end %>
              </tbody>
            </table>
          </div>
