@@ -5,8 +5,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+p "Destroying old data"
+Ticket.destroy_all
+User.destroy_all
+p"Seeding new data"
 
-puts "Making 2 users manager and cs rep"
+puts "Making 3 users manager and cs rep"
 User.create(email: 'manager@nizam.com', password:"12345678", position:'manager', name:'manager')
-User.create(email: 'csrep@nizam.com', password:"12345678", position:'csrep', name:'cs rep')
+csrep1 = User.create(email: 'csrep1@nizam.com', password:"12345678", position:'csrep', name:'csrep1')
+csrep2 = User.create(email: 'csrep2@nizam.com', password:"12345678", position:'csrep', name:'csrep2')
+external = User.create(email: 'external@nizam.com', password:"12345678", position:'external', name:'external')
 puts "Finished creating users"
+
+puts "creating new tickets"
+Ticket.create(customer_id:"1", author_id: csrep1.id, category:'tech', department:"tech", status:"new")
+Ticket.create(customer_id:"2", author_id: csrep2.id, category:'tech', department:"tech", status:"new")
+Ticket.create(customer_id:"3", author_id: csrep1.id, category:'tech', department:"tech", status:"active")
+Ticket.create(customer_id:"4", author_id: csrep2.id, category:'tech', department:"tech", status:"active")
+Ticket.create(customer_id:"5", author_id: csrep1.id, category:'tech', department:"tech", status:"pending")
+Ticket.create(customer_id:"5", author_id: csrep2.id, category:'info', department:"sale", status:"pending")
+Ticket.create(customer_id:"6", author_id: csrep1.id, category:'info', department:"sale", status:"ready")
+Ticket.create(customer_id:"7", author_id: csrep2.id, category:'sale', department:"sale", status:"ready")
+Ticket.create(customer_id:"8", author_id: csrep1.id, category:'sale', department:"sale", status:"closed")
+Ticket.create(customer_id:"7", author_id: csrep2.id, category:'sale', department:"sale", status:"closed")
+puts "done"
