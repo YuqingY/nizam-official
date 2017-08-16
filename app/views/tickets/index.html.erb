@@ -35,9 +35,7 @@
                   <td><%= ticket.next_step %></td>
                   <td><%= link_to 'Show', ticket %></td>
                   <td>
-                    <%if policy(ticket).update? %>
                     <%= link_to 'Edit', edit_ticket_path(ticket) %>
-                    <% end %>
                   </td>
                 </tr>
               <% end %>
