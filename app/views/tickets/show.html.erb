@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <strong>Author:</strong>
+  <%= @ticket.author %>
+</p>
+
+<p>
   <strong>Category:</strong>
   <%= @ticket.category %>
 </p>
@@ -30,10 +35,7 @@
   <%= @ticket.status %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @ticket.user %>
-</p>
+
 
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
 <%= link_to 'Back', tickets_path %>
