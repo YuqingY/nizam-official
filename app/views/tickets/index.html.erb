@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-
 <div class="content">
        <div class="row">
          <div class="tabbar col-sm-3">
@@ -27,19 +26,8 @@
              </thead>
 
              <tbody>
-               <% @tickets.each do |ticket| %>
-                 <tr>
-                   <td><%= ticket.customer_id %></td>
-                   <td><%= ticket.author.email %></td>
-                   <td><%= ticket.category %></td>
-                   <td><%= ticket.department %></td>
-                   <td><%= ticket.status %></td>
-                   <td><%= ticket.next_step %></td>
-                   <td><%= link_to 'Show', ticket %></td>
-                   <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
-                   <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                 </tr>
-               <% end %>
+               <%= render @tickets %>
+
              </tbody>
            </table>
            </div>
