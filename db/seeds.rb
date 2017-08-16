@@ -31,13 +31,13 @@ Ticket.create(customer_id:"7", author_id: csrep2.id, category:'sale', department
 puts "done"
 
 require 'csv'
-csv_text = File.read(Rails.root.join('db' , 'nizamdata2.csv'))
+csv_text = File.read(Rails.root.join('db' , 'nizamdata.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
   # puts row.to_hash
-  t = Ticket.new
-  t.customer_id = row['customer_cnic']
-  t.imei = row['imei_number']
-  puts t.save
-  puts "#{t.customer_id}, #{t.imei} saved"
+  c = Customer.new
+  c.name = row['customer_name']
+  c.cnic = row['customer_cnic']
+  c.imei = row['imei_number']
+  c.save
 end
