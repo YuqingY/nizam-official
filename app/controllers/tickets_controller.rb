@@ -57,6 +57,26 @@ class TicketsController < ApplicationController
     redirect_to tickets_url, notice: 'Ticket was successfully destroyed.'
     end
 
+  def new_ticket
+    Ticket.new_ticket
+  end
+
+  def active_ticket
+    Ticket.active_ticket
+  end
+
+  def pending_ticket
+    Ticket.pending_ticket
+  end
+
+  def ready_ticket
+    Ticket.ready_ticket
+  end
+
+  def closed_ticket
+    Ticket.closed_ticket
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ticket

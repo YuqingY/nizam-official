@@ -5,11 +5,16 @@
   </a>
   <!-- Right Navigation -->
   <!-- Dropdown appearing on mobile only -->
+
+
   <div class="navbar-right">
     <div class="start-new-call">
       <%= link_to "Start New Call", new_ticket_path %>
     </div>
-    <div class="navbar-wagon-link"><%= link_to "Log Out", destroy_user_session_path, method: :delete%></div>
+
+    <div><%= link_to "Log Out", destroy_user_session_path, method: :delete%>
+
+    </div>
   </div>
 </div>
 
