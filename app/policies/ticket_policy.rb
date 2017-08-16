@@ -14,7 +14,12 @@ class TicketPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    if user.cs_rep?
+      #if a ticket's author or assignee is the user
+      user.id == record.author_id || user.id == assignee_id
+    else
+      return true
+    end
   end
 
   def destroy?
