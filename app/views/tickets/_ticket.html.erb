@@ -1,6 +1,6 @@
 <tr>
   <td><%= ticket.customer_id %></td>
-  <td><%= ticket.author.email %></td>
+  <td><%= ticket.author.name %></td>
   <td><%= ticket.category %></td>
   <td><%= ticket.department %></td>
   <td><%= ticket.status %></td>
@@ -10,10 +10,5 @@
     <%if policy(ticket).update? %>
     <%= link_to 'Edit', edit_ticket_path(ticket) %>
     <% end %>
-  </td>
-  <td>
-  <%if policy(ticket).destroy? %>
-  <%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
   </td>
 </tr>
