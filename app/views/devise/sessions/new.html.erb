@@ -1,80 +1,30 @@
-
-
 <!-- Form-->
 <div class="form">
-
   <div class="form-toggle"></div>
-    <div class="form-panel one">
-        <div class="form-header">
-          <h1>Account Login</h1>
-        </div>
-        <div class="form-content form-inputs">
-          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-group">
-              <!-- <label for="username">Email</label> -->
-              <%= f.input :email, required: false, autofocus: true%>
-            </div>
-            <div class="form-group">
-              <!-- <label for="password">Password</label> -->
-              <%= f.input :password, required: false %>
-            </div>
-            <div class="form-group">
-              <label class="form-remember">
-                <%= f.input :remember_me, class: "form-remember", type: "checkbox", as: :boolean if devise_mapping.rememberable?%>
-              </label><%= link_to "Forgot your password?", new_password_path(resource_name), class: 'form-recovery' %>
-            </div>
-  <div class="form-actions">
-    <%= f.button :submit, "Log in", class: "button-submit" %>
-  </div>
-<% end %>
-          <!-- <form>
-            <div class="form-group">
-              <label for="username">Email</label>
-              <input type="text" id="username" name="username" required="required"/>
-            </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" id="password" name="password" required="required"/>
-            </div>
-            <div class="form-group">
-              <label class="form-remember">
-                <input type="checkbox"/>Remember Me
-              </label><a class="form-recovery" href="#">Forgot Password?</a>
-            </div>
-            <div class="form-group">
-              <button type="submit">Log In</button>
-            </div>
-          </form> -->
-        </div>
+  <div class="form-panel one">
+    <div class="form-header">
+      <h1>Account Login</h1>
     </div>
-    <!-- <div class="form-panel two">
-      <div class="form-header">
-        <h1>Register Account</h1>
+    <div class="form-content form-inputs">
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-group">
+        <!-- <label for="username">Email</label> -->
+        <%= f.input :email, required: false, autofocus: true%>
       </div>
-      <div class="form-content">
-        <form>
-          <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required="required"/>
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required="required"/>
-          </div>
-          <div class="form-group">
-            <label for="cpassword">Confirm Password</label>
-            <input type="password" id="cpassword" name="cpassword" required="required"/>
-          </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" required="required"/>
-          </div>
-          <div class="form-group">
-            <button type="submit">Register</button>
-          </div>
-        </form>
-      </div> -->
+      <div class="form-group">
+        <!-- <label for="password">Password</label> -->
+        <%= f.input :password, required: false %>
+      </div>
+      <div class="form-group">
+        <label class="form-remember">
+          <%= f.input :remember_me, class: "form-remember", type: "checkbox", as: :boolean if devise_mapping.rememberable?%>
+        </label><%= link_to "Forgot your password?", new_password_path(resource_name), class: 'form-recovery' %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Log in", class: "button-submit" %>
+      </div>
+      <% end %>
+    </div>
   </div>
 </div>
-
-
+</div>
