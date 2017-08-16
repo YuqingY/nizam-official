@@ -1,6 +1,5 @@
 login.css
 /* config.css */
-
 /* helpers/align.css */
 
 .align {
@@ -20,6 +19,15 @@ login.css
 }
 
 /* helpers/grid.css */
+
+.margin-top{
+  margin-top: 80px;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+}
 
 .grid {
   margin-left: auto;
@@ -172,6 +180,11 @@ input[type='submit'] {
 }
 
 /* modules/text.css */
+h2{
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+}
 
 p {
   margin-bottom: 24px;
@@ -182,4 +195,10 @@ p {
 
 .text--center {
   text-align: center;
+}
+
+.box-input{
+    border-radius: 4px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
