@@ -1,5 +1,24 @@
-<div class="start-new-call">
-    <%= link_to "New Ticket", controller: :tickets, action: :new, call_id: @call.id %>
+<div class="choice" style="display:flex; justify-content: space-around; width: 100vw; margin:30px 0;">
+  <div class="bouton-green" style="width:30%;">
+      <%= link_to "New Ticket", controller: :tickets, action: :new, call_id: @call.id %>
+  </div>
+  <div class ='bouton-green' style="width:30%;" onclick="showTickets()">Old ticket</div>
 </div>
 
-<%= render 'shared/tickets' %>
+<div class="tickets col-sm-11" id="old-tickets" style="display:none;">
+    <%= render 'shared/tickets' %>
+        <div class="bouton-green"><%= link_to "End Call", controller: :tickets, action: :new, call_id: @call.id %></div>
+</div>
+
+
+<script>
+  function showTickets() {
+    var x = document.getElementById('old-tickets');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+
+</script>

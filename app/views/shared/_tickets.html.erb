@@ -34,34 +34,32 @@
                 </td>
                 <td>
                     <%= link_to ticket do %>
-                    <img src="<%= image_path('show.png') %>" alt="" class="edit-icon">
-                    <% end %>
+                        <img src="<%= image_path('show.png') %>" alt="" class="edit-icon">
+                        <% end %>
                 </td>
                 <td>
                     <%= link_to edit_ticket_path(ticket) do %>
-                    <img src="<%= image_path('edit.png') %>" alt="" class="edit-icon">
-                    <% end %>
-
+                        <img src="<%= image_path('edit.png') %>" alt="" class="edit-icon">
+                        <% end %>
                 </td>
             </tr>
             <% end %>
     </tbody>
 </table>
- <div class="paging"></div>
+<div class="paging"></div>
 </div>
-
 <script>
- $(document).ready(function(){
-        $('#ticket-table').DataTable();
-      });
+$(document).ready(function() {
+    $('#ticket-table').DataTable();
+});
 
-       $('#ticket-table').datatable({
-           pageSize: 10,
-           sort: [false, false, false],
-           filters: [true, 'select', 'select', 'select', 'select', ],
-           filterText: 'Type to filter... ',
-           onChange: function(old_page, new_page){
-             console.log('changed from ' + old_page + ' to ' + new_page);
-           }
-       }) ;
+$('#ticket-table').datatable({
+    pageSize: 10,
+    sort: [false, false, false],
+    filters: [true, 'select', 'select', 'select', 'select', ],
+    filterText: 'Type to filter... ',
+    onChange: function(old_page, new_page) {
+        console.log('changed from ' + old_page + ' to ' + new_page);
+    }
+});
 </script>

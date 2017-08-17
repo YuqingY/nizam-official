@@ -24,6 +24,9 @@ csv.each do |row|
   c.save
 end
 puts "Customers created"
+puts "Creating fake customer for default ticket"
+fake_customer = Customer.create(name: 'N/A', cnic:"N/A", imei:"N/A")
+puts "fake customer created"
 
 puts "Making 3 users manager and cs rep"
 User.create(email: 'manager@nizam.com', password:"12345678", position:'manager', name:'manager')
