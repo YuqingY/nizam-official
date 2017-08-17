@@ -16,9 +16,11 @@ class TicketsController < ApplicationController
 
   # GET /tickets/new
   def new
+    @call = Call.find(params[:call_id])
     @ticket = Ticket.new
     @ticket.author = current_user
     @ticket.status = 'new'
+    @call.ticket = @ticket
     authorize @ticket
   end
 
@@ -29,21 +31,34 @@ class TicketsController < ApplicationController
   # POST /tickets
   # POST /tickets.json
   def create
-    @ticket = Ticket.new(ticket_params)
-    @ticket.user = current_user
+    call_id = ticket_params.delete(:call_id)
+    @call=Call.find(call_id)
+    @call.update end_time: Time.now
+    @call.update duration: @call.end_time - @call.start_time
+
+    cleaned_params = ticket_params.reject {|k,v| k == 'call_id'}
+
+    @ticket = Ticket.new(cleaned_params)
+    @ticket.calls << @call
+
+    @ticket.author = current_user
     @ticket.status = 'new'
     authorize @ticket
+
     if @ticket.save
       redirect_to @ticket, notice: 'Ticket was successfully created.'
     else
       render :new
     end
+
   end
 
   # PATCH/PUT /tickets/1
   # PATCH/PUT /tickets/1.json
   def update
       if @ticket.update(ticket_params)
+         @ticket.calls.last.end_time = Time.now
+
         redirect_to @ticket, notice: 'Ticket was successfully updated.'
       else
         render :edit
@@ -86,6 +101,6 @@ class TicketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
-      params.require(:ticket).permit(:category, :department, :next_step, :description, :status, :user_id)
+      params.require(:ticket).permit(:category, :department, :next_step, :description, :status, :user_id, :call_id)
     end
 end
