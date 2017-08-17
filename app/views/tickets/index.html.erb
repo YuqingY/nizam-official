@@ -28,7 +28,7 @@
              <% @tickets.each do |ticket| %>
                <tr>
                   <td><%= ticket.customer_id %></td>
-                  <td><%= ticket.author.name %></td>
+                  <td><%= ticket.author.try(:name) %></td>
                   <td><%= ticket.category %></td>
                   <td><%= ticket.department %></td>
                   <td><%= ticket.status %></td>
