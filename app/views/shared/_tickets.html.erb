@@ -7,6 +7,8 @@
             <th>Department</th>
             <th>Status</th>
             <th>Next step</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -31,10 +33,15 @@
                     <%= ticket.next_step %>
                 </td>
                 <td>
-                    <%= link_to 'Show', ticket %>
+                    <%= link_to ticket do %>
+                    <img src="<%= image_path('show.png') %>" alt="" class="edit-icon">
+                    <% end %>
                 </td>
                 <td>
-                    <%= link_to 'Edit', edit_ticket_path(ticket) %>
+                    <%= link_to edit_ticket_path(ticket) do %>
+                    <img src="<%= image_path('edit.png') %>" alt="" class="edit-icon">
+                    <% end %>
+
                 </td>
             </tr>
             <% end %>
@@ -47,7 +54,7 @@
  $(document).ready(function(){
         $('#ticket-table').DataTable();
       });
-  
+
        $('#ticket-table').datatable({
            pageSize: 10,
            sort: [false, false, false],
