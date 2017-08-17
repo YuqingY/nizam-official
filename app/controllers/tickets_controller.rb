@@ -21,6 +21,7 @@ class TicketsController < ApplicationController
     @ticket.author = current_user
     @ticket.status = 'new'
     authorize @ticket
+    @function = "new"
   end
 
   # GET /tickets/1/edit
