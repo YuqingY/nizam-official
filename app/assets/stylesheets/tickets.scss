@@ -37,6 +37,9 @@
 // }
 
 
+body {
+  font-family:'Open Sans', sans-serif !important;
+}
 
 .content {
   background: rgb(230, 230, 230);
@@ -48,7 +51,6 @@
   padding: 0px 0px 0px 50px;
 }
 .tabbar {
-  font-family: AndaleMono;
   font-size: 20px;
   color: #FFFFFF;
   padding: 30px;
@@ -76,27 +78,31 @@
 .green-btn {
   /* Rectangle: */
   background: #A4CD3B;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.27);
-  border-radius: 3px;
-  /* Start New Call: */
-  font-family: Baghdad;
-  font-size: 20px;
-  color: #FFFFFF;
-  letter-spacing: -0.57px;
-  margin-right: 20px;
-  padding: 5px 20px 0px 20px;
-  width:200px;
-  margin: 20px auto;
+  padding-left: 27px;
+  padding-right: 27px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 2px;
+  color: #fff;
+  float: right;
+  margin-right: 155px;
+  font-size: 15px;
+  line-height: 20px;
 }
 
 .green-btn a {
   color: #FFFFFF;
 }
 
-.green-btn:hover a {
-  font-style: none;
-  color: #ddefaa;
-  text-decoration: none;
+.green-btn:hover {
+  transform: translateY(-3px);
+
+  transform: translateY(-3px);
+
+  transform: translateY(-3px);
+
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
+
 }
 
 .form {
