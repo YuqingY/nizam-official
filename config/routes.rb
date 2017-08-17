@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+
+  ActiveAdmin.routes(self)
   resources :tickets
+  resources :calls, only: [:new]
 
   root to: "tickets#index"
   # Controller#action

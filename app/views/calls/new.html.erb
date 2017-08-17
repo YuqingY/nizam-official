@@ -1,0 +1,5 @@
+<div class="start-new-call">
+    <%= link_to "New Ticket", controller: :tickets, action: :new, call_id: @call.id %>
+</div>
+
+<%= render 'shared/tickets' %>

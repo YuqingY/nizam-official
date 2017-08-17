@@ -34,6 +34,8 @@ gem 'devise'
 gem "pundit"
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
