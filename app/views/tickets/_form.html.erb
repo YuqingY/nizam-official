@@ -7,7 +7,9 @@
     <div class="form-content">
 <%= simple_form_for(@ticket) do |f| %>
 <%= f.error_notification %>
+
   <div class="form-group  form-inputs">
+
     <%= f.input :customer_id, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"}%>
     </div>
     <div class="form-group  form-inputs">
@@ -28,14 +30,16 @@
     </div>
     <div class="form-group  form-inputs">
     <%= f.input :description, as: :text, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"} %>
+
   </div>
 
   <div class="form-actions">
     <%= f.button :submit, class: "button-submit"%>
   </div>
 <% end %>
+
 </div>
   </div>
 </div>
-</div>
+
 
