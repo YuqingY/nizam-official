@@ -5,8 +5,8 @@
   <td><%= ticket.department %></td>
   <td><%= ticket.status %></td>
   <td><%= ticket.next_step %></td>
+  <td><%= ticket.start_time %></td>
   <td><%= link_to 'Show', ticket %></td>
-  <td>
     <%if policy(ticket).update? %>
     <%= link_to 'Edit', edit_ticket_path(ticket) %>
     <% end %>

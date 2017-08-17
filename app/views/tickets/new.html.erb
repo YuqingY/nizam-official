@@ -4,4 +4,7 @@
   <%= render 'form', ticket: @ticket %>
 
   <%= link_to 'Back', tickets_path %>
+
+  <h2><%= 'start time' %></h2>
+  <%= @ticket.start_time.strftime("%H:%M:%S") %>
 </div>

@@ -12,6 +12,7 @@ class TicketsController < ApplicationController
   # GET /tickets/1
   # GET /tickets/1.json
   def show
+    @duration = @ticket.end_time - @ticket.start_time
   end
 
   # GET /tickets/new
@@ -20,6 +21,8 @@ class TicketsController < ApplicationController
     @ticket.author = current_user
     @ticket.status = 'new'
     authorize @ticket
+    @ticket.start_time = Time.now
+
   end
 
   # GET /tickets/1/edit
@@ -30,9 +33,13 @@ class TicketsController < ApplicationController
   # POST /tickets.json
   def create
     @ticket = Ticket.new(ticket_params)
-    @ticket.user = current_user
+    @ticket.end_time = Time.now
+    @ticket.author = current_user
     @ticket.status = 'new'
     authorize @ticket
+    @start_time = ticket_params[:start_time].to_datetime
+    @ticket.start_time = @start_time
+
     if @ticket.save
       redirect_to @ticket, notice: 'Ticket was successfully created.'
     else
@@ -81,11 +88,12 @@ class TicketsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_ticket
       @ticket = Ticket.find(params[:id])
+
       authorize @ticket
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
-      params.require(:ticket).permit(:category, :department, :next_step, :description, :status, :user_id)
+      params.require(:ticket).permit(:category, :department, :next_step, :description, :status, :customer_id, :start_time)
     end
 end

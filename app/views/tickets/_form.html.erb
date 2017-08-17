@@ -1,15 +1,12 @@
 <%= simple_form_for(@ticket) do |f| %>
-<%= f.error_notification %>
-  <div class="form-inputs">
+    <%= f.error_notification %>
     <%= f.input :customer_id %>
     <%= f.input :category %>
     <%= f.input :department %>
     <%= f.input :status, collection: ["new", "active", "pending", "ready", "closed"] %>
     <%= f.input :next_step %>
+    <%= f.input :start_time, as: :hidden %>
     <%= f.input :description, as: :text %>
-  </div>
-
-  <div class="form-actions">
     <%= f.button :submit %>
-  </div>
 <% end %>
+

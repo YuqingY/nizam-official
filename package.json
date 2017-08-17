@@ -1,5 +1,7 @@
 {
   "name": "nizam-official",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "timer.js": "^1.0.4"
+  }
 }
