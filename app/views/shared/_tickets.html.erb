@@ -1,0 +1,48 @@
+
+           <table class="table" id='ticket-table'>
+             <thead>
+               <tr>
+                 <th>customer</th>
+                 <th>author</th>
+                 <th>Category</th>
+                 <th>Department</th>
+                 <th>Status</th>
+                 <th>Next step</th>
+               </tr>
+             </thead>
+
+             <tbody>
+             <% Ticket.all.each do |ticket| %>
+               <tr>
+                  <td><%= ticket.customer.name %></td>
+                  <td><%= ticket.author.name %></td>
+                  <td><%= ticket.category %></td>
+                  <td><%= ticket.department %></td>
+                  <td><%= ticket.status %></td>
+                  <td><%= ticket.next_step %></td>
+                  <td><%= link_to 'Show', ticket %></td>
+                  <td>
+                    <%= link_to 'Edit', edit_ticket_path(ticket) %>
+                  </td>
+                </tr>
+              <% end %>
+             </tbody>
+           </table>
+         </div>
+</div>
+   <script>
+      $(document).ready(function(){
+        $('#ticket-table').DataTable();
+      });
+
+      $('#ticket-table').datatable({
+          pageSize: 10,
+          sort: [false, false, false],
+          filters: [true, 'select', 'select', 'select', 'select', ],
+          filterText: 'Type to filter... ',
+          onChange: function(old_page, new_page){
+            console.log('changed from ' + old_page + ' to ' + new_page);
+          }
+      }) ;
+  </script>
+

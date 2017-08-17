@@ -5,14 +5,14 @@
     <img src="http://www.nizamenergy.com/img/logo.jpg" alt="logo">
   </a>
   <% if user_signed_in? %>
-     <%= render 'shared/searchbar' %>
+
     <!-- Right Navigation -->
     <!-- Dropdown appearing on mobile only -->
 
 
     <div class="navbar-right">
       <div class="start-new-call">
-        <%= link_to "Start New Call", new_ticket_path %>
+        <%= link_to "Start New Call", new_call_path %>
       </div>
 
       <div><%= link_to "Log Out", destroy_user_session_path, method: :delete%>
