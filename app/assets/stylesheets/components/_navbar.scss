@@ -10,39 +10,43 @@
   width: 100%;
   z-index: 2;
   top: 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .logo{
-  position: absolute;
+  justify-content: flex-start;
   left:20px;
 }
-/* Right section */
-.navbar-nizam-right {
-  display:flex;
-  justify-content: flex-end;
-  // align-items: center;
-}
 
-/* Basic navbar item */
 
-.navbar-item {
-  cursor: pointer;
-  padding: 0 20px;
-}
+// .navbar-item {
+//   cursor: pointer;
+//   padding: 0 20px;
+// }
 
 /* Navbar link */
 
-.navbar-link {
-  color: #616668;
-  font-size: 14px;
-}
-.navbar-link:hover {
-  color: #da552f;
-  text-decoration: none;
+// .navbar-link {
+//   color: #616668;
+//   font-size: 14px;
+// // }
+// .navbar-link:hover {
+//   color: #da552f;
+//   text-decoration: none;
+// }
+.flexbox-container {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  align-items: center;
 }
 
-
-.btn-green {
+.bouton-green {
+  justify-content: center;
   background: #A4CD3B;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.27);
   border-radius: 8px;
@@ -51,10 +55,12 @@
   margin-right: 20px;
   padding: 5px 20px 5px 20px;
   transition: transform 0.1s linear, -webkit-transform 0.1s linear, box-shadow 0.1s linear;
+  height: 30px;
 
 }
 
-.btn-blue {
+.bouton-blue {
+  justify-content: flex-end;
   background: #463aa0;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.27);
   border-radius: 8px;
@@ -62,15 +68,16 @@
   color: rgb(250, 250, 250);
   margin-right: 20px;
   padding: 5px 20px 0px 20px;
+  height: 30px;
 }
 
 
-.btn-green a:hover {
+.bouton-green a:hover {
   font-style: none;
   text-decoration:none;
 }
 
-.btn-green:hover {
+.bouton-green:hover {
   font-style: none;
   transform: translateY(-3px);
   transform: translateY(-3px);
@@ -78,12 +85,12 @@
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
 }
 
-.btn-blue a:hover {
+.bouton-blue a:hover {
   font-style: none;
   text-decoration:none;
 }
 
-.btn-blue:hover {
+.bouton-blue:hover {
   font-style: none;
   transform: translateY(-3px);
   transform: translateY(-3px);
