@@ -49,14 +49,11 @@
 
 
 .btn-green {
-  /* Rectangle: */
   background: #A4CD3B;
-
-  border-radius: 3px;
-  /* Start New Call: */
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.27);
+  border-radius: 8px;
   font-size: 15px;
-  color: #FFFFFF;
-  // letter-spacing: -0.57px;
+  color: rgb(250, 250, 250);
   margin-right: 20px;
   padding: 5px 20px 5px 20px;
   transition: transform 0.1s linear, -webkit-transform 0.1s linear, box-shadow 0.1s linear;
@@ -64,35 +61,38 @@
 }
 
 .btn-blue {
-  /* Rectangle: */
   background: #463aa0;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.27);
   border-radius: 8px;
-  /* Start New Call: */
-  // font-family: Baghdad;
-  font-size: 20px;
-  color: #FFFFFF;
-  // letter-spacing: -0.57px;
-  margin-right: 80px;
+  font-size: 15px;
+  color: rgb(250, 250, 250);
+  margin-right: 20px;
   padding: 5px 20px 0px 20px;
 }
 
 
-.start-new-call a:hover {
+.btn-green a:hover {
   font-style: none;
   text-decoration:none;
 }
 
-.start-new-call:hover {
+.btn-green:hover {
   font-style: none;
   transform: translateY(-3px);
-
   transform: translateY(-3px);
-
   transform: translateY(-3px);
-
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
-
-
 }
 
+.btn-blue a:hover {
+  font-style: none;
+  text-decoration:none;
+}
+
+.btn-blue:hover {
+  font-style: none;
+  transform: translateY(-3px);
+  transform: translateY(-3px);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
+}
