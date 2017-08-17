@@ -2,6 +2,7 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
   def index
+    @check_index = true
     if user_signed_in?
        @tickets = policy_scope(Ticket)
     else
