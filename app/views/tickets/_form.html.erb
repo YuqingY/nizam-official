@@ -1,16 +1,18 @@
 <%= simple_form_for(@ticket) do |f| %>
 <%= f.error_notification %>
   <div class="form-inputs">
-    <%= f.input :customer_id, input_html: { class: 'form-input' }, wrapper_html: { class: 'form-element' } %>
-    <%= f.input :category, input_html: { class: 'form-input' }, wrapper_html: { class: 'form-element' } %>
-    <%= f.input :department, input_html: { class: 'form-input' }, wrapper_html: { class: 'form-element' } %>
-    <% if current_user.position == 'manager' %>
-      <%= f.input :status, collection: ["new", "active", "pending", "ready", "closed"], input_html: { class: 'form-input' }, wrapper_html: { class: 'form-element' } %>
+
+    <%= f.input :customer_id, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"}%>
+    <%= f.input :category, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"} %>
+    <%= f.input :department, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"} %>
+    <% if current_user.position == 'maneger' %>
+      <%= f.input :status, collection: ["new", "active", "pending", "ready", "closed"], input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"} %>
     <% else %>
-      <%= f.input :status, collection: ["new", "active", "pending", "ready"], input_html: { class: 'form-input' }, wrapper_html: { class: 'form-element' } %>
+      <%= f.input :status, collection: ["new", "active", "pending", "ready", "closed"], input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"} %>
     <% end %>
-    <%= f.input :next_step , input_html: { class: 'form-input' }, wrapper_html: { class: 'form-element' }%>
-    <%= f.input :description, as: :text , input_html: { class: 'form-input' }, wrapper_html: { class: 'form-element' }%>
+    <%= f.input :next_step, wrapper_html: {class: "form-element"} %>
+    <%= f.input :description, as: :text, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"} %>
+
   </div>
 
   <div class="form-actions">
