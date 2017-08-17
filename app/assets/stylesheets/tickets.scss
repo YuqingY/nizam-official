@@ -37,18 +37,19 @@
 // }
 
 
+body {
+  font-family:'Open Sans', sans-serif !important;
+}
 
 .content {
   background: rgb(230, 230, 230);
   margin: 0;
-  margin-top: 80px;
   display: flex;
   flex-direction: column;
   text-align:center;
-  padding: 0px 0px 0px 50px;
+  // padding: 0 auto;
 }
 .tabbar {
-  font-family: AndaleMono;
   font-size: 20px;
   color: #FFFFFF;
   padding: 30px;
@@ -64,43 +65,110 @@
 
 .tickets {
   background-color: #FFFFFF;
-  height:100vh;
+  // height:100vh;
   padding-left: 0;
-  margin:0;
+  margin:0 auto;
 }
 
 .table thead tr th {
   margin: 0 5px;
 }
 
-.green-btn {
-  /* Rectangle: */
-  background: #A4CD3B;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.27);
-  border-radius: 3px;
-  /* Start New Call: */
-  font-family: Baghdad;
-  font-size: 20px;
-  color: #FFFFFF;
-  letter-spacing: -0.57px;
-  margin-right: 20px;
-  padding: 5px 20px 0px 20px;
-  width:200px;
-  margin: 20px auto;
-}
+// .green-btn {
+//   /* Rectangle: */
+//   background: #A4CD3B;
+//   padding-left: 27px;
+//   padding-right: 27px;
+//   padding-top: 15px;
+//   padding-bottom: 15px;
+//   border-radius: 2px;
+//   color: #fff;
+//   float: right;
+//   margin-right: 155px;
+//   font-size: 15px;
+//   line-height: 20px;
+// }
 
-.green-btn a {
-  color: #FFFFFF;
-}
+// .green-btn a {
+//   color: #FFFFFF;
+// }
 
-.green-btn:hover a {
-  font-style: none;
-  color: #ddefaa;
-  text-decoration: none;
-}
+// .green-btn:hover {
+//   transform: translateY(-3px);
+
+//   transform: translateY(-3px);
+
+//   transform: translateY(-3px);
+
+//   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
+
+// }
 
 .form {
   width: 1000px;
   margin: 0 auto;
   text-align: center;
 }
+
+.show-content{
+
+}
+
+.show-group{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 0 20px;
+
+}
+
+.show-label{
+  display: block;
+      // margin: 0 5px 5px;
+  color: $gray;
+  font-size: 12px;
+  font-weight: $semibold;
+  line-height: 0.2;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  float: left;
+}
+
+.show-text{
+  outline: none;
+  display: block;
+  background: rgba($black, 0.1);
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 12px 20px;
+  color: $gray;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: $semibold;
+  line-height: inherit;
+  transition: 0.3s ease;
+  text-align: left;
+
+}
+
+.edit-icon {
+  max-height: 18px;
+  max-width: 18px;
+  margin: 0;
+  padding: 0;
+  transition: transform 0.1s linear, -webkit-transform 0.1s linear, box-shadow 0.1s linear;
+}
+
+.edit-icon:hover {
+  transform: translateY(1.5px);
+  transform: translateY(1.5px);
+  transform: translateY(1.5px);
+
+}
+
+
+
+
+

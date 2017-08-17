@@ -1,23 +1,25 @@
 
-<div class="navbar">
+<div class="navbar-nizam">
   <!-- Logo -->
   <a href="http://www.nizamenergy.com" class="logo">
     <img src="http://www.nizamenergy.com/img/logo.jpg" alt="logo">
   </a>
-  <% if user_signed_in? %>
 
-    <!-- Right Navigation -->
-    <!-- Dropdown appearing on mobile only -->
-
-
-    <div class="navbar-right">
-
+<% if @check_index %>
+  <div class="flexbox-container">
+    <div class="bouton-green">
       <%= link_to "Start New Call", new_call_path, class: "start-new-call" unless @call.present? %>
-
-      <div><%= link_to "Log Out", destroy_user_session_path, method: :delete%>
-
-      </div>
     </div>
-  <% end %>
+  </div>
+ <div class="flexbox-container">
+    <div class="bouton-blue">
+      <%= link_to "Log Out", destroy_user_session_path, method: :delete%>
+
+
+    </div>
+  </div>
+<% end %>
+
+  <!--   </div> -->
 </div>
 
