@@ -1,3 +1,4 @@
+
 // Font Family
 $body-font: "Roboto";
 
@@ -30,6 +31,7 @@ $max-height: 400px;
 $gutters: 24px;
 
 .overlay {
+
   position: absolute;
   top: 0;
   left: 0;
@@ -332,6 +334,7 @@ $gutters: 24px;
   color: $accent !important;
 }
 
+
 .button-submit {
       outline: none;
       background: $accent;
@@ -347,3 +350,4 @@ $gutters: 24px;
       text-transform: uppercase;
       cursor: pointer;
     }
+

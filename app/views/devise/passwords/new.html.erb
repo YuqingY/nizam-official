@@ -1,24 +1,27 @@
 <!-- Form-->
-<div class="row">
-    <div class="form col-md-4 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-12">
-      <div class="form-toggle"></div>
-      <div class="form-panel one">
-        <div class="form-header">
-          <h1>Forgot your password?</h1>
-        </div>
-        <div class="form-content">
-          <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-          <%= f.error_notification class: "alert alert-info" %>
-          <div class="form-group form-inputs">
-            <!-- <label for="username">Email</label> -->
-            <%= f.input :email, required: true, autofocus: true %>
-          </div>
-          <div class="form-actions">
-            <%= f.button :submit, "Reset password", class: "button-submit" %>
-          </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
 
+<div class="form">
+  <div class="form-toggle"></div>
+  <div class="form-panel one">
+    <div class="form-header">
+      <h1>Forgot your password?</h1>
+    </div>
+    <div class="form-content">
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= f.error_notification class: "alert alert-info" %>
+
+      <div class="form-group form-inputs">
+        <!-- <label for="username">Email</label> -->
+        <%= f.input :email, required: true, autofocus: true %>
+      </div>
+
+
+      <div class="form-actions">
+        <%= f.button :submit, "Reset password", class: "button-submit" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </div>
+</div>
+
