@@ -1,9 +1,4 @@
 
-body{
-  background: #f2f2f2;
-  font-family: 'Open Sans', sans-serif;
-}
-
 .search {
   width: 100%;
   position: relative;
@@ -21,8 +16,8 @@ body{
   color: #463aa0;
 }
 
-.searchTerm:focus{
-  color: #a4cd3b;
+.searchTerm::placeholder {
+  color:lightgray;
 }
 
 .searchButton {
@@ -37,7 +32,7 @@ body{
   background: #463aa0;
   text-align: center;
   // color: #fff;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   cursor: auto;
   font-size: 20px;
