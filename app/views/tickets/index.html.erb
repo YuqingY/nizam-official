@@ -27,7 +27,7 @@
              <tbody>
              <% @tickets.each do |ticket| %>
                <tr>
-                  <td><%= ticket.customer_id %></td>
+                  <td><%= ticket.customer.name %></td>
                   <td><%= ticket.author.name %></td>
                   <td><%= ticket.category %></td>
                   <td><%= ticket.department %></td>
