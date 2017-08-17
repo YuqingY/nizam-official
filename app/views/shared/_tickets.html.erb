@@ -44,5 +44,17 @@
 </div>
 
 <script>
-
+ $(document).ready(function(){
+        $('#ticket-table').DataTable();
+      });
+  
+       $('#ticket-table').datatable({
+           pageSize: 10,
+           sort: [false, false, false],
+           filters: [true, 'select', 'select', 'select', 'select', ],
+           filterText: 'Type to filter... ',
+           onChange: function(old_page, new_page){
+             console.log('changed from ' + old_page + ' to ' + new_page);
+           }
+       }) ;
 </script>
