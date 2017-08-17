@@ -7,8 +7,23 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 p "Destroying old data"
 Ticket.destroy_all
+Customer.destroy_all
 User.destroy_all
 p"Seeding new data"
+puts"getting the file"
+require 'csv'
+csv_text = File.read(Rails.root.join('db' , 'nizamdata.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+puts 'creating customers'
+csv.each do |row|
+  # puts row.to_hash
+  c = Customer.new
+  c.name = row['customer_name']
+  c.cnic = row['customer_cnic']
+  c.imei = row['imei_number']
+  c.save
+end
+puts "Customers created"
 
 puts "Making 3 users manager and cs rep"
 User.create(email: 'manager@nizam.com', password:"12345678", position:'manager', name:'manager')
@@ -18,26 +33,15 @@ external = User.create(email: 'external@nizam.com', password:"12345678", positio
 puts "Finished creating users"
 
 puts "creating new tickets"
-Ticket.create(customer_id:"1", author_id: csrep1.id, category:'tech', department:"tech", status:"new")
-Ticket.create(customer_id:"2", author_id: csrep2.id, category:'tech', department:"tech", status:"new")
-Ticket.create(customer_id:"3", author_id: csrep1.id, category:'tech', department:"tech", status:"active")
-Ticket.create(customer_id:"4", author_id: csrep2.id, category:'tech', department:"tech", status:"active")
-Ticket.create(customer_id:"5", author_id: csrep1.id, category:'tech', department:"tech", status:"pending")
-Ticket.create(customer_id:"5", author_id: csrep2.id, category:'info', department:"sale", status:"pending")
-Ticket.create(customer_id:"6", author_id: csrep1.id, category:'info', department:"sale", status:"ready")
-Ticket.create(customer_id:"7", author_id: csrep2.id, category:'sale', department:"sale", status:"ready")
-Ticket.create(customer_id:"8", author_id: csrep1.id, category:'sale', department:"sale", status:"closed")
-Ticket.create(customer_id:"7", author_id: csrep2.id, category:'sale', department:"sale", status:"closed")
+Customer.all.each do |c|
+  author_id = [csrep1.id, csrep2.id].sample
+  category = ['tech issues', 'sales', 'information', 'payment', 'repair', 'cancel servie'].sample
+  department = ['technology', 'sales', 'support', 'field'].sample
+  status = ['new', 'active', 'pending', 'ready', 'closed'].sample
+  Ticket.create(customer_id: c.id, author_id: author_id, category:category, department:department, status:status)
+end
 puts "done"
 
 
-# require 'csv'
-# csv_text = File.read(Rails.root.join('db' , 'nizamdata.csv'))
-# csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-# csv.each do |row|
-#   # puts row.to_hash
-#   c = Customer.new
-#   c.name = row['customer_name']
-#   c.cnic = row['customer_cnic']
-#   c.imei = row['imei_number']
-#   c.save
+
+
