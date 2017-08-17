@@ -48,7 +48,7 @@ body {
   display: flex;
   flex-direction: column;
   text-align:center;
-  padding: 0px 0px 0px 50px;
+  padding: 0px 0px 0px 20px;
 }
 .tabbar {
   font-size: 20px;
@@ -110,3 +110,51 @@ body {
   margin: 0 auto;
   text-align: center;
 }
+
+.show-content{
+
+}
+
+.show-group{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 0 20px;
+
+}
+
+.show-label{
+  display: block;
+      // margin: 0 5px 5px;
+  color: $gray;
+  font-size: 12px;
+  font-weight: $semibold;
+  line-height: 0.2;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  float: left;
+}
+
+.show-text{
+  outline: none;
+  display: block;
+  background: rgba($black, 0.1);
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 12px 20px;
+  color: $gray;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: $semibold;
+  line-height: inherit;
+  transition: 0.3s ease;
+  text-align: left;
+
+}
+
+
+
+
+
