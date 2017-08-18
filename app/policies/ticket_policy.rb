@@ -1,11 +1,11 @@
 class TicketPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if user.cs_rep?
-        scope.where("author_id = ? or assignee_id = ?", user.id, user.id)
-      else
+      # if user.cs_rep?
+      #   scope.where("author_id = ? or assignee_id = ?", user.id, user.id)
+      # else
         scope.all
-      end
+      # end
     end
   end
 
@@ -14,12 +14,12 @@ class TicketPolicy < ApplicationPolicy
   end
 
   def update?
-    if user.cs_rep?
-      #if a ticket's author or assignee is the user
-      user.id == record.author_id || user.id == assignee_id
-    else
+    # if user.cs_rep?
+    #   #if a ticket's author or assignee is the user
+    #   user.id == record.author_id || user.id == assignee_id
+    # else
       return true
-    end
+    # end
   end
 
   def destroy?
