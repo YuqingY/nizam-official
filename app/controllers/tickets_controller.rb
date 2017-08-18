@@ -59,7 +59,11 @@ class TicketsController < ApplicationController
   # PATCH/PUT /tickets/1.json
   def update
       if @ticket.update(ticket_params)
-         @ticket.calls.last.end_time = Time.now
+         if @ticket.calls
+           if @ticket.calls.last
+             @ticket.calls.last.end_time = Time.now
+            end
+         end
 
         redirect_to @ticket, notice: 'Ticket was successfully updated.'
       else
