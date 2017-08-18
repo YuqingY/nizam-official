@@ -12,7 +12,7 @@
         </tr>
     </thead>
     <tbody>
-        <% Ticket.all.each do |ticket| %>
+        <% Ticket.all.select{|t| t.status != 'N/A'}.each do |ticket| %>
             <tr>
                 <td>
                     <%= ticket.customer_cnic %>

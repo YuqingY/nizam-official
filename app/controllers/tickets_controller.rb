@@ -37,9 +37,6 @@ class TicketsController < ApplicationController
     call_id = ticket_params.delete(:call_id)
     @call=Call.find(call_id)
     @call.update end_time: Time.now
-    @call.update duration: Time.at(@call.end_time - @call.start_time).utc.strftime("%H:%M:%S")
-    leaned_params = ticket_params.reject {|k,v| k == 'call_id'}
-    Time.at(t).utc.strftime
 
     cleaned_params = ticket_params.reject {|k,v| k == 'call_id'}
 
