@@ -9,7 +9,7 @@
       <%= simple_form_for(@ticket) do |f| %>
       <%= f.error_notification %>
       <div class="form-group">
-        <%= f.association :customer, label_method: :name, value_method: :id, include_blank: false, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"}%>
+        <%= f.input :customer_cnic, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"}%>
       </div>
       <div class="form-group">
         <%= f.input :category, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"} %>
@@ -36,11 +36,12 @@
           <div class="input hidden ticket_call_id"><input class="hidden" type="hidden" value="<%=@call.id%>" name="ticket[call_id]" id="ticket_call_id"></div>
           <% end %>
       </div>
-      </div>
+
       <div class="form-actions">
         <%= f.button :submit, class: "button-submit"%>
       </div>
       <% end %>
+      </div>
       <% if @function == 'edit'%>
         <%= link_to 'Show', @ticket %> |
         <%= link_to 'Back', tickets_path %>

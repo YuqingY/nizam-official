@@ -33,7 +33,7 @@ class CallsController < ApplicationController
   private
 
   def default_ticket
-      Ticket.create(customer_id: Customer.find_by(name:"N/A"), author: current_user, category:'N/A', department:"N/A", status:"N/A" )
+      Ticket.create(customer_cnic: "N/A", author: current_user, category:'N/A', department:"N/A", status:"N/A" )
   end
   # Use callbacks to share common setup or constraints between actions.
   def set_ticket

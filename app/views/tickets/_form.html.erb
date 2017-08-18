@@ -1,48 +1,45 @@
 <div class="form">
-  <div class="form-toggle"></div>
-  <div class="form-panel one">
-    <div class="form-header">
-      <h1><%= @function == 'edit' ? "new" : "edit" %></h1>
-    </div>
-    <div class="form-content">
-
-      <%= simple_form_for(@ticket) do |f| %>
-      <%= f.error_notification %>
-      <div class="form-group">
-        <%= f.association :customer, label_method: :name, value_method: :id, include_blank: false, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"}%>
-      </div>
-      <div class="form-group">
-        <%= f.input :category, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"} %>
-      </div>
-      <div class="form-group">
-        <%= f.input :department, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"} %>
-      </div>
-      <div class="form-group">
-        <% if current_user.position == 'maneger' %>
-        <%= f.input :status, collection: ["new", "active", "pending", "ready", "closed"], input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"} %>
-        <% else %>
-        <%= f.input :status, collection: ["new", "active", "pending", "ready", "closed"], input_html: {class: 'form-group form-input'}, wrapper_html: {class: "form-element"} %>
-        <% end %>
+    <div class="form-toggle"></div>
+    <div class="form-panel one">
+        <div class="form-header">
+            <h1><%= @function == 'edit' ? "new" : "edit" %></h1>
         </div>
-        <div class="form-group">
-        <%= f.association :assignee, collection: User.all, input_html: {class: 'form-group form-input'}, wrapper_html: {class: "form-element"} %>
-      </div>
-      <div class="form-group">
-        <%= f.input :next_step, as: :text, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"} %>
-      </div>
-      <div class="form-group">
-        <%= f.input :description, as: :text, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"} %>
-      </div>
-      </div>
-      <div class="form-actions">
-        <%= f.button :submit, class: "button-submit"%>
-      </div>
-      <% end %>
-      <% if @function == 'edit'%>
+        <div class="form-content">
+            <%= simple_form_for(@ticket) do |f| %>
+                <%= f.error_notification %>
+                    <div class="form-group">
+                        <%= f.input :customer_cnic, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"}%>
+                    </div>
+                    <div class="form-group">
+                        <%= f.input :category, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"} %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.input :department, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"} %>
+                    </div>
+                    <div class="form-group">
+                        <% if current_user.position == 'maneger' %>
+                            <%= f.input :status, collection: ["new", "active", "pending", "ready", "closed"], input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"} %>
+                                <% else %>
+                                    <%= f.input :status, collection: ["new", "active", "pending", "ready", "closed"], input_html: {class: 'form-group form-input'}, wrapper_html: {class: "form-element"} %>
+                                        <% end %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.association :assignee, collection: User.all, input_html: {class: 'form-group form-input'}, wrapper_html: {class: "form-element"} %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.input :next_step, as: :text, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"} %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.input :description, as: :text, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"} %>
+                    </div>
+                    <div class="form-actions">
+                        <%= f.button :submit, class: "button-submit"%>
+                    </div>
+                <% end %>
+        </div>
         <%= link_to 'Show', @ticket %> |
-        <%= link_to 'Back', tickets_path %>
-      <% end %>
+            <%= link_to 'Back', tickets_path %>
     </div>
-  </div>
+</div>
 </div>
 </div>
