@@ -29,7 +29,7 @@ fake_customer = Customer.create(name: 'N/A', cnic:"N/A", imei:"N/A")
 puts "fake customer created"
 
 puts "Making 3 users manager and cs rep"
-User.create(email: 'manager@nizam.com', password:"12345678", position:'manager', name:'manager')
+User.create(email: 'manager@nizam.com', password:"12345678", position:'manager', name:'manager', admin: true)
 csrep1 = User.create(email: 'csrep1@nizam.com', password:"12345678", position:'csrep', name:'csrep1')
 csrep2 = User.create(email: 'csrep2@nizam.com', password:"12345678", position:'csrep', name:'csrep2')
 external = User.create(email: 'external@nizam.com', password:"12345678", position:'external', name:'external')
