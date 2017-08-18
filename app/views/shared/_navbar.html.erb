@@ -1,9 +1,9 @@
 
 <div class="navbar-nizam">
   <!-- Logo -->
-  <a href="http://www.nizamenergy.com" class="logo">
-    <img src="http://www.nizamenergy.com/img/logo.jpg" alt="logo">
-  </a>
+  <%= link_to root_path do%>
+    <img src="http://www.nizamenergy.com/img/logo.jpg" alt="logo" class="logo">
+  <% end %>
 
 <% if @check_index %>
   <% if current_user.position == 'csrep' %>
