@@ -1,4 +1,4 @@
-<table class="table" id='ticket-table'>
+<table class="table table-hover" id='ticket-table'>
     <thead>
         <tr>
             <th>customer</th>
@@ -32,11 +32,13 @@
                 <td>
                     <%= ticket.next_step %>
                 </td>
-                <td>
-                    <%= link_to ticket do %>
-                        <img src="<%= image_path('show.png') %>" alt="" class="edit-icon">
-                        <% end %>
-                </td>
+                <% if @check_index %>
+                  <td>
+                      <%= link_to ticket do %>
+                          <img src="<%= image_path('show.png') %>" alt="" class="edit-icon">
+                          <% end %>
+                  </td>
+                <% end %>
                 <td>
                     <%= link_to edit_ticket_path(ticket) do %>
                         <img src="<%= image_path('edit.png') %>" alt="" class="edit-icon">
