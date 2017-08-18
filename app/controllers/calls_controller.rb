@@ -1,6 +1,6 @@
 class CallsController < ApplicationController
   def new
-    @start_time = Time.now
+    @start_time = Time.now.to_datetime
     @call = Call.new
     @ticket = default_ticket
     @call.ticket = @ticket
@@ -29,6 +29,14 @@ class CallsController < ApplicationController
   #   end
 
   # end
+
+  def edit
+    call_id = ticket_params.delete(:call_id)
+    @call=Call.find(call_id)
+    @call.update end_time: Time.now.to_datetime
+    @call.update duration: Time.at(@call.end_time - @call.start_time).utc.strftime("%H:%M:%S")
+    leaned_params = ticket_params.reject {|k,v| k == 'call_id'}
+  end
 
   private
 
