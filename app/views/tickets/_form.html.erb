@@ -17,7 +17,7 @@
                         <%= f.input :department, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"} %>
                     </div>
                     <div class="form-group">
-                        <% if current_user.position == 'maneger' %>
+                        <% if current_user.position == 'manager' %>
                             <%= f.input :status, collection: ["new", "active", "pending", "ready", "closed"], input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"} %>
                                 <% else %>
                                     <%= f.input :status, collection: ["new", "active", "pending", "ready"], input_html: {class: 'form-group form-input'}, wrapper_html: {class: "form-element"} %>
