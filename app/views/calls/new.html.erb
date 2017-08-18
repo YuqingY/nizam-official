@@ -3,21 +3,21 @@
       <%= link_to "New Ticket", {controller: :tickets, action: :new, call_id: @call.id}%>
   </div>
   <div class ='bouton-green one-third'  onclick="showTickets()">Old ticket</div>
-  <!-- <div class ='bouton-green one-third'  onclick="newTicket()">New ticket</div> -->
-  <div class="bouton-green one-third"><%= link_to "End Call No Ticket", controller: :tickets, action: :create, call_id: @call.id %></div>
+<!--   <div class ='bouton-green one-third'  onclick="newTicket()">New ticket</div> -->
+  <div class="bouton-green one-third"><%= link_to "End Call w/o ticket", controller: :tickets, action: :create, call_id: @call.id %></div>
 </div>
 
-<!-- <div class="tickets col-sm-11">
+<div class="tickets col-sm-11">
     <div id="old-tickets" style="display:none;"><%= render 'shared/tickets' %></div>
-    <div id="new-ticket-form" style="display:none;"><%= render 'tickets/form-new' %></div>
-</div> -->
+   <!--  <div id="new-ticket-form" style="display:none;"><%= render 'tickets/form-new' %></div> -->
+</div>
 
 <script>
   function showTickets() {
     var x = document.getElementById('old-tickets');
-    var y = document.getElementById('new-ticket-form');
+    // var y = document.getElementById('new-ticket-form');
     if (x.style.display === 'none') {
-        y.style.display = 'none'
+        // y.style.display = 'none'
         x.style.display = 'block';
     } else {
         x.style.display = 'none';
