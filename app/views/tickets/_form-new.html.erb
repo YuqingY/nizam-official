@@ -32,6 +32,9 @@
       </div>
       <div class="form-group">
         <%= f.input :description, as: :text, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"} %>
+        <% if @function != 'edit' %>
+          <div class="input hidden ticket_call_id"><input class="hidden" type="hidden" value="<%=@call.id%>" name="ticket[call_id]" id="ticket_call_id"></div>
+          <% end %>
       </div>
       </div>
       <div class="form-actions">

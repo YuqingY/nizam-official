@@ -41,6 +41,10 @@ body {
   font-family:'Open Sans', sans-serif !important;
 }
 
+.alert {
+  margin-bottom:0 !important;
+}
+
 .content {
   background: rgb(230, 230, 230);
   margin: 0;
@@ -104,6 +108,12 @@ body {
 //   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
 
 // }
+
+a:hover {
+  color: white !important;
+  text-decoration:none !important;
+
+}
 
 .form {
   width: 1000px;
@@ -171,5 +181,7 @@ body {
 
 
 
-
+.one-third {
+  width: 30%
+}
 
