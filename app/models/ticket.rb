@@ -2,10 +2,10 @@ class Ticket < ApplicationRecord
   belongs_to :author, class_name: User
   belongs_to :assignee, class_name: User, required: false
   belongs_to :assigner, class_name: User, required: false
-  belongs_to :customer
   has_many :calls
 
   validates :status, presence: true
+  validates :customer_cnic, presence: true
 
   scope :active_ticket, -> (){ where(status: "active") }
   scope :new_ticket, -> (){ where(status: "new") }

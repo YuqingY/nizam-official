@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 p "Destroying old data"
+Call.destroy_all
 Ticket.destroy_all
 Customer.destroy_all
 User.destroy_all
@@ -41,7 +42,7 @@ Customer.all.each do |c|
   category = ['tech issues', 'sales', 'information', 'payment', 'repair', 'cancel servie'].sample
   department = ['technology', 'sales', 'support', 'field'].sample
   status = ['new', 'active', 'pending', 'ready', 'closed'].sample
-  Ticket.create(customer_id: c.id, author_id: author_id, category:category, department:department, status:status)
+  Ticket.create(customer_cnic: c.cnic, author_id: author_id, category:category, department:department, status:status)
 end
 puts "done"
 
