@@ -3,6 +3,7 @@ class Ticket < ApplicationRecord
   belongs_to :assignee, class_name: User, required: false
   belongs_to :assigner, class_name: User, required: false
   has_many :calls
+  has_many :comments, dependent: :destroy
 
   validates :status, presence: true
   validates :customer_cnic, presence: true

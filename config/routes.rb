@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'comments/new'
+
+  get 'comments/create'
+
   ActiveAdmin.routes(self)
   resources :tickets
   resources :calls, only: [:new]
