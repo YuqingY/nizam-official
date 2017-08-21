@@ -1,13 +1,18 @@
 class CallsController < ApplicationController
   def new
-    @start_time = Time.now.to_datetime
+    @start_time = Time.now
+    session[:call_start_time] = Time.now
+
     @call = Call.new
     @ticket = default_ticket
     @call.ticket = @ticket
     @call.start_time = @start_time
     @call.user_id = current_user.id
     authorize @call
+    # @session_start_time = session[:call_start_time]
     @call.save
+    session[:current_call_id] = @call.id
+
   end
 
   # def create
@@ -31,11 +36,14 @@ class CallsController < ApplicationController
   # end
 
   def edit
-    call_id = ticket_params.delete(:call_id)
-    @call=Call.find(call_id)
-    @call.update end_time: Time.now.to_datetime
-    @call.update duration: Time.at(@call.end_time - @call.start_time).utc.strftime("%H:%M:%S")
-    leaned_params = ticket_params.reject {|k,v| k == 'call_id'}
+    # call_id = ticket_params.delete(:call_id)
+    # @call=Call.find(call_id)
+    # session[:call_end_time] = Time.now
+    # @calll.end_time = @end_time
+    # @session_end_time = @session[:call_end_time]
+    # @call.update end_time: Time.now.to_datetime
+    # @call.update duration: Time.at(@call.end_time - @call.start_time).utc.strftime("%H:%M:%S")
+    # leaned_params = ticket_params.reject {|k,v| k == 'call_id'}
   end
 
   private
