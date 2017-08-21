@@ -19,33 +19,46 @@
     </thead>
     <tbody>
         <% @all_tickets.each do |ticket| %>
-            <tr>
+
+              <tr>
+
                 <td>
+                <%= link_to ticket do %>
                     <%= ticket.customer_cnic %>
+                    <% end %>
                 </td>
                 <td>
                     <%= ticket.author.name %>
                 </td>
                 <td>
+
                     <%= ticket.category %>
+
                 </td>
                 <td>
+
                     <%= ticket.department %>
+
+                </td>
+                <td class="best_in_place">
+
+
+                    <%= best_in_place ticket, :status, :as => :select, collection: { "new": "new", "active": "active", 'pending': 'pending', 'ready': 'ready', 'closed': 'closed'} %>
+
                 </td>
                 <td>
-                    <%= ticket.status %>
-                </td>
-                <td>
+
                     <%= ticket.next_step %>
+
                 </td>
-                <% if @check_index %>
-                  <td>
+               <!--  <% if @check_index %> -->
+                 <!--  <td>
                       <%= link_to ticket do %>
                           <img src="<%= image_path('show.png') %>" alt="" class="edit-icon">
                           <% end %>
-                  </td>
-                <% end %>
-                <td>
+                  </td> -->
+               <!--  <% end %> -->
+                 <td>
                     <%= link_to edit_ticket_path(ticket) do %>
                         <img src="<%= image_path('edit.png') %>" alt="" class="edit-icon">
                         <% end %>
@@ -59,7 +72,13 @@
 <script>
 $(document).ready(function() {
     $('#ticket-table').DataTable();
+    $(".best_in_place").best_in_place();
 });
+
+// $(document).ready(function() {
+//    Activating Best In Place
+//   $(".best_in_place").best_in_place();
+// });
 
 $('#ticket-table').datatable({
     pageSize: 10,
