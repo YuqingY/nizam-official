@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 p "Destroying old data"
+Call.destroy_all
 Ticket.destroy_all
 Customer.destroy_all
 User.destroy_all
@@ -24,9 +25,12 @@ csv.each do |row|
   c.save
 end
 puts "Customers created"
+puts "Creating fake customer for default ticket"
+fake_customer = Customer.create(name: 'N/A', cnic:"N/A", imei:"N/A")
+puts "fake customer created"
 
 puts "Making 3 users manager and cs rep"
-User.create(email: 'manager@nizam.com', password:"12345678", position:'manager', name:'manager')
+User.create(email: 'manager@nizam.com', password:"12345678", position:'manager', name:'manager', admin: true)
 csrep1 = User.create(email: 'csrep1@nizam.com', password:"12345678", position:'csrep', name:'csrep1')
 csrep2 = User.create(email: 'csrep2@nizam.com', password:"12345678", position:'csrep', name:'csrep2')
 external = User.create(email: 'external@nizam.com', password:"12345678", position:'external', name:'external')
@@ -38,7 +42,7 @@ Customer.all.each do |c|
   category = ['tech issues', 'sales', 'information', 'payment', 'repair', 'cancel servie'].sample
   department = ['technology', 'sales', 'support', 'field'].sample
   status = ['new', 'active', 'pending', 'ready', 'closed'].sample
-  Ticket.create(customer_id: c.id, author_id: author_id, category:category, department:department, status:status)
+  Ticket.create(customer_cnic: c.cnic, author_id: author_id, category:category, department:department, status:status)
 end
 puts "done"
 

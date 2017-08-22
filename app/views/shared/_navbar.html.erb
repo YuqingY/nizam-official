@@ -1,19 +1,27 @@
 
 <div class="navbar-nizam">
   <!-- Logo -->
-  <a href="http://www.nizamenergy.com" class="logo">
-    <img src="http://www.nizamenergy.com/img/logo.jpg" alt="logo">
-  </a>
+  <%= link_to root_path do%>
+    <img src="http://www.nizamenergy.com/img/logo.jpg" alt="logo" class="logo">
+  <% end %>
 
 
-<% if user_signed_in? %>
-  <div class="flexbox-container">
-    <div class="bouton-green">
-      <%= link_to "Start New Call", new_call_path %>
+<% if @check_index %>
+  <% if current_user.position == 'csrep' %>
+    <div class="flexbox-container">
+      <div class="bouton-green">
+        <%= link_to "Start New Call", new_call_path, class: "start-new-call" unless @call.present? %>
+      </div>
+
     </div>
-  </div>
+  <% end %>
 
  <div class="flexbox-container">
+    <% if current_user.admin %>
+        <div class="bouton-green" >
+          <%= link_to "Admin", admin_root_path %>
+        </div>
+    <% end %>
     <div class="bouton-blue">
       <%= link_to "Log Out", destroy_user_session_path, method: :delete%>
     </div>

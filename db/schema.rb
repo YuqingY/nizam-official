@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170817045623) do
+ActiveRecord::Schema.define(version: 20170819044526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,10 +31,24 @@ ActiveRecord::Schema.define(version: 20170817045623) do
 
   create_table "calls", force: :cascade do |t|
     t.bigint "ticket_id"
-    t.datetime "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.bigint "user_id", null: false
+    t.bigint "duration"
     t.index ["ticket_id"], name: "index_calls_on_ticket_id"
+    t.index ["user_id"], name: "index_calls_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "text"
+    t.bigint "user_id"
+    t.bigint "ticket_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ticket_id"], name: "index_comments_on_ticket_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -57,9 +71,8 @@ ActiveRecord::Schema.define(version: 20170817045623) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "customer_id"
+    t.string "customer_cnic"
     t.index ["author_id"], name: "index_tickets_on_author_id"
-    t.index ["customer_id"], name: "index_tickets_on_customer_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -83,6 +96,8 @@ ActiveRecord::Schema.define(version: 20170817045623) do
   end
 
   add_foreign_key "calls", "tickets"
-  add_foreign_key "tickets", "customers"
+  add_foreign_key "calls", "users"
+  add_foreign_key "comments", "tickets"
+  add_foreign_key "comments", "users"
   add_foreign_key "tickets", "users", column: "author_id"
 end

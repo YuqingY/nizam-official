@@ -1,3 +1,8 @@
+<% if @check_index && current_user.position != 'manager' %>
+  <% @all_tickets = Ticket.all.select{|t| t.status != 'N/A' && t.status != 'closed'}%>
+<% else %>
+  <% @all_tickets = Ticket.all.select{|t| t.status != 'N/A'} %>
+<% end %>
 
            <table class="table table-hover" id='ticket-table'>
              <thead>
@@ -14,35 +19,56 @@
              <tbody>
              <% Ticket.all.each do |ticket| %>
                <tr>
-                  <td><%= ticket.customer.name %></td>
-                  <td><%= ticket.author.name %></td>
-                  <td><%= ticket.category %></td>
-                  <td><%= ticket.department %></td>
-                  <td><%= ticket.status %></td>
-                  <td><%= ticket.next_step %></td>
-                  <td><%= link_to 'Show', ticket %></td>
-                  <td>
-                    <%= link_to 'Edit', edit_ticket_path(ticket) %>
-                  </td>
-                </tr>
+                <td>
+                <%= link_to ticket do %>
+                    <%= ticket.customer_cnic %>
+                    <% end %>
+                </td>
+                <td>
+                    <%= ticket.author.name %>
+                </td>
+                <td>
+                    <%= ticket.category %>
+                </td>
+                <td>
+                    <%= ticket.department %>
+                </td>
+                <td class="best_in_place">
+                    <%= best_in_place ticket, :status, :as => :select, collection: { "new": "new", "active": "active", 'pending': 'pending', 'ready': 'ready', 'closed': 'closed'} %>
+                </td>
+                <td>
+                    <%= ticket.next_step %>
+                </td>
+                 <td>
+                    <%= link_to edit_ticket_path(ticket) do %>
+                        <img src="<%= image_path('edit.png') %>" alt="" class="edit-icon">
+                        <% end %>
+                </td>
+            </tr>
               <% end %>
              </tbody>
            </table>
          </div>
+
 </div>
-   <script>
-      $(document).ready(function(){
-        $('#ticket-table').DataTable();
-      });
+<script>
+$(document).ready(function() {
+    $('#ticket-table').DataTable();
+    $(".best_in_place").best_in_place();
+});
 
-      $('#ticket-table').datatable({
-          pageSize: 10,
-          sort: [false, false, false],
-          filters: [true, 'select', 'select', 'select', 'select', ],
-          filterText: 'Type to filter... ',
-          onChange: function(old_page, new_page){
-            console.log('changed from ' + old_page + ' to ' + new_page);
-          }
-      }) ;
-  </script>
+// $(document).ready(function() {
+//    Activating Best In Place
+//   $(".best_in_place").best_in_place();
+// });
 
+$('#ticket-table').datatable({
+    pageSize: 10,
+    sort: [false, false, false],
+    filters: [true, 'select', 'select', 'select', 'select', ],
+    filterText: 'Type to filter... ',
+    onChange: function(old_page, new_page) {
+        console.log('changed from ' + old_page + ' to ' + new_page);
+    }
+});
+</script>

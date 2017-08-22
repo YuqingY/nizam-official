@@ -30,10 +30,13 @@
 }
 
 .bouton-green {
+
   justify-content: center;
   background: #A4CD3B;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.27);
-  border-radius: 6px;
+
+  border-radius: 3px;
+
   font-size: 15px;
   color: rgb(250, 250, 250);
   margin-right: 20px;
@@ -47,11 +50,14 @@
   justify-content: flex-end;
   background: #463aa0;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.27);
-  border-radius: 6px;
+
+  border-radius: 3px;
+
   font-size: 15px;
   color: rgb(250, 250, 250);
   margin-right: 20px;
   padding: 5px 20px 0px 20px;
+  transition: transform 0.1s linear, -webkit-transform 0.1s linear, box-shadow 0.1s linear;
   height: 30px;
 }
 

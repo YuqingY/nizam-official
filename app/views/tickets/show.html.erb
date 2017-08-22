@@ -1,41 +1,80 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Customer</strong>
-  <%= @ticket.customer_id %>
-</p>
+<div class="form">
+    <div class="form-toggle"></div>
+    <div class="form-panel one">
+        <div class="form-header">
+            <h1>SHOW</h1>
+        </div>
+        <div class="show-content">
+            <div class="show-group">
+                <p>
+                    <strong class="show-label">Customer CNIC: </strong>
+                    <div class="show-text">
+                        <%= @ticket.customer_cnic %>
+                    </div>
+                </p>
+            </div>
+            <div class="show-group">
+                <p>
+                    <strong class="show-label">Author: </strong>
+                    <div class="show-text">
+                        <%= @ticket.author.name %>
+                    </div>
+                </p>
+            </div>
+            <div class="show-group">
+                <p>
+                    <strong class="show-label">Category: </strong>
+                    <div class="show-text">
+                        <%= @ticket.category %>
+                    </div>
+                </p>
+            </div>
+            <div class="show-group">
+                <p>
+                    <strong class="show-label">Department: </strong>
+                    <div class="show-text">
+                        <%= @ticket.department %>
+                    </div>
+                </p>
+            </div>
+            <div class="show-group">
+                <p>
+                    <strong class="show-label">Next step: </strong>
+                    <div class="show-text">
+                        <%= @ticket.next_step %>
+                    </div>
+                </p>
+            </div>
+            <div class="show-group">
+                <p>
+                    <strong class="show-label">Description:</strong>
+                    <div class="show-text">
+                        <%= @ticket.description %>
+                    </div>
+                </p>
+            </div>
+            <div class="show-group">
+                <p>
+                    <strong class="show-label">Status:</strong>
+                    <div class="show-text">
+                        <%= @ticket.status %>
+                    </div>
+                </p>
+            </div>
+            <!--     <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+    <%= link_to 'Back', tickets_path %> -->
+            <div class="form-group">
+                <button type="submit">
+                    <%= link_to 'BACK', tickets_path, class: "button-submit" %>
+                </button>
+            </div>
 
-<p>
-  <strong>Author:</strong>
-  <%= @ticket.author %>
-</p>
+            <div class="form-group">
+                <button type="submit">
+                     <%= link_to 'EDIT', edit_ticket_path(@ticket), class: "button-submit" %>
+                </button>
 
-<p>
-  <strong>Category:</strong>
-  <%= @ticket.category %>
-</p>
-
-<p>
-  <strong>Department:</strong>
-  <%= @ticket.department %>
-</p>
-
-<p>
-  <strong>Next step:</strong>
-  <%= @ticket.next_step %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @ticket.description %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @ticket.status %>
-</p>
-
-
-
-<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
-<%= link_to 'Back', tickets_path %>
+        </div>
+    </div>
+</div>
