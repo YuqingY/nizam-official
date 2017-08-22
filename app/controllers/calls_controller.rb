@@ -2,17 +2,17 @@ class CallsController < ApplicationController
   def new
 
     @start_time = Time.now
-    session[:call_start_time] = Time.now
+    session[:call_start_time] = @start_time
 
 
     @call = Call.new
-    @ticket = default_ticket
-    @call.ticket = @ticket
+    @call.ticket = default_ticket
     @call.start_time = @start_time
     @call.user_id = current_user.id
     authorize @call
-    # @session_start_time = session[:call_start_time]
     @call.save
+
+    @ticket = Ticket.new
     session[:current_call_id] = @call.id
 
   end

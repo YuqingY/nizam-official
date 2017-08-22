@@ -1,40 +1,10 @@
-<h3>Session Start Time:</h3> <%= @session_start_time %>
+<div class="row">
+    <div class="col-md-6">
+      <%= render 'tickets/form', ticket: @ticket %>
+    </div>
 
-<div class="choice" style="display:flex; justify-content: space-around; width: 90%; margin:30px auto;">
-  <div class= "bouton-green one-third">
-      <%= link_to "New Ticket", {controller: :tickets, action: :new, call_id: @call.id}%>
-  </div>
-  <div class ='bouton-green one-third'  onclick="showTickets()">Old ticket</div>
-<!--   <div class ='bouton-green one-third'  onclick="newTicket()">New ticket</div> -->
-  <div class="bouton-green one-third"><%= link_to "End Call w/o ticket", controller: :tickets, action: :create, call_id: @call.id %></div>
+    <div class="col-md-6">
+      # Rachel this is your side for searches
+    </div>
+
 </div>
-
-<div class="tickets col-sm-11">
-    <div id="old-tickets" style="display:none;"><%= render 'shared/tickets' %></div>
-   <!--  <div id="new-ticket-form" style="display:none;"><%= render 'tickets/form-new' %></div> -->
-</div>
-
-<script>
-  function showTickets() {
-    var x = document.getElementById('old-tickets');
-    // var y = document.getElementById('new-ticket-form');
-    if (x.style.display === 'none') {
-        // y.style.display = 'none'
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-  }
-
-  function newTicket() {
-    var x = document.getElementById('old-tickets');
-    var y = document.getElementById('new-ticket-form');
-    if (y.style.display === 'none') {
-        x.style.display = 'none'
-        y.style.display = 'block';
-    } else {
-        y.style.display = 'none';
-    }
-  }
-
-</script>

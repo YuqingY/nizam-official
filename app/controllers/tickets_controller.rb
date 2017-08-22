@@ -5,11 +5,11 @@ class TicketsController < ApplicationController
     current_user.current_state = 'idle'
     @check_index = true
     if user_signed_in?
-       @tickets = policy_scope(Ticket)
-    else
-      redirect_to new_user_session_path
-    end
+     @tickets = policy_scope(Ticket)
+   else
+    redirect_to new_user_session_path
   end
+end
 
   # GET /tickets/1
   # GET /tickets/1.json
@@ -53,7 +53,9 @@ class TicketsController < ApplicationController
     authorize @ticket
 
     if @ticket.save
-      redirect_to @ticket, notice: "Ticket was successfully created in: #{pretty_time} "
+      respond_to do |format|
+        redirect_to @ticket, notice: "Ticket was successfully created in: #{pretty_time} "
+      end
     else
       render :new
     end
@@ -63,7 +65,7 @@ class TicketsController < ApplicationController
   # PATCH/PUT /tickets/1
   # PATCH/PUT /tickets/1.json
   def update
-      if @ticket.update(ticket_params)
+    if @ticket.update(ticket_params)
         #find the call
         @call=Call.find(session[:current_call_id])
         # set call end time to now
@@ -74,8 +76,8 @@ class TicketsController < ApplicationController
         pretty_time = Time.at(duration).utc.strftime("%H:%M:%S")
         @call.update duration: duration
         #associate call to ticket
-         @call.ticket = @ticket
-         authorize @ticket
+        @call.ticket = @ticket
+        authorize @ticket
 
          # if @ticket
          #   if @ticket
@@ -86,8 +88,8 @@ class TicketsController < ApplicationController
          #    @session_end_time = @session[:call_end_time]
          #    end
          # end
-        redirect_to @ticket, notice: "Ticket was successfully updated in: #{pretty_time}"
-      else
+         redirect_to @ticket, notice: "Ticket was successfully updated in: #{pretty_time}"
+       else
         render :edit
       end
     end
@@ -97,7 +99,7 @@ class TicketsController < ApplicationController
   def destroy
     @ticket.destroy
     redirect_to tickets_url, notice: 'Ticket was successfully destroyed.'
-    end
+  end
 
   def new_ticket
     Ticket.new_ticket
@@ -126,8 +128,8 @@ class TicketsController < ApplicationController
       authorize @ticket
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def ticket_params
-      params.require(:ticket).permit(:category, :department, :next_step, :description, :status, :author, :customer_cnic, :assignee_id, :assigner_id, :call_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def ticket_params
+    params.require(:ticket).permit(:category, :department, :next_step, :description, :status, :author, :customer_cnic, :assignee_id, :assigner_id, :call_id)
+  end
 end
