@@ -19,22 +19,6 @@
   left:20px;
 }
 
-
-// .navbar-item {
-//   cursor: pointer;
-//   padding: 0 20px;
-// }
-
-/* Navbar link */
-
-// .navbar-link {
-//   color: #616668;
-//   font-size: 14px;
-// // }
-// .navbar-link:hover {
-//   color: #da552f;
-//   text-decoration: none;
-// }
 .flexbox-container {
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -50,7 +34,9 @@
   justify-content: center;
   background: #A4CD3B;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.27);
+
   border-radius: 3px;
+
   font-size: 15px;
   color: rgb(250, 250, 250);
   margin-right: 20px;
@@ -64,7 +50,9 @@
   justify-content: flex-end;
   background: #463aa0;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.27);
+
   border-radius: 3px;
+
   font-size: 15px;
   color: rgb(250, 250, 250);
   margin-right: 20px;

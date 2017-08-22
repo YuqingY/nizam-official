@@ -39,19 +39,21 @@ class TicketsController < ApplicationController
   def create
     call_id = ticket_params.delete(:call_id)
     @call=Call.find(call_id)
+    session[:call_end_time] = Time.now
     @call.update end_time: Time.now
-
+    duration = (session[:call_end_time].to_time - session[:call_start_time].to_time)
+    pretty_time = Time.at(duration).utc.strftime("%H:%M:%S")
+    @call.update duration: duration
     cleaned_params = ticket_params.reject {|k,v| k == 'call_id'}
 
     @ticket = Ticket.new(cleaned_params)
     @ticket.calls << @call
-
     @ticket.author = current_user
     @ticket.status = 'new'
     authorize @ticket
 
     if @ticket.save
-      redirect_to @ticket, notice: 'Ticket was successfully created.'
+      redirect_to @ticket, notice: "Ticket was successfully created in: #{pretty_time} "
     else
       render :new
     end
@@ -62,13 +64,29 @@ class TicketsController < ApplicationController
   # PATCH/PUT /tickets/1.json
   def update
       if @ticket.update(ticket_params)
-         if @ticket.calls
-           if @ticket.calls.last
-             @ticket.calls.last.end_time = Time.now
-            end
-         end
+        #find the call
+        @call=Call.find(session[:current_call_id])
+        # set call end time to now
+        session[:call_end_time] = Time.now
+        @call.update end_time: Time.now
 
-        redirect_to @ticket, notice: 'Ticket was successfully updated.'
+        duration = session[:call_end_time] - session[:call_start_time].to_time
+        pretty_time = Time.at(duration).utc.strftime("%H:%M:%S")
+        @call.update duration: duration
+        #associate call to ticket
+         @call.ticket = @ticket
+         authorize @ticket
+
+         # if @ticket
+         #   if @ticket
+         #     # @ticket.calls.last.end_time = Time.now
+         #     @end_time = Time.now
+         #     session[:call_end_time] = Time.now
+         #    @ticket.call.end_time = @end_time
+         #    @session_end_time = @session[:call_end_time]
+         #    end
+         # end
+        redirect_to @ticket, notice: "Ticket was successfully updated in: #{pretty_time}"
       else
         render :edit
       end
