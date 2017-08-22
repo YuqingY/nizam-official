@@ -18,16 +18,20 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <div class="row">
-      <div class="col-sm-3">
-        <%= render 'shared/leftbar' %>
-      </div>
-      <div class="col-sm-9">
-        <div class="row">
-          <div class="content"><%= yield %></div>
+    <% if user_signed_in? %>
+      <div class="row">
+        <div class="col-sm-3">
+          <%= render 'shared/leftbar' %>
+        </div>
+        <div class="col-sm-9">
+          <div class="row">
+            <div class="content"><%= yield %></div>
+          </div>
         </div>
       </div>
-    </div>
+    <% else %>
+        <div class="content"><%= yield %></div>
+    <% end %>
 
 
   </body>
