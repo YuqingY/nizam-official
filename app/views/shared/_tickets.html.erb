@@ -3,22 +3,6 @@
         <% else %>
             <% @all_tickets = Ticket.all.select{|t| t.status != 'N/A'} %>
                 <% end %>
-                    <table class="table table-hover" id='ticket-table'>
-                        <thead>
-                            <tr>
-                                <th>customer</th>
-                                <th>author</th>
-                                <th>Category</th>
-                                <th>Department</th>
-                                <th>Status</th>
-                                <th>Next step</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% @all_tickets.each do |ticket| %>
-
 
            <table class="table table-hover" id='ticket-table'>
              <thead>
@@ -64,6 +48,7 @@
               <% end %>
              </tbody>
            </table>
+           <div class="paging"></div>
          </div>
 
 </div>
@@ -79,13 +64,13 @@ $(document).ready(function() {
                     //   $(".best_in_place").best_in_place();
                     // });
 
-                    $('#ticket-table').datatable({
-                        pageSize: 10,
-                        sort: [false, false, false],
-                        filters: [true, 'select', 'select', 'select', 'select', ],
-                        filterText: 'Type to filter... ',
-                        onChange: function(old_page, new_page) {
-                            console.log('changed from ' + old_page + ' to ' + new_page);
-                        }
-                    });
-                    </script>
+$('#ticket-table').datatable({
+    pageSize: 10,
+    sort: [false, false, false],
+    filters: [true, 'select', 'select', 'select', 'select', ],
+    filterText: 'Type to filter... ',
+    onChange: function(old_page, new_page) {
+        console.log('changed from ' + old_page + ' to ' + new_page);
+    }
+});
+</script>
