@@ -18,7 +18,7 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <% if user_signed_in? %>
+    <% if user_signed_in? && @in_call != true %>
       <div class="row">
         <div class="col-sm-3">
           <%= render 'shared/leftbar' %>

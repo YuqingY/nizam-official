@@ -1,6 +1,6 @@
 class CallsController < ApplicationController
   def new
-
+    @in_call = true
     @start_time = Time.now
     session[:call_start_time] = @start_time
 

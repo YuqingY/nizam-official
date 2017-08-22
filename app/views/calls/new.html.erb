@@ -1,12 +1,55 @@
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-9">
       <%= render 'tickets/form', ticket: @ticket %>
     </div>
 
 
-    <div class="col-md-6">
-      # Rachel this is your side for searches
-    </div>
+    <div class="col-md-3" style="padding: 40px;">
+
+           <table class="table table-hover" id='ticket-table'>
+             <thead>
+               <tr>
+                 <th>CUSTOMER</th>
+
+                 <th>ID</th>
+               </tr>
+             </thead>
+
+             <tbody>
+             <% Ticket.all.each do |ticket| %>
+               <tr>
+                <td>
+                  <%= ticket.customer_cnic %>
+                </td>
+                <td><%= ticket.id %></td>
+            </tr>
+              <% end %>
+             </tbody>
+           </table>
+         <!--   <div class="paging"></div> -->
+     </div>
 
 </div>
+
+<script>
+$(document).ready(function() {
+    $('#ticket-table').DataTable();
+});
+
+
+                    // $(document).ready(function() {
+                    //    Activating Best In Place
+                    //   $(".best_in_place").best_in_place();
+                    // });
+
+$('#ticket-table').datatable({
+    pageSize: 15,
+    sort: [false],
+    filters: [true],
+    filterText: 'Type to Search... ',
+    onChange: function(old_page, new_page) {
+        console.log('changed from ' + old_page + ' to ' + new_page);
+    }
+});
+</script>
 
