@@ -12,7 +12,8 @@ class CallsController < ApplicationController
     authorize @call
     @call.save
 
-    @ticket = Ticket.new
+    @new_ticket = Ticket.new
+    @edit_ticket = Ticket.last
     session[:current_call_id] = @call.id
 
   end

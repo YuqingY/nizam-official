@@ -1,10 +1,38 @@
 <div class="row">
-    <div class="col-md-6">
-      <%= render 'tickets/form', ticket: @ticket %>
-    </div>
+  <div id="new_form" class="col-md-6">
+    <%= render 'tickets/form', ticket: @new_ticket %>
+  </div>
 
-    <div class="col-md-6">
-      # Rachel this is your side for searches
-    </div>
+
+  <div id="edit_form" class="col-md-6" style="display:none">
+    <%= render 'tickets/form', ticket: @edit_ticket %>
+  </div>
+
+  <div id="target">
+     <input type="button" value="existing" id="target" />
+  </div>
 
 </div>
+
+
+<script>
+  var status = 0;
+  $( "#target" ).click(function() {
+    // $('#dest').style.display = "block";
+    if(status ==0){
+      document.querySelector("#new_form").style.display = "none";
+      document.querySelector("#edit_form").style.display = "block";
+      document.querySelector("#target input[type=button]").value = "existing";
+      status = 1;
+    }else{
+      document.querySelector("#new_form").style.display = "block";
+      document.querySelector("#edit_form").style.display = "none";
+      document.querySelector("#target input[type=button]").value = "new";
+      status = 0;
+    }
+
+    // console.log(document.querySelector("#dest"));
+     });
+
+
+</script>
