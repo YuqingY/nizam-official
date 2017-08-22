@@ -5,7 +5,7 @@
             <h1><%= @function == 'edit' ? "new" : "edit" %></h1>
         </div>
         <div class="form-content">
-            <%= simple_form_for(@ticket) do |f| %>
+            <%= simple_form_for(ticket) do |f| %>
                 <%= f.error_notification %>
                     <div class="form-group">
                         <%= f.input :customer_cnic, input_html: {class: 'form-input'}, wrapper_html: {class: "form-element"}%>
@@ -37,7 +37,7 @@
                     </div>
                 <% end %>
         </div>
-        <%= link_to 'Show', @ticket %> |
+        <%= link_to 'Show', ticket %> |
             <%= link_to 'Back', tickets_path %>
     </div>
 </div>
