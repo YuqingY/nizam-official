@@ -4,24 +4,21 @@
   <% @all_tickets = Ticket.all.select{|t| t.status != 'N/A'} %>
 <% end %>
 
-<table class="table table-hover" id='ticket-table'>
-    <thead>
-        <tr>
-            <th>customer</th>
-            <th>author</th>
-            <th>Category</th>
-            <th>Department</th>
-            <th>Status</th>
-            <th>Next step</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @all_tickets.each do |ticket| %>
+           <table class="table table-hover" id='ticket-table'>
+             <thead>
+               <tr>
+                 <th>CUSTOMER</th>
+                 <th>AUTHOR</th>
+                 <th>CATEGORY</th>
+                 <th>DEPARTMENT</th>
+                 <th>STATUS</th>
+                 <th>NEXT STEP</th>
+               </tr>
+             </thead>
 
-              <tr>
-
+             <tbody>
+             <% Ticket.all.each do |ticket| %>
+               <tr>
                 <td>
                 <%= link_to ticket do %>
                     <%= ticket.customer_cnic %>
@@ -31,43 +28,28 @@
                     <%= ticket.author.name %>
                 </td>
                 <td>
-
                     <%= ticket.category %>
-
                 </td>
                 <td>
-
                     <%= ticket.department %>
-
                 </td>
                 <td class="best_in_place">
-
-
                     <%= best_in_place ticket, :status, :as => :select, collection: { "new": "new", "active": "active", 'pending': 'pending', 'ready': 'ready', 'closed': 'closed'} %>
-
                 </td>
                 <td>
-
                     <%= ticket.next_step %>
-
                 </td>
-               <!--  <% if @check_index %> -->
-                 <!--  <td>
-                      <%= link_to ticket do %>
-                          <img src="<%= image_path('show.png') %>" alt="" class="edit-icon">
-                          <% end %>
-                  </td> -->
-               <!--  <% end %> -->
                  <td>
                     <%= link_to edit_ticket_path(ticket) do %>
                         <img src="<%= image_path('edit.png') %>" alt="" class="edit-icon">
                         <% end %>
                 </td>
             </tr>
-            <% end %>
-    </tbody>
-</table>
-<div class="paging"></div>
+              <% end %>
+             </tbody>
+           </table>
+         </div>
+
 </div>
 <script>
 $(document).ready(function() {
