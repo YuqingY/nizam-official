@@ -1,7 +1,9 @@
 class CallsController < ApplicationController
   def new
+
     @start_time = Time.now
     session[:call_start_time] = Time.now
+
 
     @call = Call.new
     @ticket = default_ticket

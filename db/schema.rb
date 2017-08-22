@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170819044526) do
+ActiveRecord::Schema.define(version: 20170821131356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20170819044526) do
     t.datetime "end_time"
     t.bigint "user_id", null: false
     t.bigint "duration"
+    t.boolean "inbond", default: true, null: false
     t.index ["ticket_id"], name: "index_calls_on_ticket_id"
     t.index ["user_id"], name: "index_calls_on_user_id"
   end
@@ -72,6 +73,8 @@ ActiveRecord::Schema.define(version: 20170819044526) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "customer_cnic"
+    t.bigint "response_time"
+    t.bigint "resolve_time"
     t.index ["author_id"], name: "index_tickets_on_author_id"
   end
 
@@ -91,6 +94,7 @@ ActiveRecord::Schema.define(version: 20170819044526) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false, null: false
+    t.string "current_state", default: "off-duty", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -2,6 +2,7 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
   def index
+    current_user.current_state = 'idle'
     @check_index = true
     if user_signed_in?
        @tickets = policy_scope(Ticket)
@@ -13,6 +14,7 @@ class TicketsController < ApplicationController
   # GET /tickets/1
   # GET /tickets/1.json
   def show
+    current_user.current_state = "ticket #{@ticket.id}"
   end
 
   # GET /tickets/new
@@ -28,6 +30,7 @@ class TicketsController < ApplicationController
 
   # GET /tickets/1/edit
   def edit
+    current_user.current_state = "ticket #{@ticket.id}"
 
   end
 
