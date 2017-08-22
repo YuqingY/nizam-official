@@ -5,12 +5,14 @@
     <img src="http://www.nizamenergy.com/img/logo.jpg" alt="logo" class="logo">
   <% end %>
 
+
 <% if @check_index %>
   <% if current_user.position == 'csrep' %>
     <div class="flexbox-container">
       <div class="bouton-green">
         <%= link_to "Start New Call", new_call_path, class: "start-new-call" unless @call.present? %>
       </div>
+
     </div>
   <% end %>
 

@@ -75,6 +75,9 @@ GEM
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     bcrypt (3.1.11)
+    best_in_place (3.0.3)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
     bindex (0.5.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
@@ -250,6 +253,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   autoprefixer-rails
+  best_in_place (~> 3.0.1)
   bootstrap-sass
   byebug
   coffee-rails (~> 4.2)

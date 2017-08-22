@@ -48,7 +48,6 @@ body {
 .content {
   padding-top: 10px;
   background: rgb(230, 230, 230);
-  margin: 0;
   display: flex;
   flex-direction: column;
   text-align:center;
@@ -77,9 +76,14 @@ body {
 }
 
 .table thead tr th {
-  margin: 0 5px;
+  margin: 20px 5px;
 }
 
+tr th {
+  font-family: 'Rototo', sans-serif;
+  font-weight: 600;
+  text-align: center;
+}
 // .green-btn {
 //   /* Rectangle: */
 //   background: #A4CD3B;

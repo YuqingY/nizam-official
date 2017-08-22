@@ -66,9 +66,15 @@
     <%= link_to 'Back', tickets_path %> -->
             <div class="form-group">
                 <button type="submit">
-                    <%= link_to 'Back', tickets_path, class: "button-submit" %>
+                    <%= link_to 'BACK', tickets_path, class: "button-submit" %>
                 </button>
             </div>
+
+            <div class="form-group">
+                <button type="submit">
+                     <%= link_to 'EDIT', edit_ticket_path(@ticket), class: "button-submit" %>
+                </button>
+
         </div>
     </div>
 </div>

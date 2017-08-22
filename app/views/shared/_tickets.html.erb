@@ -1,27 +1,44 @@
 <% if @check_index && current_user.position != 'manager' %>
-  <% @all_tickets = Ticket.all.select{|t| t.status != 'N/A' && t.status != 'closed'}%>
-<% else %>
-  <% @all_tickets = Ticket.all.select{|t| t.status != 'N/A'} %>
-<% end %>
+    <% @all_tickets = Ticket.all.select{|t| t.status != 'N/A' && t.status != 'closed'}%>
+        <% else %>
+            <% @all_tickets = Ticket.all.select{|t| t.status != 'N/A'} %>
+                <% end %>
+                    <table class="table table-hover" id='ticket-table'>
+                        <thead>
+                            <tr>
+                                <th>customer</th>
+                                <th>author</th>
+                                <th>Category</th>
+                                <th>Department</th>
+                                <th>Status</th>
+                                <th>Next step</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @all_tickets.each do |ticket| %>
 
-<table class="table table-hover" id='ticket-table'>
-    <thead>
-        <tr>
-            <th>customer</th>
-            <th>author</th>
-            <th>Category</th>
-            <th>Department</th>
-            <th>Status</th>
-            <th>Next step</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @all_tickets.each do |ticket| %>
-            <tr>
+
+           <table class="table table-hover" id='ticket-table'>
+             <thead>
+               <tr>
+                 <th>CUSTOMER</th>
+                 <th>AUTHOR</th>
+                 <th>CATEGORY</th>
+                 <th>DEPARTMENT</th>
+                 <th>STATUS</th>
+                 <th>NEXT STEP</th>
+               </tr>
+             </thead>
+
+             <tbody>
+             <% Ticket.all.each do |ticket| %>
+               <tr>
                 <td>
+                <%= link_to ticket do %>
                     <%= ticket.customer_cnic %>
+                    <% end %>
                 </td>
                 <td>
                     <%= ticket.author.name %>
@@ -32,42 +49,43 @@
                 <td>
                     <%= ticket.department %>
                 </td>
-                <td>
-                    <%= ticket.status %>
+                <td class="best_in_place">
+                    <%= best_in_place ticket, :status, :as => :select, collection: { "new": "new", "active": "active", 'pending': 'pending', 'ready': 'ready', 'closed': 'closed'} %>
                 </td>
                 <td>
                     <%= ticket.next_step %>
                 </td>
-                <% if @check_index %>
-                  <td>
-                      <%= link_to ticket do %>
-                          <img src="<%= image_path('show.png') %>" alt="" class="edit-icon">
-                          <% end %>
-                  </td>
-                <% end %>
-                <td>
+                 <td>
                     <%= link_to edit_ticket_path(ticket) do %>
                         <img src="<%= image_path('edit.png') %>" alt="" class="edit-icon">
                         <% end %>
                 </td>
             </tr>
-            <% end %>
-    </tbody>
-</table>
-<div class="paging"></div>
+              <% end %>
+             </tbody>
+           </table>
+         </div>
+
 </div>
 <script>
 $(document).ready(function() {
     $('#ticket-table').DataTable();
+    $(".best_in_place").best_in_place();
 });
 
-$('#ticket-table').datatable({
-    pageSize: 10,
-    sort: [false, false, false],
-    filters: [true, 'select', 'select', 'select', 'select', ],
-    filterText: 'Type to filter... ',
-    onChange: function(old_page, new_page) {
-        console.log('changed from ' + old_page + ' to ' + new_page);
-    }
-});
-</script>
+
+                    // $(document).ready(function() {
+                    //    Activating Best In Place
+                    //   $(".best_in_place").best_in_place();
+                    // });
+
+                    $('#ticket-table').datatable({
+                        pageSize: 10,
+                        sort: [false, false, false],
+                        filters: [true, 'select', 'select', 'select', 'select', ],
+                        filterText: 'Type to filter... ',
+                        onChange: function(old_page, new_page) {
+                            console.log('changed from ' + old_page + ' to ' + new_page);
+                        }
+                    });
+                    </script>
