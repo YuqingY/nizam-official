@@ -1,5 +1,6 @@
 class CallsController < ApplicationController
   def new
+    current_user.current_state = 'On New Call'
     @start_time = Time.now.to_datetime
     @call = Call.new
     @ticket = default_ticket

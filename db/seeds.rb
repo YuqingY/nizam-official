@@ -41,10 +41,18 @@ Customer.all.each do |c|
   author_id = [csrep1.id, csrep2.id].sample
   category = ['tech issues', 'sales', 'information', 'payment', 'repair', 'cancel servie'].sample
   department = ['technology', 'sales', 'support', 'field'].sample
-  status = ['new', 'active', 'pending', 'ready', 'closed'].sample
+  status = ['new', 'active', 'pending', 'ready', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed', 'closed'].sample
   Ticket.create(customer_cnic: c.cnic, author_id: author_id, category:category, department:department, status:status)
 end
-puts "done"
+puts "creating new calls"
+tickets_id = []
+Ticket.all.each { |t| tickets_id << t.id }
+40.times do
+  user_id = [csrep1.id, csrep2.id].sample
+  duration = rand(0..30)
+  ticket_id = tickets_id.sample
+  Call.create(user_id: user_id, duration: duration, ticket_id: ticket_id)
+end
 
 
 
