@@ -12,13 +12,26 @@
     <script src="https://cdn.rawgit.com/Holt59/datatable/master/js/datatable.jquery.js"></script>
     <script src="https://cdn.rawgit.com/Holt59/datatable/master/js/datatable.js"></script>
 
-
   </head>
 
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <div class="content"><%= yield %></div>
+    <% if user_signed_in? %>
+      <div class="row">
+        <div class="col-sm-2 sidebar-bg">
+          <%= render 'shared/leftbar' %>
+        </div>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="content"><%= yield %></div>
+          </div>
+        </div>
+      </div>
+    <% else %>
+        <div class="content"><%= yield %></div>
+    <% end %>
+
 
   </body>
 </html>

@@ -1,0 +1,71 @@
+
+.side-menu{
+  background: #2F3E47;
+  height: 1183px;
+  width:100%;
+  color:  #F0F0F0;
+
+}
+
+.menu-title{
+  color:  #959DA1;
+}
+
+.left-menu-title{
+  //Navigation
+  color:  #959DA1;
+  padding: 10px 10px 20px 20px !important;
+}
+
+.sidebar-bg{
+  background: #2F3E47;
+  text-decoration: none;
+}
+
+#dropdownMenuButton{
+  background: #2F3E47;
+  color: #959DA1;
+  text-decoration: none;
+  padding: 10px 50px;
+}
+
+.dropdown-menu{
+  background: #2B3941 !important;
+  width: 85% !important;
+  border-radius: 0px;
+  margin-left: 5px;
+}
+
+.dropdown-menu li{
+color: white !important;
+
+}
+
+#sidebar-menu a {
+  color: #D0D0D1;
+  padding: 10px 0 10px 10px !important;
+  font-size: 13px;
+}
+
+button {
+  border: none;
+}
+
+a .dropdown-item {
+  color: white;
+
+}
+
+.btn-secondary{
+  padding: 10px 20px;
+}
+
+.fa-ticket{
+  padding-right: 10px;
+  color: #959DA1;
+}
+
+.fa-line-chart{
+  padding-right: 10px;
+  color: #959DA1;
+}

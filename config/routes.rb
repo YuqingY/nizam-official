@@ -7,11 +7,13 @@ Rails.application.routes.draw do
   get 'comments/create'
 
   ActiveAdmin.routes(self)
+
   resources :tickets, except: :new do
     collection do
       get "list"
     end
   end
+
 
   resources :calls, only: [:new]
 
