@@ -1,6 +1,7 @@
 class TicketsController < ApplicationController
 
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  autocomplete :customer_cnic, full: true
 
 
   def index
@@ -27,6 +28,7 @@ class TicketsController < ApplicationController
   end
 
   # GET /tickets/new
+
   # def new
   #   @call = Call.find(params[:call_id])
   #   @ticket = Ticket.new
@@ -36,10 +38,14 @@ class TicketsController < ApplicationController
   #   authorize @ticket
   # end
 
+
   # GET /tickets/1/edit
   def edit
+    @no_log_out = true
     current_user.current_state = "ticket #{@ticket.id}"
+
     render layout:false
+
 
   end
 

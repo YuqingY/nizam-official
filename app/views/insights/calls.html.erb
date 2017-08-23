@@ -1,0 +1,16 @@
+<div class="charts">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="chart-card">
+        <h4># of Call by Day</h4>
+        <%= column_chart Call.group_by_day_of_week(:created_at, format: "%a").count, stacked: true, colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ] %>
+      </div> <!-- col-end -->
+    </div>
+    <div class="col-sm-6">
+      <div class="chart-card">
+        <h4>Call Duration</h4>
+        <%= pie_chart Call.duration_hash, colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ] , donut: true%>
+      </div>
+    </div> <!-- col-end -->
+  </div>  <!-- row end -->
+</div> <!-- Charts end -->
