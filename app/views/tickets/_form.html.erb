@@ -1,3 +1,6 @@
+<% @customer_cnic = [] %>
+<% Customer.all.each { |c| @customer_cnic << c.cnic } %>
+
 <div class="form" style = "width: 900px;">
     <div class="form-toggle"></div>
     <div class="form-panel one">
@@ -41,5 +44,9 @@
             <%= link_to 'Back', tickets_path %>
     </div>
 </div>
-
+<script>
+  $('#autocomplete').autocomplete({
+    serviceUrl: '<%=autocomplete_cnic_tickets_path%>'
+  })
+</script>
 

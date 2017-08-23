@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
 
-  get 'insights/main'
+  # get 'insights/main'
 
   get 'comments/new'
 
   get 'comments/create'
 
   ActiveAdmin.routes(self)
-  resources :tickets
+  resources :tickets do
+    get :autocomplete_cnic, on: :collection
+  end
   resources :calls, only: [:new]
 
   root to: "tickets#index"

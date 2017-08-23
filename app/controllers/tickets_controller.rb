@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  autocomplete :customer_cnic, full: true
 
   def index
     current_user.current_state = 'idle'
