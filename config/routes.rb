@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'insights/main'
+  # get 'insights/main'
 
   get 'comments/new'
 
@@ -8,10 +8,12 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
 
+
   resources :tickets, except: :new do
     collection do
       get "list"
     end
+
   end
 
 
@@ -22,4 +24,7 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "/insights" , to: 'insights#summary'
+  get "/insights/tickets", to: "insights#tickets"
+  get "/insights/users" , to: 'insights#users'
+  get "/insights/calls" , to: 'insights#calls'
 end

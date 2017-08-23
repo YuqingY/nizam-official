@@ -34,13 +34,16 @@ gem 'devise'
 gem "pundit"
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'best_in_place', '~> 3.0.1'
+
+gem 'rails-jquery-autocomplete'
+gem 'swipebox'
+
 gem "chartkick"
 gem 'groupdate'
-gem 'rails-jquery-autocomplete'
-
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'1

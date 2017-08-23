@@ -15,10 +15,12 @@
 //= require jquery
 //= require jquery_ujs
 
+//= require jquery.autocomplete
 //= require autocomplete-rails
-
 //= require bootstrap-sprockets
 //= require best_in_place
+//= require swipebox
 //= require chartkick
+
 //= require_tree .
 
