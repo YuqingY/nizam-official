@@ -14,7 +14,7 @@
 .left-menu-title{
   //Navigation
   color:  #959DA1;
-  padding: 10px 20px !important;
+  padding: 10px 10px 20px 20px !important;
 }
 
 .sidebar-bg{
@@ -26,6 +26,7 @@
   background: #2F3E47;
   color: #959DA1;
   text-decoration: none;
+  padding: 10px 50px;
 }
 
 .dropdown-menu{
@@ -59,3 +60,12 @@ a .dropdown-item {
   padding: 10px 20px;
 }
 
+.fa-ticket{
+  padding-right: 10px;
+  color: #959DA1;
+}
+
+.fa-line-chart{
+  padding-right: 10px;
+  color: #959DA1;
+}

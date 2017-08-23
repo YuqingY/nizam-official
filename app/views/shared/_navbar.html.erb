@@ -9,7 +9,7 @@
 <% if @check_index %>
   <% if current_user.position == 'csrep' %>
     <div class="flexbox-container">
-      <div class="button-side">
+      <div class="btn-white">
         <%= link_to "Start New Call", new_call_path, class: "start-new-call" unless @call.present? %>
       </div>
 
