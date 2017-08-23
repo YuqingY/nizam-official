@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-2">
-    <div id="donut-example"></div>
-    <div id="donut-example"></div>
-    <div id="donut-example"></div>
-    <div id="donut-example"></div>
+    <div id="donut-example1"></div>
+    <div id="donut-example2"></div>
+    <div id="donut-example3"></div>
+    <div id="donut-example4"></div>
 
     <div class="text-align">
       <img src="<%= asset_path('users/avatar-2.jpg') %>" class="img-responsive img-circle" alt="user">
@@ -51,7 +51,25 @@
   });
 
   Morris.Donut({
-    element: 'donut-example',
+    element: 'donut-example1',
+    data: [
+    {label: "Download Sales", value: 12},
+    {label: "In-Store Sales", value: 30},
+    {label: "Mail-Order Sales", value: 20}
+    ],
+    element: 'donut-example2',
+    data: [
+    {label: "Download Sales", value: 12},
+    {label: "In-Store Sales", value: 30},
+    {label: "Mail-Order Sales", value: 20}
+    ],
+    element: 'donut-example3',
+    data: [
+    {label: "Download Sales", value: 12},
+    {label: "In-Store Sales", value: 30},
+    {label: "Mail-Order Sales", value: 20}
+    ],
+    element: 'donut-example4',
     data: [
     {label: "Download Sales", value: 12},
     {label: "In-Store Sales", value: 30},
