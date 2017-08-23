@@ -2,6 +2,9 @@
   <div class="form-toggle"></div>
   <div class="form-panel one">
     <div class="form-header">
+
+      <h1><%= @function == 'edit' ? "new" : "edit" %></h1>
+
     </div>
     <div class="form-content">
       <%= simple_form_for(ticket) do |f| %>
@@ -36,5 +39,27 @@
       </div>
       <% end %>
     </div>
+
+    <%= link_to 'Show', ticket %> |
+    <%= link_to 'Back', tickets_path %>
   </div>
 </div>
+
+<script>
+
+var options = {
+  url: "/tickets/autocomplete_ticket_customer_cnic.json",
+
+  getValue: "customer_cnic",
+
+  list: {
+    match: {
+      enabled: true
+    }
+  }
+};
+
+
+  $("#ticket_customer_cnic").easyAutocomplete(options);
+</script>
+

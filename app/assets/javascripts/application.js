@@ -14,7 +14,11 @@
 //= require turbolinks
 //= require jquery
 //= require jquery_ujs
+
+//= require autocomplete-rails
+
 //= require bootstrap-sprockets
 //= require best_in_place
+//= require chartkick
 //= require_tree .
 
