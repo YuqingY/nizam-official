@@ -9,6 +9,10 @@ class TicketPolicy < ApplicationPolicy
     end
   end
 
+  def list?
+    true
+  end
+
   def create?
     user.cs_rep?
   end

@@ -13,7 +13,7 @@ class CallsController < ApplicationController
     @call.save
 
     @new_ticket = Ticket.new
-    @edit_ticket = Ticket.last
+    @edit_ticket = nil
     session[:current_call_id] = @call.id
 
   end

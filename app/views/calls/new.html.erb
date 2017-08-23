@@ -3,36 +3,42 @@
     <%= render 'tickets/form', ticket: @new_ticket %>
   </div>
 
+  <div id="searched_ticket" class="col-md-6">
 
-  <div id="edit_form" class="col-md-6" style="display:none">
-    <%= render 'tickets/form', ticket: @edit_ticket %>
   </div>
 
   <div id="target">
      <input type="button" value="existing" id="target" />
   </div>
 
+  <div id="results"></div>
+
+  <div id="results2"></div>
+
+
 </div>
 
 
 <script>
-  var status = 0;
-  $( "#target" ).click(function() {
-    // $('#dest').style.display = "block";
-    if(status ==0){
-      document.querySelector("#new_form").style.display = "none";
-      document.querySelector("#edit_form").style.display = "block";
-      document.querySelector("#target input[type=button]").value = "existing";
-      status = 1;
-    }else{
-      document.querySelector("#new_form").style.display = "block";
-      document.querySelector("#edit_form").style.display = "none";
-      document.querySelector("#target input[type=button]").value = "new";
-      status = 0;
-    }
 
-    // console.log(document.querySelector("#dest"));
-     });
+  $("#target").click(function(e) {
+    var cnic = $('#ticket_customer_cnic').val()
+    console.log("this is the value from the input form", cnic)
+    var url = '/tickets/list?cnic=' + cnic;
+    $("#results").load(url, function() {
+      //console.log("tt");
+      console.log($(".list_ticket"));
+      $(".list_ticket").click(function(e) {
+       var id = this.innerHTML;
+      console.log(id);
+      var url = '/tickets/'+ id +'/edit';
+      $("#results2").load(url);
+      });
+    });
+  });
+
+
+
 
 
 </script>
