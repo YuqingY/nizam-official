@@ -1,23 +1,68 @@
 <div class="row">
-  <div id="new_form" class="col-md-6">
+
+    <div id="new_form" class="col-md-9">
     <%= render 'tickets/form', ticket: @new_ticket %>
   </div>
 
 
 
-  <div id="edit_form" class="col-md-6" style="display:none">
+   <div id="edit_form" class="col-md-9" style="display:none">
     <%= render 'tickets/form', ticket: @edit_ticket %>
   </div>
 
-  <div id="target">
+
+    <div class="col-md-3" style="padding: 40px;">
+          <div id="target">
      <input type="button" value="existing" id="target" />
   </div>
 
+           <table class="table table-hover" id='ticket-table'>
+             <thead>
+               <tr>
+                 <th>CUSTOMER</th>
+
+                 <th>ID</th>
+               </tr>
+             </thead>
+
+             <tbody>
+             <% Ticket.all.each do |ticket| %>
+               <tr>
+                <td>
+                  <%= ticket.customer_cnic %>
+                </td>
+                <td><%= ticket.id %></td>
+            </tr>
+              <% end %>
+             </tbody>
+           </table>
+         <!--   <div class="paging"></div> -->
+     </div>
+
 </div>
 
-
 <script>
-  var status = 0;
+$(document).ready(function() {
+    $('#ticket-table').DataTable();
+});
+
+
+                    // $(document).ready(function() {
+                    //    Activating Best In Place
+                    //   $(".best_in_place").best_in_place();
+                    // });
+
+$('#ticket-table').datatable({
+    pageSize: 15,
+    sort: [false],
+    filters: [true],
+    filterText: 'Type to Search... ',
+    onChange: function(old_page, new_page) {
+        console.log('changed from ' + old_page + ' to ' + new_page);
+    }
+});
+
+var status = 0;
   $( "#target" ).click(function() {
     // $('#dest').style.display = "block";
     if(status ==0){
@@ -34,5 +79,4 @@
 
     // console.log(document.querySelector("#dest"));
      });
-
-
+</script>

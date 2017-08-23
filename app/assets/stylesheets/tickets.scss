@@ -143,6 +143,19 @@ a:hover {
   text-align: center;
 }
 
+.form-no-width {
+  margin: 0 auto;
+  text-align: center;
+  z-index: 15;
+  position: relative;
+  background: $white;
+  border-radius: 4px;
+  box-shadow: 0 0 30px rgba($black, .1);
+  box-sizing: border-box;
+  margin: 100px auto 10px;
+  overflow: hidden;
+}
+
 .show-content{
 
 }

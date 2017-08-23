@@ -6,7 +6,7 @@
   <% end %>
 
 
-<% if @check_index %>
+<% unless @no_log_out %>
   <% if current_user.position == 'csrep' %>
     <div class="flexbox-container">
       <div class="btn-white">
