@@ -7,11 +7,16 @@ Rails.application.routes.draw do
   get 'comments/create'
 
   ActiveAdmin.routes(self)
-  resources :tickets do
 
-    get :autocomplete_ticket_customer_cnic, on: :collection
+
+  resources :tickets, except: :new do
+    collection do
+      get "list"
+    end
 
   end
+
+
   resources :calls, only: [:new]
 
   root to: "tickets#index"
