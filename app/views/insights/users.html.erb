@@ -1,0 +1,22 @@
+<% User.all.select{|u| u.position == 'csrep'}.each do |user| %>
+  <% calls = Call.all.select{|c| c.user == user} %>
+  <% tickets = Ticket.all.select{|t| t.author_id == user.id} %>
+  <div class="charts">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="chart-card">
+          <h4># of Call by Day</h4>
+          <%= column_chart calls.group_by_day { |u| u.created_at }, stacked: true, colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ] %>
+        </div> <!-- col-end -->
+      </div>
+      <div class="col-sm-6">
+        <div class="chart-card">
+          <h4>Call Duration</h4>
+          <%= pie_chart Call.user_duration_hash(user), colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ] , donut: true%>
+        </div>
+      </div> <!-- col-end -->
+    </div>  <!-- row end -->
+  </div> <!-- Charts end -->
+
+<% end %>
+

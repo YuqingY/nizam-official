@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="chart-card">
+      <h4>Ticket Per Day</h4>
+      <%= column_chart Ticket.group_by_day_of_week(:created_at, format: "%a").count, colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ] %>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="chart-card">
+      <h4>Ticket Per Day</h4>
+      <%= pie_chart Ticket.call_to_ticket_hash, colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ] %>
+    </div>
+  </div>
+</div>
+<div class="row">
+
+  <div class="col-sm-6">
+    <div class="chart-card"><h4>Response Time</h4>
+      <%= pie_chart Ticket.response_time_hash, donut: true, colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ] %></div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="chart-card"><h4>Resolve Time</h4>
+        <%= pie_chart Ticket.resolve_time_hash, donut: true, colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ] %></div>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-sm-6">
+    <div class="chart-card"><h4>Waiting Time</h4>
+      <%= pie_chart Ticket.waiting_time_hash, donut: true, colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ] %></div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="chart-card"><h4>Processing Time</h4>
+      <%= pie_chart Ticket.processing_time_hash, donut: true, colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ] %></div>
+  </div>
+
+</div>
