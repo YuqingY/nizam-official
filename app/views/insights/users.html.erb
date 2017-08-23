@@ -1,22 +1,43 @@
 <% User.all.select{|u| u.position == 'csrep'}.each do |user| %>
   <% calls = Call.all.select{|c| c.user == user} %>
   <% tickets = Ticket.all.select{|t| t.author_id == user.id} %>
-  <div class="charts">
+  <div class="chart-card">
     <div class="row">
       <div class="col-sm-6">
-        <div class="chart-card">
-          <h4># of Call by Day</h4>
-          <%= column_chart calls.group_by_day { |u| u.created_at }, stacked: true, colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ] %>
-        </div> <!-- col-end -->
-      </div>
+
+          <h3><strong><%= user.name %></strong></h3>
+          <p><strong>Today: </strong><%= user.calls.select{|c| c.created_at.today? }.count %>calls</p>
+          <p><strong>Call Duration: </strong><%= Call.user_call_duration(user) %> mins</p>
+          <p><strong>Response time: </strong><%= Ticket.user_average_response_time(user).round %> hours</p>
+          <p><strong>Resolve time: </strong><%= Ticket.user_average_resolve_time(user).round %> hours</p>
+          <p><strong>Waiting time: </strong><%= Ticket.user_average_waiting_time(user).round %> hours</p>
+          <p><strong>Processing time: </strong><%= Ticket.user_average_processing_time(user).round %> hours</p>
+
+
+      </div> <!-- col-end -->
       <div class="col-sm-6">
-        <div class="chart-card">
+
           <h4>Call Duration</h4>
           <%= pie_chart Call.user_duration_hash(user), colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ] , donut: true%>
-        </div>
+
       </div> <!-- col-end -->
+    </div>  <!-- row end -->
+    <div class="row">
+      <div class="col-sm-6">
+
+        <h4>Response Time</h4>
+        <%= pie_chart Ticket.user_response_time_hash(user), colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ] , donut: true%>
+
+    </div> <!-- col-end -->
+    <div class="col-sm-6">
+
+        <h4>Resolve Time</h4>
+        <%= pie_chart Ticket.user_resolve_time_hash(user), colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ] , donut: true%>
+
+    </div> <!-- col-end -->
     </div>  <!-- row end -->
   </div> <!-- Charts end -->
 
 <% end %>
+
 

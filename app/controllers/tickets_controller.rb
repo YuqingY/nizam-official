@@ -23,6 +23,7 @@ end
 
   # GET /tickets/new
   def new
+    @no_log_out = true
     @call = Call.find(params[:call_id])
     @ticket = Ticket.new
     @ticket.author = current_user
@@ -34,8 +35,8 @@ end
 
   # GET /tickets/1/edit
   def edit
+    @no_log_out = true
     current_user.current_state = "ticket #{@ticket.id}"
-
   end
 
   # POST /tickets

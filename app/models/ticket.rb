@@ -92,7 +92,7 @@ class Ticket < ApplicationRecord
     average = sum / (tickets.count) / 3600
   end
   def self.user_response_time_hash(user)
-    tickets = tickets.select{ |t| t.author_id == user.id}
+    tickets =  Ticket.all.select{ |t| t.author_id == user.id}
     {"< 1 HOURS": tickets.select{|t| t.response_time < 3600 }.count,
      '< 5 HOURS': tickets.select{|t| t.response_time >= 3600 && t.response_time < 18000 }.count,
      '< 1 DAY': tickets.select{|t| t.response_time >= 18000 && t.response_time < 86400  }.count,
