@@ -38,7 +38,7 @@
 
 
 body {
-  font-family:'Open Sans', sans-serif !important;
+  font-family:'Roboto', sans-serif !important;
 }
 
 .alert {
@@ -69,11 +69,28 @@ body {
 }
 
 .tickets {
-  background-color: #FFFFFF;
+  background-color: #F4F4F4;
+  border-radius: 4px;
   // height:100vh;
-  padding-left: 0;
-  margin:0 auto;
+  padding: 12px !important;
+  // margin-top: 15px;
+  // margin-left: 20px;
+  margin: 15px 30px 15px 30px;
 }
+
+.tickets th {
+  color: #2F3E47;
+}
+
+.tickets a{
+  text-decoration:none;
+  color: #2F3E47;
+}
+
+.tickets a hover{
+  color: #959DA1;
+}
+
 
 .table thead tr th {
   margin: 20px 5px;
