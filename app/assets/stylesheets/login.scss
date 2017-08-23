@@ -163,7 +163,7 @@ $gutters: 24px;
 
     button {
       outline: none;
-      background: $accent;
+      background: #57C5A5;
       width: 100%;
       border: 0;
       border-radius: 4px;
@@ -198,7 +198,7 @@ $gutters: 24px;
     }
 
     .form-recovery {
-      color: $accent;
+      color: #57C5A5;
       font-size: 12px;
       text-decoration: none;
     }
@@ -270,7 +270,7 @@ $gutters: 24px;
         }
       }
 
-      &.active {
+      & ctive {
         left: 10%;
         box-shadow: 0 0 10px rgba($black, 0.2);
         cursor: default;
@@ -289,7 +289,7 @@ $gutters: 24px;
 
     h1 {
       padding: 4px 0;
-      color: $accent;
+      color: #2F3E47;
       font-size: 24px;
       font-weight: $bold;
       text-transform: uppercase;
@@ -339,7 +339,7 @@ $gutters: 24px;
 
 .button-submit {
       outline: none;
-      background: $accent;
+      background: #57C5A5;
       width: 100%;
       border: 0;
       border-radius: 4px;
