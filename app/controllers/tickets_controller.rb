@@ -1,8 +1,5 @@
 class TicketsController < ApplicationController
 
-  autocomplete :ticket, :customer_cnic, full: true
-  skip_after_action :verify_authorized, only: :autocomplete_ticket_customer_cnic
-
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
 

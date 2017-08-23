@@ -1,23 +1,17 @@
-<div class="row">
-  <div id="new_form" class="col-md-6">
+  <div id="new_form" class="col-md-3">
     <%= render 'tickets/form', ticket: @new_ticket %>
-  </div>
-
-  <div id="searched_ticket" class="col-md-6">
-
-
-  </div>
-
-  <div id="target">
+      <!-- <div id="target"> -->
      <input type="button" value="existing" id="target" />
-  </div>
+  <!-- </div> -->
 
   <div id="results"></div>
 
   <div id="results2"></div>
+  </div>
 
+  <div id="searched_ticket" class="col-md-3">
 
-</div>
+ </div>
 
 
 <script>
@@ -31,13 +25,13 @@
       console.log($(".list_ticket"));
       $(".list_ticket").click(function(e) {
        var id = this.innerHTML;
-      console.log(id);
-      var url = '/tickets/'+ id +'/edit';
-      $("#results2").load(url);
-      });
+       console.log(id);
+       var url = '/tickets/'+ id +'/edit';
+       $("#results2").load(url);
+     });
     });
   });
-
+</script>
 
 
 
