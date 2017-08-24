@@ -21,14 +21,14 @@
           <%= render 'shared/flashes' %>
 
     <% if user_signed_in? && @in_call != true %>
-      <div class="row">
+      <div class="row" style="margin-left:-15px;">
         <div class="col-sm-2 sidebar-bg">
-          <div style="position:fixed; height: 100%"><%= render 'shared/leftbar' %></div>
+           <%= render 'shared/leftbar' %>
         </div>
-        <div class="col-sm-10">
-          <div class="row">
+        <div class="col-sm-10" style="background-color: #E6E6E6;">
+          <!-- <div class="row"> -->
             <div class="content"><%= yield %></div>
-          </div>
+          <!-- </div> -->
         </div>
       </div>
     <% else %>

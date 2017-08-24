@@ -5,9 +5,10 @@
       <div class='row'>
         <div class="col-sm-9">
           <% User.all.select{|u| u.position == 'csrep'}.each do |user| %>
+          <% img_path = user.name + '.png'%>
             <div class="row">
               <div class="col-sm-1">
-                <p style="font-size: 14px;"><strong><%= user.name %></strong></p>
+                <img src="<%= image_path(img_path) %>" alt="" class="img-circle" style="max-height: 50px;">
                 <p style="font-size: 10px;"><%= user.current_state %></p>
               </div> <!-- inner-col-end -->
               <div class="col-sm-11">

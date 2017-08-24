@@ -15,4 +15,7 @@ class InsightsController < ApplicationController
     authorize current_user, :insight?
   end
 
+  def leaderboard
+    authorize current_user, :insight?
+  end
 end

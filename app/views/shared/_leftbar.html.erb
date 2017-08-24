@@ -1,21 +1,20 @@
- <div class="side-menu">
-                <div class="sidebar-inner slimscrollleft">
+ <div class="sidebar" >
+                <div>
                     <!--- Divider -->
-                    <div id="sidebar-menu">
-                        <ul>
+                    <div>
 
-                          <li class="left-menu-title">Navigation</li>
+
+                          <h4 class="left-menu-title">Navigation</h4>
                             <div class="dropdown">
                               <button class="btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-ticket" aria-hidden="true"></i> Tickets
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <li><%= link_to 'All Tickets', tickets_path, class: "dropdown-item" %></li>
+                                <p><%= link_to 'All Tickets', tickets_path, class: "dropdown-item" %></p>
                                 <!-- <li><a class="dropdown-item" href="#">New Tickets</a></li>
                                 <li><a class="dropdown-item" href="#">Active Tickets</a></li>
                                 <li><a class="dropdown-item" href="#">Pending Tickets</a></li>
  -->
-
                               </div>
                             </div>
 
@@ -24,14 +23,14 @@
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
-                                <li><%= link_to 'Summary', insights_path, class: "dropdown-item" %></li>
-                                <li><%= link_to 'Tracking', insights_calls_path, class: "dropdown-item" %></li>
-                                <li><%= link_to 'Responsiveness', insights_tickets_path, class: "dropdown-item" %></li>
-                                <li><%= link_to 'Individual Performance', insights_users_path, class: "dropdown-item" %></li>
+                                <p class="hover-sidebar-tab"><%= link_to 'Summary', insights_path, class: "dropdown-item" %></p>
+                                <p class="hover-sidebar-tab"><%= link_to 'Tracking', insights_calls_path, class: "dropdown-item" %></p>
+                                <p class="hover-sidebar-tab"><%= link_to 'Responsiveness', insights_tickets_path, class: "dropdown-item" %></p>
+                                <p class="hover-sidebar-tab"><%= link_to 'Individual Performance', insights_users_path, class: "dropdown-item" %></p>
                               </div>
                             </div>
 
-                        </ul>
+
                         <div class="clearfix"></div>
                     </div>
                     <div class="clearfix"></div>
