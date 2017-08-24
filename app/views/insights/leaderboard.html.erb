@@ -3,7 +3,7 @@
 
     <div class="chart-card">
           <h4>Leaderboard</h4>
-          <% User.all.select{|u| u.position == 'csrep'}.sort_by{|u| u.calls.select{|c| c.created_at.today? }.count }.reverse.each_with_index do |user, i| %>
+          <% User.all.select{|u| u.position == 'csrep'}.sort_by{|u| u.calls.select{|c| c.created_at }.count }.reverse.each_with_index do |user, i| %>
           <% img_path = user.name + '.png'%>
             <div class="row">
               <div class="col-sm-2">

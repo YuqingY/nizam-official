@@ -8,14 +8,34 @@ class Call < ApplicationRecord
     end
   end
 
-  def self.performance_hash(user)
-    {"# of calls": user.calls.select{|c| c.created_at.today?}.count,
-     "avg. duration(mins)": Call.user_call_duration(user)}
+  def self.performance_hash(user, period = 'day')
+    {"# of calls": Call.user_number_of_call(user, period),
+    "avg. duration(mins)": Call.user_call_duration(user)}
   end
 
-  def self.user_call_duration(user)
+  def self.user_number_of_call(user, period = 'all')
+    calls = user.calls.where.not(duration: nil)
+    if period == 'day'
+      calls = calls.group_by_day(:created_at, last: 1).count.values[0]
+    elsif period == 'week'
+      calls = calls.group_by_week(:created_at, last: 1).count.values[0]
+    elsif period == 'month'
+      calls = calls.group_by_month(:created_at, last: 1).count.values[0]
+    else
+      calls = calls.count
+    end
+  end
+
+  def self.user_call_duration(user, period = 'all')
     sum = 0
-    calls = Call.all.select {|c| c.duration && c.user == user}
+    calls = user.calls.where.not(duration: nil)
+    if period == 'day'
+      calls = calls.select{ |c| c.created_at.today? }
+    elsif period == 'week'
+      calls = calls.select{ |c| c.created_at.between?(Time.zone.now.ago(1.week), Time.zone.now) }
+    elsif period == 'month'
+      calls = calls.select{ |c| c.created_at.between?(Time.zone.now.ago(1.month), Time.zone.now) }
+    end
     calls.each do |call|
       sum += call.duration
     end

@@ -1,7 +1,19 @@
 <div class="charts">
 
     <div class="chart-card">
-      <h4>Summary</h4>
+      <div class='row'>
+        <div class="col-sm-2" style="text-align: left;">
+          <h4>Summary</h4>
+        </div>
+        <div class="col-sm-10">
+          <div class="alignright">
+            <button class="insights-scope">Day</button>
+            <button class="insights-scope">Week</button>
+            <button class="insights-scope">Month</button>
+          </div>
+
+        </div>
+      </div>
       <div class='row'>
         <div class="col-sm-9">
           <% User.all.select{|u| u.position == 'csrep'}.each do |user| %>
@@ -11,8 +23,8 @@
                 <img src="<%= image_path(img_path) %>" alt="" class="img-circle" style="max-height: 50px;">
                 <p style="font-size: 10px;"><%= user.current_state %></p>
               </div> <!-- inner-col-end -->
-              <div class="col-sm-11">
-                  <%= bar_chart Call.performance_hash(user), height: "100px", colors: @colors[user.id % 5], stacked: true %>
+              <div class="col-sm-11" class = >
+                  <%= bar_chart Call.performance_hash(user, 'month'), height: "100px", colors: @colors[user.id % 5], stacked: true %>
               </div> <!--inner-col-end -->
             </div>  <!-- inner-row end -->
           <% end %>
@@ -34,6 +46,7 @@
           </div>
         </div> <!-- col end -->
       </div> <!-- row end -->
+
     </div>
 </div> <!-- Charts end -->
 
