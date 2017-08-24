@@ -1,30 +1,37 @@
 
 <div class="navbar-nizam">
   <!-- Logo -->
-  <%= link_to root_path do%>
+  <%= link_to tickets_path do%>
     <img src="<%= image_path('Nizamlogo-HanziPen.png') %>" alt="logo" class="logo">
   <% end %>
 
 <% if current_user %>
   <% unless @no_log_out %>
-    <% if current_user.position == 'csrep' %>
-      <div class="flexbox-container">
-        <div class="btn-white">
-          <%= link_to "Start New Call", new_call_path, class: "start-new-call" unless @call.present? %>
-        </div>
+<!--     <div class="flexbox-container">
+      <p>Welcome, <%= current_user.name %></p>
+    </div> -->
 
-      </div>
-    <% end %>
 
    <div class="flexbox-container">
+      <% if current_user.position == 'csrep' %>
+        <% unless @call.present? %>
+          <div class="btn-white start-new-call">
+            <%= link_to new_call_path do %>
+              <p><i class="fa fa-phone" aria-hidden="true"></i>Start New Call</p>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
       <% if current_user.admin %>
           <div class="btn-white" >
-            <%= link_to "Admin", admin_root_path %>
+            <%= link_to admin_root_path do %>
+            <p><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Admin</p>
+            <% end %>
           </div>
       <% end %>
-      <div class="btn-green">
-        <%= link_to "Log Out", destroy_user_session_path, method: :delete%>
-      </div>
+        <%= link_to destroy_user_session_path, class: "btn-green", method: :delete do %>
+          <p style="height: 100%; padding-top: 2px;"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</p>
+        <% end %>
     </div>
   <% end %>
 

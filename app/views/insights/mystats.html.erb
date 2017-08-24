@@ -1,5 +1,5 @@
-<% User.all.select{|u| u.position == 'csrep'}.each do |user| %>
-  <% img_path = user.name + '.png'%>
+<% user = current_user %>
+<% img_path = user.name + '.png'%>
   <% calls = Call.all.select{|c| c.user == user} %>
   <% tickets = Ticket.all.select{|t| t.author_id == user.id} %>
   <div class="chart-card">
@@ -65,6 +65,3 @@
       </div>
     </div>
   </div>
-<% end %>
-
-

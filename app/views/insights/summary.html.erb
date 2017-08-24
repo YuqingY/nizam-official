@@ -1,17 +1,18 @@
-<% colors = [["#F4D894","#FB9D5D", "#F7E2B1"], ["#A96FBA", "#CEADD8", "#E6D6EB" ], ["#7CD0B9", "#57C5A5", "#D8F1EA" ], ["#ECCF68","#F2DF9A", "#F8EFCC"], ["#476C9B", "#7994B6", "#BCC9DA" ]] %>
 <div class="charts">
 
     <div class="chart-card">
+      <h4>Summary</h4>
       <div class='row'>
         <div class="col-sm-9">
           <% User.all.select{|u| u.position == 'csrep'}.each do |user| %>
+          <% img_path = user.name + '.png'%>
             <div class="row">
               <div class="col-sm-1">
-                <p style="font-size: 14px;"><strong><%= user.name %></strong></p>
+                <img src="<%= image_path(img_path) %>" alt="" class="img-circle" style="max-height: 50px;">
                 <p style="font-size: 10px;"><%= user.current_state %></p>
               </div> <!-- inner-col-end -->
               <div class="col-sm-11">
-                  <%= bar_chart Call.performance_hash(user), height: "100px", colors: colors[user.id % 5], stacked: true %>
+                  <%= bar_chart Call.performance_hash(user), height: "100px", colors: @colors[user.id % 5], stacked: true %>
               </div> <!--inner-col-end -->
             </div>  <!-- inner-row end -->
           <% end %>
