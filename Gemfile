@@ -44,6 +44,7 @@ gem 'swipebox'
 
 gem "chartkick"
 gem 'groupdate'
+gem 'blazer'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'1
