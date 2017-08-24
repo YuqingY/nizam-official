@@ -41,7 +41,9 @@
           <%= f.button :submit, class: "button-submit"%>
         </div>
       <% end %>
-
+      <% unless @in_call %>
+        <%= link_to 'Back', tickets_path %>
+      <% end %>
     </div>
   </div>
 </div>

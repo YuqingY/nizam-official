@@ -47,13 +47,13 @@ puts "creating new tickets"
   customer_cnic = customer.cnic
   imei =  customer.imei
   author_id = [csrep1.id, csrep2.id, csrep3.id, csrep4.id, csrep5.id].sample
-  category = ['tech issues', 'sales', 'information', 'payment', 'repair', 'cancel servie'].sample
-  department = ['technology', 'sales', 'support', 'field'].sample
+  assignee_id =  [csrep1.id, csrep2.id, csrep3.id, csrep4.id, csrep5.id, '', '', ''].sample
+  cat_array = [['tech issues', 'technology'], ['sales','sales'], ['information','sales'], ['payment', 'support'], ['repair', 'support'], ['cancel servie', 'customer service']].sample
   status = ['new', 'active', 'pending', 'ready', 'closed', 'closed', 'closed'].sample
   created_at = Time.zone.now.ago(rand(1...168).hours)
   response_time = [1000, 90000, 3600, 3800, 17000, 16000, 15000, 16000, 17520, 18300, 38240, 80000, 70000, 60000, 12000].sample
   resolve_time = [5400, 86000, 100000, 200000, 380000, 82000, 72000, 300000].sample
-  Ticket.create(imei: imei, customer_cnic: customer_cnic, author_id: author_id, category:category, department:department, status:status, created_at:created_at, resolve_time: resolve_time, response_time:response_time)
+  Ticket.create(imei: imei, customer_cnic: customer_cnic, author_id: author_id, category:cat_array[0], department:cat_array[1], status:status, created_at:created_at, assignee_id: assignee_id, resolve_time: resolve_time, response_time:response_time)
 end
 
 puts "creating new calls"

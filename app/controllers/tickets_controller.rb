@@ -18,7 +18,6 @@ class TicketsController < ApplicationController
     @tickets = Ticket.where("customer_cnic like '%#{params[:cnic]}%' ")
     authorize Ticket
     render layout: false
-
   end
 
 

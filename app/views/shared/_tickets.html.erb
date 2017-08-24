@@ -12,8 +12,7 @@
                  <th>CATEGORY</th>
                  <th>DEPARTMENT</th>
                  <th>STATUS</th>
-                 <th>NEXT STEP</th>
-               </tr>
+                 <th>ASSIGNEE</th>
              </thead>
 
              <tbody>
@@ -34,11 +33,15 @@
                 <td>
                     <%= ticket.department %>
                 </td>
-                <td class="best_in_place">
-                    <%= best_in_place ticket, :status, :as => :select, collection: { "new": "new", "active": "active", 'pending': 'pending', 'ready': 'ready', 'closed': 'closed'} %>
+                <td>
+                    <%= ticket.status %>
                 </td>
                 <td>
-                    <%= ticket.next_step %>
+                  <% if ticket.assignee %>
+                    <%= ticket.assignee.name %>
+                  <% else %>
+                    <%=   %>
+                  <% end %>
                 </td>
             </tr>
               <% end %>
@@ -55,8 +58,8 @@ $(document).ready(function() {
     $('#ticket-table').datatable({
         pageSize: 10,
         sort: [false, false, false, false, true, false],
-        filters: [true, 'select', 'select', 'select', 'select', ],
-        filterText: 'Type to filter... ',
+        filters: [true, 'select', 'select', 'select', 'select', 'select'],
+        filterText: 'Search by customer... ',
         onChange: function(old_page, new_page) {
             console.log('changed from ' + old_page + ' to ' + new_page);
         }

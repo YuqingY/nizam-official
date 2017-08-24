@@ -3,7 +3,6 @@
   <% calls = Call.all.select{|c| c.user == user} %>
   <% tickets = Ticket.all.select{|t| t.author_id == user.id} %>
   <div class="chart-card">
-
       <div class="row">
         <div class="col-sm-4">
           <div class="card-box widget-user" style="height:122.9px">
@@ -13,6 +12,7 @@
               </div>
               <div class="col-sm-4">
                 <h3><strong><%= user.name %></strong></h3>
+                <p><%= user.current_state %></p>
               </div>
             </div>
             <div class="row">
