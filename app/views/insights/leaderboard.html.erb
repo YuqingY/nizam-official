@@ -1,4 +1,4 @@
-<% colors = [["#F4D894","#FB9D5D", "#F7E2B1"], ["#A96FBA", "#CEADD8", "#E6D6EB" ], ["#7CD0B9", "#57C5A5", "#D8F1EA" ], ["#ECCF68","#F2DF9A", "#F8EFCC"], ["#476C9B", "#7994B6", "#BCC9DA" ]] %>
+
 <div class="charts">
 
     <div class="chart-card">
@@ -22,7 +22,7 @@
                 </div> <!-- inner-row-end -->
               </div> <!--col-end -->
               <div class="col-sm-10">
-                  <%= bar_chart Call.performance_hash(user), height: "100px", colors: colors[user.id % 5], stacked: true %>
+                  <%= bar_chart Call.performance_hash(user), height: "100px", colors: @colors[user.id % 5], stacked: true %>
               </div> <!--col-end -->
             </div>  <!-- row end -->
           <% end %>
