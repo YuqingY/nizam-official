@@ -1,8 +1,7 @@
-<% colors = [["#F4D894","#FB9D5D", "#F7E2B1"], ["#A96FBA", "#CEADD8", "#E6D6EB" ], ["#7CD0B9", "#57C5A5", "#D8F1EA" ], ["#ECCF68","#F2DF9A", "#F8EFCC"], ["#476C9B", "#7994B6", "#BCC9DA" ]] %>
-<% User.all.select{|u| u.position == 'csrep'}.each do |user| %>
-  <% img_path = user.name + '.png'%>
-  <% calls = Call.all.select{|c| c.user == user} %>
+<% user = current_user %>
+<% calls = Call.all.select{|c| c.user == user} %>
   <% tickets = Ticket.all.select{|t| t.author_id == user.id} %>
+  <% img_path = user.name + '.png'%>
   <div class="chart-card">
     <div class="row">
       <div class="col-sm-6">
@@ -20,7 +19,7 @@
       <div class="col-sm-6">
 
           <h4>Call Duration</h4>
-          <%= pie_chart Call.user_duration_hash(user), colors: colors[user.id % 5] , donut: true%>
+          <%= pie_chart Call.user_duration_hash(user), colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ] , donut: true%>
 
       </div> <!-- col-end -->
     </div>  <!-- row end -->
@@ -28,18 +27,14 @@
       <div class="col-sm-6">
 
         <h4>Response Time</h4>
-        <%= pie_chart Ticket.user_response_time_hash(user), colors:colors[user.id % 5], donut: true%>
+        <%= pie_chart Ticket.user_response_time_hash(user), colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ], donut: true%>
 
     </div> <!-- col-end -->
     <div class="col-sm-6">
 
         <h4>Resolve Time</h4>
-        <%= pie_chart Ticket.user_resolve_time_hash(user), colors:colors[user.id % 5] , donut: true%>
+        <%= pie_chart Ticket.user_resolve_time_hash(user), colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ], donut: true%>
 
     </div> <!-- col-end -->
     </div>  <!-- row end -->
   </div> <!-- Charts end -->
-
-<% end %>
-
-

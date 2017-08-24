@@ -31,11 +31,11 @@ puts "fake customer created"
 
 puts "Making 3 users manager and cs rep"
 User.create(email: 'manager@nizam.com', password:"12345678", position:'manager', name:'manager', admin: true)
-csrep1 = User.create(email: 'csrep1@nizam.com', password:"12345678", position:'csrep', name:'Monica')
-csrep2 = User.create(email: 'csrep2@nizam.com', password:"12345678", position:'csrep', name:'Zoey')
-csrep3 = User.create(email: 'csrep3@nizam.com', password:"12345678", position:'csrep', name:'Louis')
-csrep4 = User.create(email: 'csrep4@nizam.com', password:"12345678", position:'csrep', name:'Justin')
-csrep5 = User.create(email: 'csrep5@nizam.com', password:"12345678", position:'csrep', name:'Rachel')
+csrep1 = User.create(email: 'csrep1@nizam.com', password:"12345678", position:'csrep', name:'Monica', desc:'Keep calm and go diving!')
+csrep2 = User.create(email: 'csrep2@nizam.com', password:"12345678", position:'csrep', name:'Zoey', desc:"Be a voice, not an echo")
+csrep3 = User.create(email: 'csrep3@nizam.com', password:"12345678", position:'csrep', name:'Louis', desc:'Focus on the good')
+csrep4 = User.create(email: 'csrep4@nizam.com', password:"12345678", position:'csrep', name:'Justin', desc:'Prove them wrong!')
+csrep5 = User.create(email: 'csrep5@nizam.com', password:"12345678", position:'csrep', name:'Rachel', desc:'Do it with passion!')
 external = User.create(email: 'external@nizam.com', password:"12345678", position:'external', name:'external')
 puts "Finished creating users"
 
