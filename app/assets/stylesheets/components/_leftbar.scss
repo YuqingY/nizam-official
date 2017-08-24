@@ -4,7 +4,6 @@
   height: 1183px;
   width:100% !important;
   color:  #F0F0F0;
-
 }
 
 .menu-title{
@@ -52,12 +51,34 @@ button {
 }
 
 a .dropdown-item {
-  color: white;
 
 }
 
+// For the fa icons
+
+
 .btn-secondary{
-  padding: 10px 20px;
+  padding: 10px 20px !important;
+}
+
+#dropdownMenuButton {
+  padding-bottom: 10px;
+}
+
+.btn-secondary:hover, #dropdownMenuButton:hover {
+  background-color: rgba(87, 197, 165, 0.44);
+  // padding-bottom: 10px !important;
+  color: white;
+  transition-duration: 0.25s;
+  -webkit-transition-timing-function: linear; /* Safari and Chrome */
+  transition-timing-function: linear;
+
+  & .fa {
+    color: white;
+    transition-duration: 0.25s;
+    -webkit-transition-timing-function: linear; /* Safari and Chrome */
+    transition-timing-function: linear;
+  }
 }
 
 .fa-ticket{

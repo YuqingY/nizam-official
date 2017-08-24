@@ -29,4 +29,6 @@ Rails.application.routes.draw do
   get "/insights/calls" , to: 'insights#calls'
   get "/insights/leaderboard", to: 'insights#leaderboard'
   get "/insights/mystats", to: 'insights#mystats'
+
+  mount Blazer::Engine, at: "blazer"
 end
