@@ -1,10 +1,10 @@
 <div id="wrapper">
 
-<div id="new_form" class="col-md-6">
+<div id="new_form" class="col-md-8">
   <%= render 'tickets/form', ticket: @new_ticket %>
 </div>
 
-<div id="searched_results" class="col-md-6"></div>
+<div id="searched_results" class="col-md-4"></div>
 
 </div>
 
@@ -14,6 +14,7 @@
     var cnic = $('#ticket_customer_cnic').val()
     console.log("this is the value from the input form", cnic)
     var url = '/tickets/list?cnic=' + cnic;
+
 
     $("#searched_results").load(url, function() {
       //console.log("tt");

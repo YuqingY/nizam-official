@@ -18,6 +18,7 @@ class TicketsController < ApplicationController
     @tickets = Ticket.where(customer_cnic: params[:cnic])
     authorize Ticket
     render layout: false
+
   end
 
 

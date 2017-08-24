@@ -1,6 +1,23 @@
 <h3>Tickets</h3>
+<table style="width:100%">
+<tr>
+  <th>ID (please select)</th>
+  <th>CNIC</th>
+  <th>IMEI</th>
+</tr>
 <% @tickets.each do |ticket| %>
+<tr>
+  <td>
   <p class="list_ticket"><%= ticket.id %></p>
-
+  </td>
+  <td>
+   <p class="list_ticket"><%= ticket.customer_cnic %></p>
+  </td>
+   <td>
+   <p class="list_imei"><%= ticket.imei %></p>
+   </td>
+</tr>
 <% end %>
+</table>
+
 
