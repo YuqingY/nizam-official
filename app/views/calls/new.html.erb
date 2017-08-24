@@ -1,16 +1,17 @@
 <div id="wrapper">
 
-<div id="new_form" class="col-md-8">
+<div id="new_form" class="col-md-6">
   <%= render 'tickets/form', ticket: @new_ticket %>
 </div>
 
-<div id="searched_results" class="col-md-4"></div>
+<div id="searched_results" class="col-md-6"></div>
 
 </div>
 
 <div id="edit_ticket"></div>
 <script>
-  $("#new_form").click(function(e) {
+
+  $('#ticket_customer_cnic').on('input', function(e) {
     var cnic = $('#ticket_customer_cnic').val()
     console.log("this is the value from the input form", cnic)
     var url = '/tickets/list?cnic=' + cnic;
@@ -19,13 +20,25 @@
     $("#searched_results").load(url, function() {
       //console.log("tt");
       console.log($(".list_ticket"));
-      $(".list_ticket").click(function(e) {
 
-        var id = this.innerHTML;
-        console.log(id);
+      $(".list_imei").click(function(e) {
+        var t = $(this).text()
+        $('#ticket_imei').val(t);
+        return false;
+      });
+
+      $(".list_ticket").click(function(e) {
+          var t = $(this).text();
+          $('#ticket_customer_cnic').val(t);
+          return false;
+      });
+
+      $(".selector").click(function(e){
+        var id = $(this).data("id")
         var url = '/tickets/'+ id +'/edit?form_only=true';
         $("#new_form").empty();
         $("#new_form").load(url);
+         return false;
 
       });
     });

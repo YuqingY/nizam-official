@@ -18,14 +18,15 @@
 
              <tbody>
              <% Ticket.all.each do |ticket| %>
-               <tr>
+               <tr class="picker">
                 <td>
-                <%= link_to ticket do %>
+                <%= link_to edit_ticket_path(ticket) do %>
                     <%= ticket.customer_cnic %>
                     <% end %>
                 </td>
                 <td>
                     <%= ticket.author.name %>
+
                 </td>
                 <td>
                     <%= ticket.category %>
@@ -39,11 +40,6 @@
                 <td>
                     <%= ticket.next_step %>
                 </td>
-                 <td>
-                    <%= link_to edit_ticket_path(ticket) do %>
-                        <img src="<%= image_path('edit.png') %>" alt="" class="edit-icon">
-                        <% end %>
-                </td>
             </tr>
               <% end %>
              </tbody>
@@ -54,23 +50,22 @@
 </div>
 <script>
 $(document).ready(function() {
+
+
+    $('#ticket-table').datatable({
+        pageSize: 10,
+        sort: [false, false, false, false, true, false],
+        filters: [true, 'select', 'select', 'select', 'select', ],
+        filterText: 'Type to filter... ',
+        onChange: function(old_page, new_page) {
+            console.log('changed from ' + old_page + ' to ' + new_page);
+        }
+    });
+
     $('#ticket-table').DataTable();
     $(".best_in_place").best_in_place();
+
 });
 
 
-                    // $(document).ready(function() {
-                    //    Activating Best In Place
-                    //   $(".best_in_place").best_in_place();
-                    // });
-
-$('#ticket-table').datatable({
-    pageSize: 10,
-    sort: [false, false, false, false, true, false],
-    filters: [true, 'select', 'select', 'select', 'select', ],
-    filterText: 'Type to filter... ',
-    onChange: function(old_page, new_page) {
-        console.log('changed from ' + old_page + ' to ' + new_page);
-    }
-});
 </script>
