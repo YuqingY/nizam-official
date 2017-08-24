@@ -53,7 +53,6 @@
 }
 
 .btn-green {
-  justify-content: flex-end;
   background: #57C5A5;
   // box-shadow: 0 2px 4px 0 rgba(0,0,0,0.27);
   border: 0.8px solid #D8F1EA;
@@ -65,12 +64,14 @@
   padding: 5px 20px 5px 20px;
   transition: transform 0.1s linear, -webkit-transform 0.1s linear, box-shadow 0.1s linear;
   height: 30px;
+    display: flex;
+  align-items: center;
 }
 
 .btn-white a {
   font-style: none;
   text-decoration:none;
-  color: #D8F1EA;
+  color: #f7fffd;
 }
 
 .btn-white a:hover {
@@ -94,6 +95,9 @@
   color: #D8F1EA;
 }
 
+.btn-green p {
+}
+
 .btn-green a:hover {
   font-style: none;
   text-decoration:none;
@@ -107,3 +111,20 @@
   transform: translateY(-3px);
   // box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
 }
+
+.fa-sign-out{
+  color: #f7fffd;
+  margin-right: 8px;
+}
+
+.fa-phone{
+  color: #f7fffd;
+  margin-right: 8px;
+  margin-top: 3px;
+}
+
+.fa-pencil-square-o{
+  color: #f7fffd;
+  margin-right: 8px;
+}
+
