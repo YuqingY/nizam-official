@@ -18,10 +18,11 @@ class Ticket < ApplicationRecord
   #   Ticket.all.select { |x| x.status == "active"}
   # end
   def self.response_time_hash
-    {"< 1 HOURS": Ticket.all.select{|t| t.response_time < 3600 }.count,
-     '< 5 HOURS': Ticket.all.select{|t| t.response_time >= 3600 && t.response_time < 18000 }.count,
-     '< 1 DAY': Ticket.all.select{|t| t.response_time >= 18000 && t.response_time < 86400  }.count,
-     "> 1 DAY": Ticket.all.select{|t| t.response_time >= 86400 }.count }
+    tickets = Ticket.all.select {|t| t.response_time}
+    {"< 1 HOURS": tickets.select{|t| t.response_time < 3600 }.count,
+     '< 5 HOURS': tickets.select{|t| t.response_time >= 3600 && t.response_time < 18000 }.count,
+     '< 1 DAY': tickets.select{|t| t.response_time >= 18000 && t.response_time < 86400  }.count,
+     "> 1 DAY": tickets.select{|t| t.response_time >= 86400 }.count }
   end
 
   def self.waiting_time_hash
@@ -33,10 +34,11 @@ class Ticket < ApplicationRecord
   end
 
   def self.resolve_time_hash
-    {"< 12 HOURS": Ticket.all.select{|t| t.resolve_time < 43200 }.count,
-     '< 24 HOURS': Ticket.all.select{|t| t.resolve_time >= 43200 && t.resolve_time < 86400 }.count,
-     '< 72 HOURS': Ticket.all.select{|t| t.resolve_time >= 86400 && t.resolve_time < 259200  }.count,
-     "> 72 HOURS": Ticket.all.select{|t| t.resolve_time >= 259200 }.count }
+    tickets = Ticket.all.select {|t| t.resolve_time}
+    {"< 12 HOURS": tickets.select{|t| t.resolve_time < 43200 }.count,
+     '< 24 HOURS': tickets.select{|t| t.resolve_time >= 43200 && t.resolve_time < 86400 }.count,
+     '< 72 HOURS': tickets.select{|t| t.resolve_time >= 86400 && t.resolve_time < 259200  }.count,
+     "> 72 HOURS": tickets.select{|t| t.resolve_time >= 259200 }.count }
   end
 
   def self.processing_time_hash
@@ -105,7 +107,7 @@ class Ticket < ApplicationRecord
 
   end
   def self.user_response_time_hash(user)
-    tickets =  Ticket.all.select{ |t| t.author_id == user.id}
+    tickets =  Ticket.all.select{ |t| t.author_id == user.id && t.response_time}
     {"< 1 HOURS": tickets.select{|t| t.response_time < 3600 }.count,
      '< 5 HOURS': tickets.select{|t| t.response_time >= 3600 && t.response_time < 18000 }.count,
      '< 1 DAY': tickets.select{|t| t.response_time >= 18000 && t.response_time < 86400  }.count,
@@ -121,7 +123,7 @@ class Ticket < ApplicationRecord
   end
 
   def self.user_resolve_time_hash(user)
-    tickets = Ticket.all.select{ |t| t.author_id == user.id}
+    tickets = Ticket.all.select{ |t| t.author_id == user.id && t.resolve_time}
     {"< 12 HOURS": tickets.select{|t| t.resolve_time < 43200 }.count,
      '< 24 HOURS': tickets.select{|t| t.resolve_time >= 43200 && t.resolve_time < 86400 }.count,
      '< 72 HOURS': tickets.select{|t| t.resolve_time >= 86400 && t.resolve_time < 259200  }.count,
