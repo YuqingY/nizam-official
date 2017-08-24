@@ -15,7 +15,7 @@ class TicketsController < ApplicationController
   end
 
   def list
-    @tickets = Ticket.where(customer_cnic: params[:cnic])
+    @tickets = Ticket.where("customer_cnic like '%#{params[:cnic]}%' ")
     authorize Ticket
     render layout: false
 
@@ -75,7 +75,7 @@ class TicketsController < ApplicationController
 
     if @ticket.save
 
-      redirect_to @ticket, notice: "Ticket was successfully created in: #{pretty_time} "
+      redirect_to '/tickets', notice: "Ticket was successfully created in: #{pretty_time} "
 
     else
       render :new
@@ -103,7 +103,7 @@ class TicketsController < ApplicationController
       end
       if @ticket.update(cleaned_params)
         #find the call
-           redirect_to @ticket, notice: "Ticket was successfully updated in: #{pretty_time}"
+           redirect_to '/tickets', notice: "Ticket was successfully updated in: #{pretty_time}"
 
        else
         render :edit
