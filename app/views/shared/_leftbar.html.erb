@@ -2,9 +2,6 @@
                 <div>
                     <!--- Divider -->
                     <div>
-
-
-                          <h4 class="left-menu-title">Navigation</h4>
                             <div class="dropdown">
                               <button class="btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-ticket" aria-hidden="true"></i> Tickets
@@ -22,11 +19,15 @@
                               <button class="btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-line-chart" aria-hidden="true"></i> Insights
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-                                <p class="hover-sidebar-tab"><%= link_to 'Summary', insights_path, class: "dropdown-item" %></p>
-                                <p class="hover-sidebar-tab"><%= link_to 'Tracking', insights_calls_path, class: "dropdown-item" %></p>
-                                <p class="hover-sidebar-tab"><%= link_to 'Responsiveness', insights_tickets_path, class: "dropdown-item" %></p>
-                                <p class="hover-sidebar-tab"><%= link_to 'Individual Performance', insights_users_path, class: "dropdown-item" %></p>
+                                <% if current_user.position == 'manager' %>
+                                  <p class="hover-sidebar-tab"><%= link_to 'Summary', insights_path, class: "dropdown-item" %></p>
+                                  <p class="hover-sidebar-tab"><%= link_to 'Tracking', insights_calls_path, class: "dropdown-item" %></p>
+                                  <p class="hover-sidebar-tab"><%= link_to 'Responsiveness', insights_tickets_path, class: "dropdown-item" %></p>
+                                  <p class="hover-sidebar-tab"><%= link_to 'Individual Performance', insights_users_path, class: "dropdown-item" %></p>
+                                <% elsif current_user.position == 'csrep' %>
+                                  <p class="hover-sidebar-tab"><%= link_to 'Leaderboard', insights_leaderboard_path, class: "dropdown-item" %></p>
+                                  <p class="hover-sidebar-tab"><%= link_to 'My Stats', insights_mystats_path, class: "dropdown-item" %></p>
+                                <% end %>
                               </div>
                             </div>
 

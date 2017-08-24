@@ -1,43 +1,64 @@
-<% colors = [["#F4D894","#FB9D5D", "#F7E2B1"], ["#A96FBA", "#CEADD8", "#E6D6EB" ], ["#7CD0B9", "#57C5A5", "#D8F1EA" ], ["#ECCF68","#F2DF9A", "#F8EFCC"], ["#476C9B", "#7994B6", "#BCC9DA" ]] %>
 <% User.all.select{|u| u.position == 'csrep'}.each do |user| %>
+  <% img_path = user.name + '.png'%>
   <% calls = Call.all.select{|c| c.user == user} %>
   <% tickets = Ticket.all.select{|t| t.author_id == user.id} %>
   <div class="chart-card">
-    <div class="row">
-      <div class="col-sm-6">
-          <div class='chart-card' style="text-align: left; width: 25vw; margin: 0 auto;">
-            <h3><strong><%= user.name %></strong></h3>
-            <p><strong>Today: </strong><%= user.calls.select{|c| c.created_at.today? }.count %> calls</p>
-            <p><strong>Call Duration: </strong><%= Call.user_call_duration(user) %> mins</p>
-            <p><strong>Response time: </strong><%= Ticket.user_average_response_time(user).round %> hours</p>
-            <p><strong>Resolve time: </strong><%= Ticket.user_average_resolve_time(user).round %> hours</p>
-            <p><strong>Waiting time: </strong><%= Ticket.user_average_waiting_time(user).round %> hours</p>
-            <p><strong>Processing time: </strong><%= Ticket.user_average_processing_time(user).round %> hours</p>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="card-box widget-user">
+            <div class="row">
+              <div class="col-sm-5">
+                <img src="<%= image_path(img_path) %>" alt="" class="img-circle" style="max-height: 90px;">
+              </div>
+              <div class="col-sm-4">
+                <h3><strong><%= user.name %></strong></h3>
+              </div>
+            </div>
           </div>
-      </div> <!-- col-end -->
-      <div class="col-sm-6">
+        </div>
+        <div class="col-sm-4" style="text-align: left">
+          <div class="card-box widget-user">
+              <div class="text-center">
+                  <h2 class="text-custom" data-plugin="counterup"><%= user.calls.select{|c| c.created_at.today? }.count %></h2>
+                  <h5>Calls Today</h5>
+              </div>
+          </div>
+          <!-- <p><strong>Today: </strong><%= user.calls.select{|c| c.created_at.today? }.count %> calls</p>
+          <p><strong>Call Duration: </strong><%= Call.user_call_duration(user) %> mins</p>
+          <p><strong>Response time: </strong><%= Ticket.user_average_response_time(user).round %> hours</p> -->
+        </div>
+        <div class="col-sm-4" style="text-align: left">
+          <div class="card-box widget-user">
+              <div class="text-center">
+                  <h2 class="text-custom" data-plugin="counterup"><%= Call.user_call_duration(user) %> mins</h2>
+                  <h5>Avg. Duration</h5>
+              </div>
+          </div>
+<!--           <p><strong>Resolve time: </strong><%= Ticket.user_average_resolve_time(user).round %> hours</p>
+          <p><strong>Waiting time: </strong><%= Ticket.user_average_waiting_time(user).round %> hours</p>
+          <p><strong>Processing time: </strong><%= Ticket.user_average_processing_time(user).round %> hours</p> -->
+        </div>
+      </div>
 
-          <h4>Call Duration</h4>
-          <%= pie_chart Call.user_duration_hash(user), colors: colors[user.id % 5] , donut: true%>
 
-      </div> <!-- col-end -->
-    </div>  <!-- row end -->
-    <div class="row">
-      <div class="col-sm-6">
-
-        <h4>Response Time</h4>
-        <%= pie_chart Ticket.user_response_time_hash(user), colors:colors[user.id % 5], donut: true%>
-
-    </div> <!-- col-end -->
-    <div class="col-sm-6">
-
-        <h4>Resolve Time</h4>
-        <%= pie_chart Ticket.user_resolve_time_hash(user), colors:colors[user.id % 5] , donut: true%>
-
-    </div> <!-- col-end -->
-    </div>  <!-- row end -->
-  </div> <!-- Charts end -->
-
+    <div class="chart-card">
+      <div class="row">
+        <div class="col-sm-4">
+          <h6>Call Duration</h6>
+          <%= pie_chart Call.user_duration_hash(user), colors: @colors[user.id % 5] , donut: true, label:false%>
+        </div>
+        <div class="col-sm-4">
+          <h6>Response Time</h6>
+          <%= pie_chart Ticket.user_response_time_hash(user), colors: @colors[user.id % 5], donut: true%>
+        </div>
+        <div class="col-sm-4">
+          <h6>Resolve Time</h6>
+          <%= pie_chart Ticket.user_resolve_time_hash(user), colors: @colors[user.id % 5] , donut: true%>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
 
 

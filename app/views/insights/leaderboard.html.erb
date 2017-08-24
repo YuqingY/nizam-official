@@ -1,0 +1,30 @@
+
+<div class="charts">
+
+    <div class="chart-card">
+          <h4>Leaderboard</h4>
+          <% User.all.select{|u| u.position == 'csrep'}.sort_by{|u| Call.user_call_duration(u) }.each_with_index do |user, i| %>
+          <% img_path = user.name + '.png'%>
+            <div class="row">
+              <div class="col-sm-2">
+                <div>
+                  <div class="col-sm-4">
+                    <h2><%= i+1 %>  </h2>
+                  </div> <!-- inner-col-end -->
+                  <div class="col-sm-7">
+                    <img src="<%= image_path(img_path) %>" alt="" class="img-circle" style="max-height: 50px;">
+                  </div> <!-- inner-col-end -->
+                </div> <!-- inner-row-end -->
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div style="font-size: 13px; font-family: 'Caveat', cursive;"><%= user.desc %></div>
+                  </div> <!-- inner-col-end -->
+                </div> <!-- inner-row-end -->
+              </div> <!--col-end -->
+              <div class="col-sm-10">
+                  <%= bar_chart Call.performance_hash(user), height: "100px", colors: @colors[user.id % 5], stacked: true %>
+              </div> <!--col-end -->
+            </div>  <!-- row end -->
+          <% end %>
+    </div> <!-- chart-card end -->
+</div> <!-- Charts end -->
