@@ -1,13 +1,22 @@
 class CallsController < ApplicationController
   def new
+    @no_log_out = true
+    @in_call = true
     @start_time = Time.now
+    session[:call_start_time] = @start_time
+
+
     @call = Call.new
-    @ticket = default_ticket
-    @call.ticket = @ticket
+    @call.ticket = default_ticket
     @call.start_time = @start_time
     @call.user_id = current_user.id
     authorize @call
     @call.save
+
+    @new_ticket = Ticket.new
+    @edit_ticket = nil
+    session[:current_call_id] = @call.id
+
   end
 
   # def create
@@ -30,10 +39,21 @@ class CallsController < ApplicationController
 
   # end
 
+  def edit
+    # call_id = ticket_params.delete(:call_id)
+    # @call=Call.find(call_id)
+    # session[:call_end_time] = Time.now
+    # @calll.end_time = @end_time
+    # @session_end_time = @session[:call_end_time]
+    # @call.update end_time: Time.now.to_datetime
+    # @call.update duration: Time.at(@call.end_time - @call.start_time).utc.strftime("%H:%M:%S")
+    # leaned_params = ticket_params.reject {|k,v| k == 'call_id'}
+  end
+
   private
 
   def default_ticket
-      Ticket.create(customer_id: Customer.find_by(name:"N/A"), author: current_user, category:'N/A', department:"N/A", status:"N/A" )
+      Ticket.create(customer_cnic: "N/A", author: current_user, category:'N/A', department:"N/A", status:"N/A" )
   end
   # Use callbacks to share common setup or constraints between actions.
   def set_ticket

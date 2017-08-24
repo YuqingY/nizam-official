@@ -1,38 +1,48 @@
-<div class="choice" style="display:flex; justify-content: space-around; width: 90%; margin:30px 0;">
-  <!-- <div >
-      <%= link_to "New Ticket", {controller: :tickets, action: :new, call_id: @call.id}, class: "bouton-green one-third"%>
-  </div> -->
-  <div class ='bouton-green one-third'  onclick="showTickets()">Old ticket</div>
-  <div class ='bouton-green one-third'  onclick="newTicket()">New ticket</div>
-  <div class="bouton-green one-third"><%= link_to "No Ticket (End Call)", controller: :tickets, action: :create, call_id: @call.id %></div>
+<div id="wrapper">
+
+<div id="new_form" class="col-md-6">
+  <%= render 'tickets/form', ticket: @new_ticket %>
 </div>
 
-<div class="tickets col-sm-11">
-    <div id="old-tickets" style="display:none;"><%= render 'shared/tickets' %></div>
-    <div id="new-ticket-form" style="display:none;"><%= render 'tickets/form-new' %></div>
+<div id="searched_results" class="col-md-6"></div>
+
 </div>
 
+<div id="edit_ticket"></div>
 <script>
-  function showTickets() {
-    var x = document.getElementById('old-tickets');
-    var y = document.getElementById('new-ticket-form');
-    if (x.style.display === 'none') {
-        y.style.display = 'none'
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-  }
 
-  function newTicket() {
-    var x = document.getElementById('old-tickets');
-    var y = document.getElementById('new-ticket-form');
-    if (y.style.display === 'none') {
-        x.style.display = 'none'
-        y.style.display = 'block';
-    } else {
-        y.style.display = 'none';
-    }
-  }
+  $('#ticket_customer_cnic').on('input', function(e) {
+    var cnic = $('#ticket_customer_cnic').val()
+    console.log("this is the value from the input form", cnic)
+    var url = '/tickets/list?cnic=' + cnic;
 
+
+    $("#searched_results").load(url, function() {
+      //console.log("tt");
+      console.log($(".list_ticket"));
+
+      $(".list_imei").click(function(e) {
+        var t = $(this).text()
+        $('#ticket_imei').val(t);
+        return false;
+      });
+
+      $(".list_ticket").click(function(e) {
+          var t = $(this).text();
+          $('#ticket_customer_cnic').val(t);
+          return false;
+      });
+
+      $(".selector").click(function(e){
+        var id = $(this).data("id")
+        var url = '/tickets/'+ id +'/edit?form_only=true';
+        $("#new_form").empty();
+        $("#new_form").load(url);
+         return false;
+
+      });
+    });
+  });
 </script>
+
+

@@ -1,0 +1,26 @@
+<table style="width:100%">
+<tr>
+  <th>Ticket</th>
+  <th>CNIC</th>
+  <th>IMEI</th>
+  <th>Update At</th>
+</tr>
+<% @tickets.each do |ticket| %>
+<tr>
+  <td class="selector" data-id="<%=ticket.id%>">
+  <p ><a href="#">EDIT</p>
+  </td>
+  <td >
+   <p class="list_ticket"><a href="#"> <%= ticket.customer_cnic %> </a></p>
+  </td>
+   <td>
+   <p class="list_imei"><a href="#"><%= ticket.imei %></a></p>
+   </td>
+    <td>
+   <p class="list_imei"><%= ticket.updated_at.strftime("%m/%d/%Y") %></p>
+   </td>
+</tr>
+<% end %>
+</table>
+
+

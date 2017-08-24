@@ -1,0 +1,43 @@
+// Place all the styles related to the insights controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.container{
+  width: 100%;
+}
+
+.sidebar {
+  width:100%;
+  height:100vw;
+  color:white;
+  z-index: -2px;
+  background: #2F3E47;
+  position:fixed
+}
+
+.dropdown {
+  padding:0 !important;
+}
+
+.dropdown-menu {
+  padding:0 !important;
+}
+
+#dropdownMenuButton {
+  padding:15px 15px 0px 15px !important;
+
+  }
+
+.dropdown-item {
+  color: #959DA1;
+  font-size: 12px;
+  padding-left: 10px;
+}
+
+.hover-sidebar-tab:hover {
+  background-color: #57C5A5;
+  color:white;
+}
+
+.hover-sidebar-tab:hover a {
+  color: white;
+}

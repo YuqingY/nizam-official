@@ -38,7 +38,7 @@
 
 
 body {
-  font-family:'Open Sans', sans-serif !important;
+  font-family:'Roboto', sans-serif !important;
 }
 
 .alert {
@@ -46,8 +46,8 @@ body {
 }
 
 .content {
+  padding-top: 10px;
   background: rgb(230, 230, 230);
-  margin: 0;
   display: flex;
   flex-direction: column;
   text-align:center;
@@ -69,14 +69,43 @@ body {
 }
 
 .tickets {
-  background-color: #FFFFFF;
+  background-color: #F4F4F4;
+  border-radius: 4px;
   // height:100vh;
-  padding-left: 0;
-  margin:0 auto;
+  padding: 12px !important;
+  // margin-top: 15px;
+  // margin-left: 20px;
+  margin: 15px 30px 15px 30px;
 }
 
+.tickets th {
+  color: #2F3E47;
+}
+
+.tickets a{
+  text-decoration:none;
+  color: grey;
+}
+
+.tickets a hover{
+  color: #57C5A5 !important;
+}
+
+table {
+  text-align: left;
+}
+
+
 .table thead tr th {
-  margin: 0 5px;
+  margin: 0;
+  text-align:left;
+  color: grey;
+  font-size:14px;
+}
+
+tr th {
+  font-family: 'Rototo', sans-serif;
+  font-weight: 600;
 }
 
 // .green-btn {
@@ -116,9 +145,22 @@ a:hover {
 }
 
 .form {
-  width: 1000px;
+  width: 700px;
   margin: 0 auto;
   text-align: center;
+}
+
+.form-no-width {
+  margin: 0 auto;
+  text-align: center;
+  z-index: 15;
+  position: relative;
+  background: $white;
+  border-radius: 4px;
+  box-shadow: 0 0 30px rgba($black, .1);
+  box-sizing: border-box;
+  margin: 100px auto 10px;
+  overflow: hidden;
 }
 
 .show-content{
@@ -180,8 +222,126 @@ a:hover {
 }
 
 
+.table-hover tr th {
+   font-weight: 600;
+   text-align: center;
+ }
+
 
 .one-third {
   width: 30%
 }
 
+#wrapper{
+ padding: 30px;
+}
+
+#new_form{
+   float:left;
+}
+
+#searched_results{
+    float:right;
+    display: block;
+    margin: 0 0 10px;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    float: left;
+}
+
+table a:link {
+  color: #666;
+  font-weight: bold;
+  text-decoration:none;
+}
+table a:visited {
+  color: #999999;
+  font-weight:bold;
+  text-decoration:none;
+}
+table a:active,
+table a:hover {
+  color: #bd5a35;
+  text-decoration:underline;
+}
+table {
+  color:#666;
+  font-size:12px;
+  text-shadow: 1px 1px 0px #fff;
+  background:#eaebec;
+  margin:10px;
+
+  -moz-box-shadow: 0 1px 2px #d1d1d1;
+  -webkit-box-shadow: 0 1px 2px #d1d1d1;
+  box-shadow: 0 1px 2px #d1d1d1;
+}
+table th {
+  padding:21px 25px 22px 25px;
+  border-top:1px solid #fafafa;
+  border-bottom:1px solid #e0e0e0;
+
+  background: #ededed;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+  background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+}
+table th:first-child {
+  text-align: left;
+  padding-left:20px;
+}
+table tr:first-child th:first-child {
+  -moz-border-radius-topleft:3px;
+  -webkit-border-top-left-radius:3px;
+  border-top-left-radius:3px;
+}
+table tr:first-child th:last-child {
+  -moz-border-radius-topright:3px;
+  -webkit-border-top-right-radius:3px;
+  border-top-right-radius:5px;
+}
+table tr {
+  text-align: left;
+  width: 50px;
+  padding-left:20px;
+}
+table td:first-child {
+  text-align: left;
+  padding-left:20px;
+  border-left: 0;
+}
+table td {
+  padding:18px;
+  background: #fafafa;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
+  background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
+}
+table tr.even td {
+  background: #f6f6f6;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
+  background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
+}
+table tr:last-child td {
+  border-bottom:0;
+}
+table tr:last-child td:first-child {
+  -moz-border-radius-bottomleft:3px;
+  -webkit-border-bottom-left-radius:3px;
+  border-bottom-left-radius:3px;
+}
+table tr:last-child td:last-child {
+  -moz-border-radius-bottomright:3px;
+  -webkit-border-bottom-right-radius:3px;
+  border-bottom-right-radius:3px;
+}
+table tr:hover td {
+  background: #f2f2f2;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+  background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);
+}
+
+.list_ticket{
+  margin: 0
+}
