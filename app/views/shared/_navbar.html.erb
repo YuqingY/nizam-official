@@ -5,29 +5,30 @@
     <img src="<%= image_path('Nizamlogo-HanziPen.png') %>" alt="logo" class="logo">
   <% end %>
 
+<% if current_user %>
+  <% unless @no_log_out %>
+    <% if current_user.position == 'csrep' %>
+      <div class="flexbox-container">
+        <div class="btn-white">
+          <%= link_to "Start New Call", new_call_path, class: "start-new-call" unless @call.present? %>
+        </div>
 
-<% unless @no_log_out %>
-  <% if current_user.position == 'csrep' %>
-    <div class="flexbox-container">
-      <div class="btn-white">
-        <%= link_to "Start New Call", new_call_path, class: "start-new-call" unless @call.present? %>
       </div>
+    <% end %>
 
+   <div class="flexbox-container">
+      <% if current_user.admin %>
+          <div class="btn-white" >
+            <%= link_to "Admin", admin_root_path %>
+          </div>
+      <% end %>
+      <div class="btn-green">
+        <%= link_to "Log Out", destroy_user_session_path, method: :delete%>
+      </div>
     </div>
   <% end %>
 
- <div class="flexbox-container">
-    <% if current_user.admin %>
-        <div class="btn-white" >
-          <%= link_to "Admin", admin_root_path %>
-        </div>
-    <% end %>
-    <div class="btn-green">
-      <%= link_to "Log Out", destroy_user_session_path, method: :delete%>
-    </div>
-  </div>
-<% end %>
-
+  <% end %>
   <!--   </div> -->
 </div>
 
