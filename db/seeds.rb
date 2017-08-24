@@ -53,6 +53,7 @@ puts "creating new tickets"
   resolve_time = [5400, 86000, 100000, 200000, 380000, 82000, 72000, 300000].sample
   Ticket.create(customer_cnic: customer_cnic, author_id: author_id, category:category, department:department, status:status, created_at:created_at, resolve_time: resolve_time, response_time:response_time)
 end
+
 puts "creating new calls"
 Ticket.all.each do |t|
   user_id = t.author_id
@@ -69,6 +70,13 @@ Ticket.all.each { |t| tickets_id << t.id }
   created_at = Ticket.find(ticket_id).created_at
   user_id = [csrep1.id, csrep2.id, csrep3.id, csrep4.id, csrep5.id].sample
   Call.create(user_id: user_id, duration: duration, ticket_id: ticket_id, created_at: created_at)
+end
+
+puts "setting current_state"
+User.all.each do |user|
+  ticket = 'Ticket' + tickets_id.sample.to_s
+  current_state = ['Idle', 'OnCall', 'OffDuty', ticket]
+  user.current_state = current_state
 end
 
 
