@@ -47,7 +47,7 @@ class TicketsController < ApplicationController
     @no_log_out = true
     current_user.current_state = "ticket #{@ticket.id}"
 
-    render layout:false
+    # render layout:false
 
 
   end

@@ -31,15 +31,20 @@ puts "fake customer created"
 
 puts "Making 3 users manager and cs rep"
 User.create(email: 'manager@nizam.com', password:"12345678", position:'manager', name:'manager', admin: true)
-csrep1 = User.create(email: 'csrep1@nizam.com', password:"12345678", position:'csrep', name:'csrep1')
-csrep2 = User.create(email: 'csrep2@nizam.com', password:"12345678", position:'csrep', name:'csrep2')
+csrep1 = User.create(email: 'csrep1@nizam.com', password:"12345678", position:'csrep', name:'Monica')
+csrep2 = User.create(email: 'csrep2@nizam.com', password:"12345678", position:'csrep', name:'Zoey')
+csrep3 = User.create(email: 'csrep3@nizam.com', password:"12345678", position:'csrep', name:'Louis')
+csrep4 = User.create(email: 'csrep4@nizam.com', password:"12345678", position:'csrep', name:'Justin')
+csrep5 = User.create(email: 'csrep5@nizam.com', password:"12345678", position:'csrep', name:'Rachel')
 external = User.create(email: 'external@nizam.com', password:"12345678", position:'external', name:'external')
 puts "Finished creating users"
 
 puts "creating new tickets"
-50.times do
+
+
+75.times do
   customer_cnic = Customer.all.sample.cnic
-  author_id = [csrep1.id, csrep2.id].sample
+  author_id = [csrep1.id, csrep2.id, csrep3.id, csrep4.id, csrep5.id].sample
   category = ['tech issues', 'sales', 'information', 'payment', 'repair', 'cancel servie'].sample
   department = ['technology', 'sales', 'support', 'field'].sample
   status = ['new', 'active', 'pending', 'ready', 'closed', 'closed', 'closed'].sample
@@ -50,7 +55,7 @@ puts "creating new tickets"
 end
 puts "creating new calls"
 Ticket.all.each do |t|
-  user_id = [csrep1.id, csrep2.id].sample
+  user_id = t.author_id
   duration = [70, 80, 360, 500, 300, 400, 1900, 1500, 600, 700, 800, 750, 720, 830, 550].sample
   created_at = t.created_at
   Call.create(user_id: user_id, duration: duration, ticket_id: t.id, created_at: created_at)
@@ -58,10 +63,11 @@ end
 tickets_id = []
 Ticket.all.each { |t| tickets_id << t.id }
 40.times do
-  user_id = [csrep1.id, csrep2.id].sample
+
   duration = [70, 80, 360, 500, 300, 400, 1900, 1500, 600, 700, 800, 750, 720, 830, 550].sample
   ticket_id = tickets_id.sample
   created_at = Ticket.find(ticket_id).created_at
+  user_id = [csrep1.id, csrep2.id, csrep3.id, csrep4.id, csrep5.id].sample
   Call.create(user_id: user_id, duration: duration, ticket_id: ticket_id, created_at: created_at)
 end
 
