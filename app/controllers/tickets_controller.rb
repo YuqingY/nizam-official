@@ -44,10 +44,15 @@ class TicketsController < ApplicationController
     @no_log_out = true
     current_user.current_state = "ticket #{@ticket.id}"
 
-    # render layout:false
+    if params[:form_only] == 'true'
+      render :edit, layout:false
+    else
+      render :edit
+    end
 
 
   end
+
 
   # POST /tickets
   # POST /tickets.json
@@ -140,6 +145,6 @@ class TicketsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def ticket_params
-    params.require(:ticket).permit(:category, :department, :next_step, :description, :status, :author, :customer_cnic, :assignee_id, :assigner_id, :call_id)
+    params.require(:ticket).permit(:category, :department, :next_step, :description, :status, :author, :customer_cnic, :assignee_id, :assigner_id, :call_id, :imei )
   end
 end
