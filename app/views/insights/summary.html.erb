@@ -1,91 +1,37 @@
+<% colors = [["#F4D894","#FB9D5D", "#F7E2B1"], ["#A96FBA", "#CEADD8", "#E6D6EB" ], ["#7CD0B9", "#57C5A5", "#D8F1EA" ], ["#ECCF68","#F2DF9A", "#F8EFCC"], ["#476C9B", "#7994B6", "#BCC9DA" ]] %>
+<div class="charts">
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-2">
-    <div id="donut-example1"></div>
-    <div id="donut-example2"></div>
-    <div id="donut-example3"></div>
-    <div id="donut-example4"></div>
-
-    <div class="text-align">
-      <img src="<%= asset_path('users/avatar-2.jpg') %>" class="img-responsive img-circle" alt="user">
+    <div class="chart-card">
+      <div class='row'>
+        <div class="col-sm-9">
+          <% User.all.select{|u| u.position == 'csrep'}.each do |user| %>
+            <div class="row">
+              <div class="col-sm-1">
+                <p style="font-size: 14px;"><strong><%= user.name %></strong></p>
+                <p style="font-size: 10px;"><%= user.current_state %></p>
+              </div> <!-- inner-col-end -->
+              <div class="col-sm-11">
+                  <%= bar_chart Call.performance_hash(user), height: "100px", colors: colors[user.id % 5], stacked: true %>
+              </div> <!--inner-col-end -->
+            </div>  <!-- inner-row end -->
+          <% end %>
+        </div> <!--col-end -->
+        <div class="col-sm-3">
+          <div class="chart-card" style="text-align:left;">
+            <p><strong>Today: </strong></p>
+            <p><%= Call.all.select{|c| c.created_at.today? }.count %> calls</p>
+            <p><strong>Call Duration: </strong></p>
+            <p><%= Call.average_call_duration %> mins</p>
+            <p><strong>Response time: </strong></p>
+            <p><%= Ticket.average_response_time.round %> hours</p>
+            <p><strong>Resolve time: </strong></p>
+            <p><%= Ticket.average_resolve_time.round %> hours</p>
+            <p><strong>Waiting time: </strong></p>
+            <p><%= Ticket.average_waiting_time.round %> hours</p>
+            <p><strong>Processing time: </strong></p>
+            <p><%= Ticket.average_processing_time.round %> hours</p>
+          </div>
+        </div> <!-- col end -->
+      </div> <!-- row end -->
     </div>
-
-    <div class="text-align">
-      <img src="<%= asset_path('users/avatar-10.jpg') %>" class="img-responsive img-circle" alt="user">
-    </div>
-
-
-    <div class="text-align">
-      <img src="<%= asset_path('users/avatar-1.jpg') %>" class="img-responsive img-circle" alt="user">
-    </div>
-
-    <div class="text-align">
-      <img src="<%= asset_path('users/avatar-3.jpg') %>" class="img-responsive img-circle" alt="user">
-    </div>
-  </div>
-
-    <div class="col-md-9">
-      <div id="horizontal-bar-chart" class="ct-chart ct-golden-section"></div>
-    </div>
-
-  </div>
-</div>
-
-<script>
-
-  //Horizontal bar chart
-
-
-  new Chartist.Bar('#horizontal-bar-chart', {
-    labels: ['Abdullah', 'Mohamed', 'Aziz', 'Nassim'],
-    series: [
-    [7, 16, 20, 12],
-    [3.4, 7, 9, 8]
-    ]
-  }, {
-    seriesBarDistance: 20,
-    reverseData: true,
-    horizontalBars: true,
-    axisY: {
-      offset: 70
-    },
-    width: 800,
-    height: 500,
-  });
-
-  Morris.Donut({
-    element: 'donut-example1',
-    data: [
-    {label: "Download Sales", value: 12},
-    {label: "In-Store Sales", value: 30},
-    {label: "Mail-Order Sales", value: 20}
-    ],
-    element: 'donut-example2',
-    data: [
-    {label: "Download Sales", value: 12},
-    {label: "In-Store Sales", value: 30},
-    {label: "Mail-Order Sales", value: 20}
-    ],
-    element: 'donut-example3',
-    data: [
-    {label: "Download Sales", value: 12},
-    {label: "In-Store Sales", value: 30},
-    {label: "Mail-Order Sales", value: 20}
-    ],
-    element: 'donut-example4',
-    data: [
-    {label: "Download Sales", value: 12},
-    {label: "In-Store Sales", value: 30},
-    {label: "Mail-Order Sales", value: 20}
-    ]
-  });
-
-</script>
-
-</div>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-<script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
-
-
+</div> <!-- Charts end -->

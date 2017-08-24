@@ -59,10 +59,14 @@ class Ticket < ApplicationRecord
   def self.average_response_time
     sum = 0
     tickets = Ticket.all.select {|t| t.response_time}
-    tickets.each do |ticket|
-      sum += ticket.response_time
+    if tickets.count != 0
+      tickets.each do |ticket|
+        sum += ticket.response_time
+      end
+      average = sum / (tickets.count) / 3600
+    else
+      0
     end
-    average = sum / (tickets.count) / 3600
   end
 
   def self.average_resolve_time
@@ -77,19 +81,28 @@ class Ticket < ApplicationRecord
   def self.average_waiting_time
     sum = 0
     tickets = Ticket.all.select {|t| t.status == 'new'}
-    tickets.each do |ticket|
-      sum += Time.now - ticket.created_at
+    if tickets.count != 0
+      tickets.each do |ticket|
+        sum += Time.now - ticket.created_at
+      end
+      return average = sum / (tickets.count) / 3600
+    else
+      0
     end
-    average = sum / (tickets.count) / 3600
   end
 
   def self.average_processing_time
     sum = 0
     tickets = Ticket.all.select {|t| t.status != 'closed'}
-    tickets.each do |ticket|
-      sum += Time.now - ticket.created_at
+    if tickets.count != 0
+      tickets.each do |ticket|
+        sum += Time.now - ticket.created_at
+      end
+      average = sum / (tickets.count) / 3600
+    else
+      0
     end
-    average = sum / (tickets.count) / 3600
+
   end
   def self.user_response_time_hash(user)
     tickets =  Ticket.all.select{ |t| t.author_id == user.id}
@@ -135,27 +148,39 @@ class Ticket < ApplicationRecord
   def self.user_average_resolve_time(user)
     sum = 0
     tickets = Ticket.all.select {|t| t.resolve_time && t.author_id == user.id}
-    tickets.each do |ticket|
-      sum += ticket.resolve_time
+    if tickets.count != 0
+      tickets.each do |ticket|
+        sum += ticket.resolve_time
+      end
+      average = sum / (tickets.count) / 3600
+    else
+      0
     end
-    average = sum / (tickets.count) / 3600
   end
 
   def self.user_average_waiting_time(user)
     sum = 0
     tickets = Ticket.all.select {|t| t.status == 'new' && t.author_id == user.id}
-    tickets.each do |ticket|
-      sum += Time.now - ticket.created_at
+    if tickets.count != 0
+      tickets.each do |ticket|
+        sum += Time.now - ticket.created_at
+      end
+      average = sum / (tickets.count) / 3600
+    else
+      0
     end
-    average = sum / (tickets.count) / 3600
   end
 
   def self.user_average_processing_time(user)
     sum = 0
     tickets = Ticket.all.select {|t| t.status != 'closed' && t.author_id == user.id}
-    tickets.each do |ticket|
-      sum += Time.now - ticket.created_at
+    if tickets.count != 0
+      tickets.each do |ticket|
+        sum += Time.now - ticket.created_at
+      end
+      average = sum / (tickets.count) / 3600
+    else
+      0
     end
-    average = sum / (tickets.count) / 3600
   end
 end

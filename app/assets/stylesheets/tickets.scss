@@ -84,23 +84,30 @@ body {
 
 .tickets a{
   text-decoration:none;
-  color: #2F3E47;
+  color: grey;
 }
 
 .tickets a hover{
-  color: #959DA1;
+  color: #57C5A5 !important;
+}
+
+table {
+  text-align: left;
 }
 
 
 .table thead tr th {
-  margin: 20px 5px;
+  margin: 0;
+  text-align:left;
+  color: grey;
+  font-size:14px;
 }
 
 tr th {
   font-family: 'Rototo', sans-serif;
   font-weight: 600;
-  text-align: center;
 }
+
 // .green-btn {
 //   /* Rectangle: */
 //   background: #A4CD3B;
