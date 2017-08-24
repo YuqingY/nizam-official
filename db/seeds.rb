@@ -69,8 +69,9 @@ Ticket.all.each { |t| tickets_id << t.id }
   ticket_id = tickets_id.sample
   created_at = Ticket.find(ticket_id).created_at
   user_id = [csrep1.id, csrep2.id, csrep3.id, csrep4.id, csrep5.id].sample
-  Call.create(user_id: user_id, duration: duration, ticket_id: ticket_id, created_at: created_at)
+  Call.create(user_id: user_id, duration: duration, ticket_id: ticket_id, created_at: Time.zone.now)
 end
+
 
 puts "setting current_state"
 User.all.each do |user|
