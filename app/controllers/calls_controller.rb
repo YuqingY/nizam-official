@@ -1,6 +1,7 @@
 class CallsController < ApplicationController
   def new
-
+    @no_log_out = true
+    @in_call = true
     @start_time = Time.now
     session[:call_start_time] = @start_time
 
@@ -12,7 +13,8 @@ class CallsController < ApplicationController
     authorize @call
     @call.save
 
-    @ticket = Ticket.new
+    @new_ticket = Ticket.new
+    @edit_ticket = nil
     session[:current_call_id] = @call.id
 
   end

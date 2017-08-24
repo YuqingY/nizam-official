@@ -6,7 +6,7 @@ class UserPolicy < ApplicationPolicy
   # end
 
   def insight?
-    record.manager?
+    true
   end
 end
 

@@ -43,7 +43,6 @@ $gutters: 24px;
 }
 
 .form {
-  z-index: 15;
   position: relative;
   background: $white;
   width: $max-width;
@@ -52,6 +51,7 @@ $gutters: 24px;
   box-sizing: border-box;
   margin: 100px auto 10px;
   overflow: hidden;
+
 
   .form-group {
     width: 100%;

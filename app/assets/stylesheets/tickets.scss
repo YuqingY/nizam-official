@@ -84,23 +84,30 @@ body {
 
 .tickets a{
   text-decoration:none;
-  color: #2F3E47;
+  color: grey;
 }
 
 .tickets a hover{
-  color: #959DA1;
+  color: #57C5A5 !important;
+}
+
+table {
+  text-align: left;
 }
 
 
 .table thead tr th {
-  margin: 20px 5px;
+  margin: 0;
+  text-align:left;
+  color: grey;
+  font-size:14px;
 }
 
 tr th {
   font-family: 'Rototo', sans-serif;
   font-weight: 600;
-  text-align: center;
 }
+
 // .green-btn {
 //   /* Rectangle: */
 //   background: #A4CD3B;
@@ -141,6 +148,19 @@ a:hover {
   width: 1000px;
   margin: 0 auto;
   text-align: center;
+}
+
+.form-no-width {
+  margin: 0 auto;
+  text-align: center;
+  z-index: 15;
+  position: relative;
+  background: $white;
+  border-radius: 4px;
+  box-shadow: 0 0 30px rgba($black, .1);
+  box-sizing: border-box;
+  margin: 100px auto 10px;
+  overflow: hidden;
 }
 
 .show-content{
