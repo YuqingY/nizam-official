@@ -46,21 +46,21 @@
       <div class="row">
         <div class="col-sm-6">
           <h6>Response Time: <%= Ticket.user_average_response_time(user).round %> hours</h6>
-          <%= pie_chart Ticket.user_response_time_hash(user), colors: @colors[user.id % 5], donut: true%>
+          <%= pie_chart Ticket.user_response_time_hash(user), colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ], donut: true%>
         </div>
         <div class="col-sm-6">
           <h6>Resolve Time: <%= Ticket.user_average_resolve_time(user).round %> hours</h6>
-          <%= pie_chart Ticket.user_resolve_time_hash(user), colors: @colors[user.id % 5] , donut: true%>
+          <%= pie_chart Ticket.user_resolve_time_hash(user), colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ], donut: true%>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-6">
           <h6>Waiting Time: <%= Ticket.user_average_waiting_time(user).round %> hours</h6>
-          <%= pie_chart Ticket.user_waiting_time_hash(user), colors: @colors[user.id % 5], donut: true%>
+          <%= pie_chart Ticket.user_waiting_time_hash(user), colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ], donut: true%>
         </div>
         <div class="col-sm-6">
           <h6>Processing Time: <%= Ticket.user_average_processing_time(user).round %> hours</h6>
-          <%= pie_chart Ticket.user_processing_time_hash(user), colors: @colors[user.id % 5] , donut: true%>
+          <%= pie_chart Ticket.user_processing_time_hash(user), colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ], donut: true%>
         </div>
       </div>
     </div>

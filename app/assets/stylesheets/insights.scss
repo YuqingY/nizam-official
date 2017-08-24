@@ -11,7 +11,8 @@
   color:white;
   z-index: -2px;
   background: #2F3E47;
-  position:fixed
+  position:fixed;
+  padding-top: 30px;
 }
 
 .dropdown {
@@ -22,22 +23,48 @@
   padding:0 !important;
 }
 
-#dropdownMenuButton {
-  padding:15px 15px 0px 15px !important;
-
-  }
 
 .dropdown-item {
   color: #959DA1;
   font-size: 12px;
   padding-left: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  margin: 0 !important;
+}
+
+.ticket_link {
+  background: #2F3E47;
+  color: #959DA1;
+  text-decoration: none;
+  padding-left: 10px
+  // padding: 15px 15px 0px 15px !important;
+}
+
+.btn-secondary {
+  width: 16.666vw;
+  text-align:left;
+}
+
+.hover-sidebar-tab {
+  transition-duration: 0.25s;
+  -webkit-transition-timing-function: linear; /* Safari and Chrome */
+  transition-timing-function: linear;
+}
+
+.hover-sidebar-tab p{
+  color: #959DA1;
+  transition-duration: 0.25s;
+  -webkit-transition-timing-function: linear; /* Safari and Chrome */
+  transition-timing-function: linear;
 }
 
 .hover-sidebar-tab:hover {
-  background-color: #57C5A5;
+  background-color:rgba(87, 197, 165, 0.44);;
   color:white;
+
 }
 
-.hover-sidebar-tab:hover a {
+.hover-sidebar-tab:hover p {
   color: white;
 }

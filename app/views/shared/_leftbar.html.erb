@@ -2,31 +2,42 @@
                 <div>
                     <!--- Divider -->
                     <div>
-                            <div class="dropdown">
-                              <button class="btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-ticket" aria-hidden="true"></i> Tickets
-                              </button>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <p><%= link_to 'All Tickets', tickets_path, class: "dropdown-item" %></p>
-                                <!-- <li><a class="dropdown-item" href="#">New Tickets</a></li>
-                                <li><a class="dropdown-item" href="#">Active Tickets</a></li>
-                                <li><a class="dropdown-item" href="#">Pending Tickets</a></li>
- -->
-                              </div>
-                            </div>
+                              <%= link_to tickets_path do %>
+                                <button class="btn-secondary ticket_link" type="button">
+                                  <i class="fa fa-ticket" aria-hidden="true"></i> Tickets
+                                </button>
+                              <% end %>
 
                              <div class="dropdown">
                               <button class="btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-line-chart" aria-hidden="true"></i> Insights
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <% if current_user.position == 'manager' %>
-                                  <p class="hover-sidebar-tab"><%= link_to 'Summary', insights_path, class: "dropdown-item" %></p>
-                                  <p class="hover-sidebar-tab"><%= link_to 'Tracking', insights_calls_path, class: "dropdown-item" %></p>
-                                  <p class="hover-sidebar-tab"><%= link_to 'Responsiveness', insights_tickets_path, class: "dropdown-item" %></p>
-                                  <p class="hover-sidebar-tab"><%= link_to 'Individual Performance', insights_users_path, class: "dropdown-item" %></p>
+                                  <%= link_to insights_path do %>
+                                    <p class="hover-sidebar-tab dropdown-item">Summary</p>
+                                  <% end %>
+
+                                  <%= link_to insights_calls_path do %>
+                                    <p class="hover-sidebar-tab dropdown-item">Tracking</p>
+                                  <% end %>
+
+                                  <%= link_to insights_tickets_path do %>
+                                    <p class="hover-sidebar-tab dropdown-item">Responsiveness</p>
+                                  <% end %>
+
+                                  <%= link_to insights_users_path do %>
+                                    <p class="hover-sidebar-tab dropdown-item">Performance</p>
+                                  <% end %>
+
                                 <% elsif current_user.position == 'csrep' %>
-                                  <p class="hover-sidebar-tab"><%= link_to 'Leaderboard', insights_leaderboard_path, class: "dropdown-item" %></p>
-                                  <p class="hover-sidebar-tab"><%= link_to 'My Stats', insights_mystats_path, class: "dropdown-item" %></p>
+                                  <%= link_to insights_leaderboard_path do %>
+                                    <p class="hover-sidebar-tab dropdown-item">Leaderboard</p>
+                                  <% end %>
+
+                                  <%= link_to insights_mystats_path do %>
+                                    <p class="hover-sidebar-tab dropdown-item">My Stats</p>
+                                  <% end %>
+
                                 <% end %>
                               </div>
                             </div>
