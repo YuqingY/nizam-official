@@ -48,12 +48,17 @@ puts "creating new tickets"
   imei =  customer.imei
   author_id = [csrep1.id, csrep2.id, csrep3.id, csrep4.id, csrep5.id].sample
   assignee_id =  [csrep1.id, csrep2.id, csrep3.id, csrep4.id, csrep5.id, '', '', ''].sample
-  cat_array = [['tech issues', 'technology'], ['sales','sales'], ['information','sales'], ['payment', 'support'], ['repair', 'support'], ['cancel service', 'customer service']].sample
+  cat_array = [['tech issues', 'technology', 'The machine is plugged in but not working', 'Waiting for Tech dep'],
+               ['sales','sales', 'Ask for further discount on the second device', 'sales team: callback'],
+               ['information','sales', 'General info about the company', 'send info pack'],
+               ['payment', 'support', 'late payment, will be paid latest this Friday','follow up this Friday'],
+               ['repair', 'support', 'The is a leak that need to be fixed', 'repair team sent'],
+               ['cancel service', 'customer service', 'Not satisfied, can not afford it anymore','send low-income aid package']].sample
   status = ['new', 'active', 'pending', 'ready', 'closed', 'closed', 'closed'].sample
   created_at = Time.zone.now.ago(rand(1...168).hours)
   response_time = [1000, 90000, 3600, 3800, 17000, 16000, 15000, 16000, 17520, 18300, 38240, 80000, 70000, 60000, 12000].sample
   resolve_time = [5400, 86000, 100000, 200000, 380000, 82000, 72000, 300000].sample
-  Ticket.create(imei: imei, customer_cnic: customer_cnic, author_id: author_id, category:cat_array[0], department:cat_array[1], status:status, created_at:created_at, assignee_id: assignee_id, resolve_time: resolve_time, response_time:response_time)
+  Ticket.create(imei: imei, customer_cnic: customer_cnic, author_id: author_id, category:cat_array[0], department:cat_array[1], description: cat_array[2], next_step:cat_array[3], status:status, created_at:created_at, assignee_id: assignee_id, resolve_time: resolve_time, response_time:response_time)
 end
 
 puts "creating new calls"
@@ -66,7 +71,6 @@ end
 tickets_id = []
 Ticket.all.each { |t| tickets_id << t.id }
 40.times do
-
   duration = [70, 80, 360, 500, 300, 400, 1900, 1500, 600, 700, 800, 750, 720, 830, 550].sample
   ticket_id = tickets_id.sample
   created_at = Ticket.find(ticket_id).created_at
