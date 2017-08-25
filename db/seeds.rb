@@ -48,7 +48,7 @@ puts "creating new tickets"
   imei =  customer.imei
   author_id = [csrep1.id, csrep2.id, csrep3.id, csrep4.id, csrep5.id].sample
   assignee_id =  [csrep1.id, csrep2.id, csrep3.id, csrep4.id, csrep5.id, '', '', ''].sample
-  cat_array = [['tech issues', 'technology'], ['sales','sales'], ['information','sales'], ['payment', 'support'], ['repair', 'support'], ['cancel servie', 'customer service']].sample
+  cat_array = [['tech issues', 'technology'], ['sales','sales'], ['information','sales'], ['payment', 'support'], ['repair', 'support'], ['cancel service', 'customer service']].sample
   status = ['new', 'active', 'pending', 'ready', 'closed', 'closed', 'closed'].sample
   created_at = Time.zone.now.ago(rand(1...168).hours)
   response_time = [1000, 90000, 3600, 3800, 17000, 16000, 15000, 16000, 17520, 18300, 38240, 80000, 70000, 60000, 12000].sample
