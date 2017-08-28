@@ -5,10 +5,9 @@
       <div class='row'>
         <div class="col-sm-9">
           <% User.all.select{|u| u.position == 'csrep'}.each do |user| %>
-          <% img_path = user.name + '.png'%>
             <div class="row">
               <div class="col-sm-1">
-                <img src="<%= image_path(img_path) %>" alt="" class="img-circle" style="max-height: 50px;">
+                <h4><%= user.name %></h4>
                 <p style="font-size: 10px;"><%= user.current_state %></p>
               </div> <!-- inner-col-end -->
               <div class="col-sm-11">
@@ -20,7 +19,7 @@
         <div class="col-sm-3">
           <div class="chart-card" style="text-align:left;">
             <p><strong>Today: </strong></p>
-            <p><%= Call.all.select{|c| c.created_at.today? }.count %> calls</p>
+            <p><%= Call.all.select{|c| c.created_at.today? && c.duration }.count %> calls</p>
             <p><strong>Call Duration: </strong></p>
             <p><%= Call.average_call_duration %> mins</p>
             <p><strong>Response time: </strong></p>
@@ -36,34 +35,3 @@
       </div> <!-- row end -->
     </div>
 </div> <!-- Charts end -->
-
-
-<!-- <div class="container">
- -  <div class="row">
- -    <div class="col-md-2">
- -    <div id="donut-example1"></div>
- -    <div id="donut-example2"></div>
- -    <div id="donut-example3"></div>
- -    <div id="donut-example4"></div>
- -
- -    <div class="text-align">
- -      <img src="<%= asset_path('users/avatar-2.jpg') %>" class="img-responsive img-circle" alt="user">
- -    </div>
- -
- -    <div class="text-align">
- -      <img src="<%= asset_path('users/avatar-10.jpg') %>" class="img-responsive img-circle" alt="user">
- -    </div>
- -
- -
- -    <div class="text-align">
- -      <img src="<%= asset_path('users/avatar-1.jpg') %>" class="img-responsive img-circle" alt="user">
- -    </div>
- -
- -    <div class="text-align">
- -      <img src="<%= asset_path('users/avatar-3.jpg') %>" class="img-responsive img-circle" alt="user">
- -    </div>
- -  </div>
- -
- -    <div class="col-md-9">
- -      <div id="horizontal-bar-chart" class="ct-chart ct-golden-section"></div>
- -->

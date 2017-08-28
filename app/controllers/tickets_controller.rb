@@ -88,8 +88,8 @@ class TicketsController < ApplicationController
     cleaned_params = ticket_params.reject {|k,v| k == 'call_id'}
       @ticket = Ticket.find(params[:id])
       authorize @ticket
-    if session[:current_call_id] = nil
-          @call=Call.find(session[:current_call_id])
+      if session[:current_call_id] = nil
+        @call=Call.find(session[:current_call_id])
         # set call end time to now
         session[:call_end_time] = Time.now
         @call.update end_time: Time.now
