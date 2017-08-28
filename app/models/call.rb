@@ -9,7 +9,7 @@ class Call < ApplicationRecord
   end
 
   def self.performance_hash(user)
-    {"# of calls": user.calls.select{|c| c.created_at.today?}.count,
+    {"# of calls": user.calls.select{|c| c.created_at.today? && c.duration}.count,
      "avg. duration(mins)": Call.user_call_duration(user)}
   end
 

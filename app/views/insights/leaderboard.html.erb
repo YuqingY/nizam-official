@@ -3,16 +3,15 @@
 
     <div class="chart-card">
           <h4>Leaderboard</h4>
-          <% User.all.select{|u| u.position == 'csrep'}.sort_by{|u| u.calls.select{|c| c.created_at.today? }.count }.reverse.each_with_index do |user, i| %>
-          <% img_path = user.name + '.png'%>
+          <% User.all.select{|u| u.position == 'csrep'}.sort_by{|u| u.calls.select{|c| c.created_at.today? && c.duration }.count }.reverse.each_with_index do |user, i| %>
             <div class="row">
               <div class="col-sm-2">
                 <div>
                   <div class="col-sm-4">
-                    <h2><%= i+1 %>  </h2>
+                    <h2 style="color: #57C5A5;"><%= i+1 %>  </h2>
                   </div> <!-- inner-col-end -->
                   <div class="col-sm-7">
-                    <img src="<%= image_path(img_path) %>" alt="" class="img-circle Leaderboard-photo" style="max-height: 50px;">
+                    <h4><%= user.name %></h4>
                   </div> <!-- inner-col-end -->
                 </div> <!-- inner-row-end -->
                 <div class="row">

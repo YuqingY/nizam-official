@@ -1,5 +1,5 @@
 <% User.all.select{|u| u.position == 'csrep'}.each do |user| %>
-  <% img_path = user.name + '.png'%>
+
   <% calls = Call.all.select{|c| c.user == user} %>
   <% tickets = Ticket.all.select{|t| t.author_id == user.id} %>
   <div class="chart-card">
@@ -7,20 +7,15 @@
         <div class="col-sm-4">
           <div class="card-box widget-user" style="height:122.9px">
             <div class="row">
-              <div class="col-sm-5">
-                <img src="<%= image_path(img_path) %>" alt="" class="img-circle" style="max-height: 60px;">
-              </div>
-              <div class="col-sm-4">
                 <h3><strong><%= user.name %></strong></h3>
                 <p><%= user.current_state %></p>
-              </div>
             </div>
           </div>
         </div>
         <div class="col-sm-4" style="text-align: left">
           <div class="card-box widget-user">
               <div class="text-center">
-                  <h2 class="text-custom" data-plugin="counterup"><%= user.calls.select{|c| c.created_at.today? }.count %></h2>
+                  <h2 class="text-custom" data-plugin="counterup"><%= user.calls.select{|c| c.created_at.today? && c.duration }.count %></h2>
                   <h5>Calls Today</h5>
               </div>
           </div>

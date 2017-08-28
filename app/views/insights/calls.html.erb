@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-6">
       <div class="chart-card">
-        <h4># of Call by Day</h4>
+        <h4>Call by Day</h4>
         <%= column_chart Call.group_by_day_of_week(:created_at, format: "%a").count, stacked: true, colors: ["#7CD0B9", "#57C5A5", "#D8F1EA" ] %>
       </div> <!-- col-end -->
     </div>
