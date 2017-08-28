@@ -30,8 +30,8 @@ p "Database Clean"
 # fake_customer = Customer.create(name: 'N/A', cnic:"N/A", imei:"N/A")
 # puts "fake customer created"
 
-# puts "Making 3 users manager and cs rep"
-# User.create(email: 'manager@nizam.com', password:"12345678", position:'manager', name:'manager', admin: true)
+puts "Making manager account"
+User.create(email: 'manager@nizam.com', password:"12345678", position:'manager', name:'manager', admin: true)
 # csrep1 = User.create(email: 'csrep1@nizam.com', password:"12345678", position:'csrep', name:'Monica', desc:'Keep calm and go diving!')
 # csrep2 = User.create(email: 'csrep2@nizam.com', password:"12345678", position:'csrep', name:'Zoey', desc:"Be a voice, not an echo")
 # csrep3 = User.create(email: 'csrep3@nizam.com', password:"12345678", position:'csrep', name:'Louis', desc:'Focus on the good')
@@ -40,7 +40,7 @@ p "Database Clean"
 # external = User.create(email: 'external@nizam.com', password:"12345678", position:'external', name:'external')
 # puts "Finished creating users"
 
-# puts "creating new tickets"
+puts "done"
 
 
 # 75.times do
